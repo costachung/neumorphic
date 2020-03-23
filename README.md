@@ -80,6 +80,18 @@ HStack {
 }
 ```
 
+## Customization 
+
+#### softInnerShadow
+You can change the color, spread of the shadow, and the shadow radius of the inner shadow.
+```swift
+softInnerShadow<S : Shape>(_ content: S, darkShadow: Color, lightShadow: Color, spread: CGFloat, radius: CGFloat)
+```
+#### softOuterShadow
+You can change the color, offset of the shadow, and the shadow radius of the outer shadow.
+```swift
+softOuterShadow(darkShadow: Color, lightShadow: Color, offset: CGFloat, radius:CGFloat)
+```
 
 # License
 Neumorphic Package is released under the MIT license. See the LICENSE file for more info.
