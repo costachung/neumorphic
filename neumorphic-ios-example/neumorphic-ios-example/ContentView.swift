@@ -23,7 +23,7 @@ struct ContentView: View {
             VStack(alignment: .center, spacing: 30) {
                 Text("Neumorphic Soft UI").font(.headline).foregroundColor(secondaryColor)
                 //Create simple shapes with soft inner shadow
-                HStack(spacing: 40) {
+                HStack(spacing: 40){
                     RoundedRectangle(cornerRadius: cornerRadius).fill(mainColor).frame(width: 150, height: 150)
                         .softInnerShadow(RoundedRectangle(cornerRadius: cornerRadius))
                     
@@ -33,19 +33,20 @@ struct ContentView: View {
                 //You can customize shadow by changing its color, spread, and shadow radius.
                 HStack(spacing: 40) {
                     ZStack {
-                        Circle().fill(mainColor).frame(width: 150, height: 150)
+                        Circle().fill(mainColor)
                             .softInnerShadow(Circle(), spread: 0.6)
                         
                         Circle().fill(mainColor).frame(width: 80, height: 80)
                             .softOuterShadow(offset: 8, radius: 8)
-                    }
+                    }.frame(width: 150, height: 150)
+                    
                     ZStack {
-                        Circle().fill(mainColor).frame(width: 150, height: 150)
+                        Circle().fill(mainColor)
                             .softOuterShadow()
                         
                         Circle().fill(mainColor).frame(width: 80, height: 80)
                             .softInnerShadow(Circle(), radius: 5)
-                    }
+                    }.frame(width: 150, height: 150)
                 }
                 //Rectanlges with soft outer shadow
                 HStack(spacing: 30) {
