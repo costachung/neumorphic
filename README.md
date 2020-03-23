@@ -94,7 +94,7 @@ softOuterShadow(darkShadow: Color, lightShadow: Color, offset: CGFloat, radius:C
 ```
 
 ## Example Project
-Check out the __neumorphic-ios-example__ XCode project to see how to use build neumorphic UI and buttons. If you use the default shadow colors of Neumorphic, you can also get dark mode support for free.
+Check out the __neumorphic-ios-example__ XCode project to see how to build neumorphic UI and buttons. If you use the default shadow colors of Neumorphic, you can also get dark mode support for free.
 
 # License
 Neumorphic Package is released under the MIT license. See the LICENSE file for more info.
