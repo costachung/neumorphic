@@ -57,5 +57,29 @@ RoundedRectangle(cornerRadius: 20).fill(Neumorphic.shared.mainColor()).softInner
   }
 ```
 
+#### Create Soft Button
+![Neumorphic SwiftUI Button](https://user-images.githubusercontent.com/169746/77301621-f6822600-6d2a-11ea-9248-88a4fa6c9abc.png)
+```swift
+Button(action: {}) {
+    Text("Soft Button").fontWeight(.bold)
+}
+.softButtonStyle(RoundedRectangle(cornerRadius: 20))
+```
+
+#### Create Soft Button with custom style
+![Neumorphic SwiftUI Button](https://user-images.githubusercontent.com/169746/77302381-34337e80-6d2c-11ea-96d6-6409a7e14c92.png)
+```swift
+HStack {
+    Button(action: {}) {
+        Image(systemName: "heart.fill")
+    }.softButtonStyle(Circle())
+
+    Button(action: {}) {
+        Image(systemName: "heart.fill")
+    }.softButtonStyle(Circle(), mainColor: Color.red, textColor: Color.white, darkShadowColor: Color(rgb: 0x993333, alpha: 1), lightShadowColor:Color("redButtonLightShadow"))
+}
+```
+
+
 # License
 Neumorphic Package is released under the MIT license. See the LICENSE file for more info.
