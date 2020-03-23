@@ -49,7 +49,7 @@ extension Button {
         self.buttonStyle(SoftButtonStyle(content, mainColor: Neumorphic.shared.mainColor(), textColor: Neumorphic.shared.secondaryColor(), darkShadowColor: Neumorphic.shared.darkShadowColor(), lightShadowColor: Neumorphic.shared.lightShadowColor()))
     }
     
-    public func softButtonStyle<S : Shape>(_ content: S, mainColor : Color = Neumorphic.defaultMainColor, textColor : Color = Neumorphic.defaultSecondaryColor, darkShadowColor: Color = Neumorphic.defaultDarkShadowColor, lightShadowColor: Color = Neumorphic.defaultLightShadowColor) -> some View {
+    public func softButtonStyle<S : Shape>(_ content: S, mainColor : Color = Neumorphic.shared.mainColor(), textColor : Color = Neumorphic.shared.secondaryColor(), darkShadowColor: Color = Neumorphic.shared.darkShadowColor(), lightShadowColor: Color = Neumorphic.shared.lightShadowColor()) -> some View {
         self.buttonStyle(SoftButtonStyle(content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor))
     }
     

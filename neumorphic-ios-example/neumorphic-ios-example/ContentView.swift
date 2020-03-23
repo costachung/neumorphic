@@ -63,20 +63,20 @@ struct ContentView: View {
                 Button(action: {}) {
                     Text("Soft Button").fontWeight(.bold)
                 }
-                .softButtonDefaultStyle(RoundedRectangle(cornerRadius: cornerRadius))
+                .softButtonStyle(RoundedRectangle(cornerRadius: cornerRadius))
                 .frame(width: 340, height: 50)
                 
                 HStack(spacing: 30) {
                     //Circle Button
                     Button(action: {}) {
                         Image(systemName: "heart.fill")
-                    }.softButtonDefaultStyle(Circle())
+                    }.softButtonStyle(Circle())
                         .frame(width: 50, height: 50)
                     
                     //Ellipse Button
                     Button(action: {}) {
                         Text("Thanks").fontWeight(.bold)
-                    }.softButtonDefaultStyle(Ellipse())
+                    }.softButtonStyle(Ellipse())
                         .frame(width: 150, height: 50)
                     //Circle Button
                     Button(action: {}) {
