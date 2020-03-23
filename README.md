@@ -11,10 +11,10 @@ Requirements
 #### Swift Package Manager 
 1. In Xcode, open your project and navigate to File → Swift Packages → Add Package Dependency.
 2. Paste the repository URL (https://github.com/costachung/neumorphic/) and click Next.
-3. For Rules, select Branch (with branch set to master).
+3. For Rules, select version.
 4. Click Finish.
 
 #### Swift Package
 ```swift
-.package(url: "https://github.com/costachung/neumorphic/", .upToNextMinor(from: "1.0.0"))
+.package(url: "https://github.com/costachung/neumorphic/", .upToNextMinor(from: "1.0"))
 ```
