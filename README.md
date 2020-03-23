@@ -93,5 +93,8 @@ You can change the color, offset of the shadow, and the shadow radius of the out
 softOuterShadow(darkShadow: Color, lightShadow: Color, offset: CGFloat, radius:CGFloat)
 ```
 
+## Example Project
+Check out the neumorphic-ios-example XCode project to see how to use build neumorphic UI and buttons. If you use the default shadow colors of Neumorphic, you can also get dark mode support for free.
+
 # License
 Neumorphic Package is released under the MIT license. See the LICENSE file for more info.
