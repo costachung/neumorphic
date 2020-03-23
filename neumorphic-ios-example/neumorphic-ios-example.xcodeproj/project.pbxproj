@@ -25,7 +25,7 @@
 		AA1C8444240CDD090082F452 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA1C8447240CDD090082F452 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA1C8449240CDD090082F452 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA72F4D1240E1AD1000835A3 /* Neumorphic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Neumorphic; path = ../Neumorphic; sourceTree = "<group>"; };
+		AAB2D0EA24288DED0057BC64 /* neumorphic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = neumorphic; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +43,7 @@
 		AA1C842F240CDD090082F452 = {
 			isa = PBXGroup;
 			children = (
-				AA72F4D1240E1AD1000835A3 /* Neumorphic */,
+				AAB2D0EA24288DED0057BC64 /* neumorphic */,
 				AA1C843A240CDD090082F452 /* neumorphic-ios-example */,
 				AA1C8439240CDD090082F452 /* Products */,
 				AA1C844F240CDFC20082F452 /* Frameworks */,
