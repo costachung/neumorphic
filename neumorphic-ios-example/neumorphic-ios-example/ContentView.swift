@@ -20,7 +20,7 @@ struct ContentView: View {
         
         return ZStack {
             mainColor.edgesIgnoringSafeArea(.all)
-            VStack(alignment: .center, spacing: 40) {
+            VStack(alignment: .center, spacing: 30) {
                 Text("Neumorphic Soft UI").font(.headline).foregroundColor(secondaryColor)
                 //Create simple shapes with soft inner shadow
                 HStack(spacing: 40) {
