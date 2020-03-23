@@ -1,4 +1,4 @@
-# SwiftUI : Neumorphism Soft UI
+# Neumorphic SwiftUI : Neumorphism Soft UI
 
 Neumorphic is a SwiftUI utilities to build Neumorphism Soft UI easily using custom view modifier and custom button style. It supports all shapes. 
 
@@ -18,3 +18,7 @@ Requirements
 ```swift
 .package(url: "https://github.com/costachung/neumorphic/", .upToNextMinor(from: "1.0"))
 ```
+
+
+# License
+Neumorphic Package is released under the MIT license. See the LICENSE file for more info.
