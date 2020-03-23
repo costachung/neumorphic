@@ -22,6 +22,31 @@ Requirements
 .package(url: "https://github.com/costachung/neumorphic/", .upToNextMajor(from: "1.0.0"))
 ```
 
+## Usage
+Import Neumorphic package to your view.
+
+```swift
+import Neumorphic
+```
+
+Simply use **.softOuterShadow** and **.softInnerShadow** methods to create outer shadow and inner shadow respectively.
+
+#### Create Rounded Rectangle with Outer Shadow
+
+![Neumorphic SwiftUI Outer Shadow](https://user-images.githubusercontent.com/169746/77294908-fcbed500-6d1f-11ea-9125-cab24891a03d.png)
+
+```swift
+RoundedRectangle(cornerRadius: 20).fill(Neumorphic.shared.mainColor()).softOuterShadow()
+```
+
+#### Create Rounded Rectangle with Inner Shadow
+
+![Neumorphic SwiftUI Inner Shadow](https://user-images.githubusercontent.com/169746/77295134-57f0c780-6d20-11ea-8e40-88b7a15319aa.png)
+
+```swift
+RoundedRectangle(cornerRadius: 20).fill(Neumorphic.shared.mainColor()).softInnerShadow(RoundedRectangle(cornerRadius: 20))
+```
+
 
 # License
 Neumorphic Package is released under the MIT license. See the LICENSE file for more info.
