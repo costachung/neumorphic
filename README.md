@@ -47,6 +47,15 @@ RoundedRectangle(cornerRadius: 20).fill(Neumorphic.shared.mainColor()).softOuter
 RoundedRectangle(cornerRadius: 20).fill(Neumorphic.shared.mainColor()).softInnerShadow(RoundedRectangle(cornerRadius: 20))
 ```
 
+#### Create Circles
+![Neumorphic SwiftUI Circles](https://user-images.githubusercontent.com/169746/77296271-60e29880-6d22-11ea-942b-23d4e503f03e.png)
+
+```swift
+  HStack {
+      Circle().fill(Neumorphic.shared.mainColor()).softOuterShadow()
+      Circle().fill(Neumorphic.shared.mainColor()).softInnerShadow(Circle())
+  }
+```
 
 # License
 Neumorphic Package is released under the MIT license. See the LICENSE file for more info.
