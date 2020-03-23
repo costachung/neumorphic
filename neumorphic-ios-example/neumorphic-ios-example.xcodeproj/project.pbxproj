@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA1C843C240CDD090082F452 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C843B240CDD090082F452 /* AppDelegate.swift */; };
+		AA1C843E240CDD090082F452 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C843D240CDD090082F452 /* SceneDelegate.swift */; };
+		AA1C8440240CDD090082F452 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C843F240CDD090082F452 /* ContentView.swift */; };
+		AA1C8442240CDD090082F452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8441240CDD090082F452 /* Assets.xcassets */; };
+		AA1C8445240CDD090082F452 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8444240CDD090082F452 /* Preview Assets.xcassets */; };
+		AA1C8448240CDD090082F452 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8446240CDD090082F452 /* LaunchScreen.storyboard */; };
+		AA7066332417839100D7F3E3 /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = AA7066322417839100D7F3E3 /* Neumorphic */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA1C8438240CDD090082F452 /* neumorphic-ios-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "neumorphic-ios-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA1C843B240CDD090082F452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA1C843D240CDD090082F452 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AA1C843F240CDD090082F452 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AA1C8441240CDD090082F452 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA1C8444240CDD090082F452 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AA1C8447240CDD090082F452 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA1C8449240CDD090082F452 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA72F4D1240E1AD1000835A3 /* Neumorphic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Neumorphic; path = ../Neumorphic; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA1C8435240CDD090082F452 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7066332417839100D7F3E3 /* Neumorphic in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA1C842F240CDD090082F452 = {
+			isa = PBXGroup;
+			children = (
+				AA72F4D1240E1AD1000835A3 /* Neumorphic */,
+				AA1C843A240CDD090082F452 /* neumorphic-ios-example */,
+				AA1C8439240CDD090082F452 /* Products */,
+				AA1C844F240CDFC20082F452 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AA1C8439240CDD090082F452 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA1C8438240CDD090082F452 /* neumorphic-ios-example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA1C843A240CDD090082F452 /* neumorphic-ios-example */ = {
+			isa = PBXGroup;
+			children = (
+				AA1C843B240CDD090082F452 /* AppDelegate.swift */,
+				AA1C843D240CDD090082F452 /* SceneDelegate.swift */,
+				AA1C843F240CDD090082F452 /* ContentView.swift */,
+				AA1C8441240CDD090082F452 /* Assets.xcassets */,
+				AA1C8446240CDD090082F452 /* LaunchScreen.storyboard */,
+				AA1C8449240CDD090082F452 /* Info.plist */,
+				AA1C8443240CDD090082F452 /* Preview Content */,
+			);
+			path = "neumorphic-ios-example";
+			sourceTree = "<group>";
+		};
+		AA1C8443240CDD090082F452 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AA1C8444240CDD090082F452 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AA1C844F240CDFC20082F452 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA1C8437240CDD090082F452 /* neumorphic-ios-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA1C844C240CDD090082F452 /* Build configuration list for PBXNativeTarget "neumorphic-ios-example" */;
+			buildPhases = (
+				AA1C8434240CDD090082F452 /* Sources */,
+				AA1C8435240CDD090082F452 /* Frameworks */,
+				AA1C8436240CDD090082F452 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "neumorphic-ios-example";
+			packageProductDependencies = (
+				AA7066322417839100D7F3E3 /* Neumorphic */,
+			);
+			productName = "neumorphic-ios-example";
+			productReference = AA1C8438240CDD090082F452 /* neumorphic-ios-example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA1C8430240CDD090082F452 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Costa Chung";
+				TargetAttributes = {
+					AA1C8437240CDD090082F452 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = AA1C8433240CDD090082F452 /* Build configuration list for PBXProject "neumorphic-ios-example" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA1C842F240CDD090082F452;
+			productRefGroup = AA1C8439240CDD090082F452 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA1C8437240CDD090082F452 /* neumorphic-ios-example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA1C8436240CDD090082F452 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA1C8448240CDD090082F452 /* LaunchScreen.storyboard in Resources */,
+				AA1C8445240CDD090082F452 /* Preview Assets.xcassets in Resources */,
+				AA1C8442240CDD090082F452 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA1C8434240CDD090082F452 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA1C843C240CDD090082F452 /* AppDelegate.swift in Sources */,
+				AA1C843E240CDD090082F452 /* SceneDelegate.swift in Sources */,
+				AA1C8440240CDD090082F452 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AA1C8446240CDD090082F452 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA1C8447240CDD090082F452 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA1C844A240CDD090082F452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA1C844B240CDD090082F452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA1C844D240CDD090082F452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"neumorphic-ios-example/Preview Content\"";
+				DEVELOPMENT_TEAM = CMDP5M57BW;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "neumorphic-ios-example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.costachung.neumorphic-ios-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA1C844E240CDD090082F452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"neumorphic-ios-example/Preview Content\"";
+				DEVELOPMENT_TEAM = CMDP5M57BW;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "neumorphic-ios-example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.costachung.neumorphic-ios-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA1C8433240CDD090082F452 /* Build configuration list for PBXProject "neumorphic-ios-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA1C844A240CDD090082F452 /* Debug */,
+				AA1C844B240CDD090082F452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA1C844C240CDD090082F452 /* Build configuration list for PBXNativeTarget "neumorphic-ios-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA1C844D240CDD090082F452 /* Debug */,
+				AA1C844E240CDD090082F452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA7066322417839100D7F3E3 /* Neumorphic */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Neumorphic;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AA1C8430240CDD090082F452 /* Project object */;
+}
