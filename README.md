@@ -4,6 +4,9 @@ Neumorphic is a SwiftUI utilities to build Neumorphism Soft UI easily using cust
 
 Hi, I’m Costa. It is simple to create outer shadow in SwiftUI by writing two lines of code. However, we can’t easily create inner shadow in SwiftUI. That’s the reason why I build this tool to make it simple and reusable.
 
+![Image of Neumorphic SwiftUI](https://user-images.githubusercontent.com/169746/77291563-7bfcda80-6d19-11ea-84ff-1ae527e425fa.png)
+
+
 ## Installation
 Requirements
 .iOS(.v13),.macOS(.v10_15)
