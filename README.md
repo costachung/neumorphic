@@ -93,6 +93,35 @@ You can change the color, offset of the shadow, and the shadow radius of the out
 softOuterShadow(darkShadow: Color, lightShadow: Color, offset: CGFloat, radius:CGFloat)
 ```
 
+For example,
+![Neumorphic SwiftUI Search bar](https://user-images.githubusercontent.com/169746/77886613-c8a56000-729b-11ea-87d8-3742146645e6.png)
+```swift
+            ZStack {
+                RoundedRectangle(cornerRadius: 30).fill(mainColor)
+                            .softInnerShadow(RoundedRectangle(cornerRadius: 30), darkShadow: darkShadow, lightShadow: lightShadow, spread: 0.05, radius: 2)
+                HStack{
+                    Image(systemName: "magnifyingglass").foregroundColor(secondaryColor).font(Font.body.weight(.bold))
+                    Text("Search ...").foregroundColor(secondaryColor).fontWeight(.bold)
+                    Spacer()
+                }.padding()
+            }.frame(width: 300, height:50)
+```
+
+Or, something like this:
+
+![Neumorphic SwiftUI bar chart](https://user-images.githubusercontent.com/169746/77887392-1078b700-729d-11ea-911c-3fd94ba1b9e0.png)
+```swift
+ZStack(alignment: .bottom){
+                RoundedRectangle(cornerRadius: 20).fill(mainColor)
+                .softInnerShadow(RoundedRectangle(cornerRadius: 20), darkShadow: darkShadow, lightShadow: lightShadow, spread: 0.3, radius: 2)
+                .frame(width: 30, height:150)
+                
+                RoundedRectangle(cornerRadius: 20).fill(barColor)
+                    .frame(width: 30, height:100)
+            }
+```
+
+
 ## Example Project
 Check out the __neumorphic-ios-example__ XCode project to see how to build neumorphic UI and buttons. If you use the default shadow colors of Neumorphic, you can also get dark mode support for free.
 
