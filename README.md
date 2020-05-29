@@ -107,6 +107,23 @@ For example,
             }.frame(width: 300, height:50)
 ```
 
+Example of using background method to add it under TextField:
+```swift
+            VStack {
+                HStack {
+                    Image(systemName: "magnifyingglass").foregroundColor(secondaryColor).font(Font.body.weight(.bold))
+                    TextField("Search ...", text: $name).foregroundColor(secondaryColor)
+                }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 30).fill(mainColor)
+                    .softInnerShadow(RoundedRectangle(cornerRadius: 30), darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.05, radius: 2)
+                )
+            }
+            .padding()
+```
+
+
 Or, something like this:
 
 ![Neumorphic SwiftUI bar chart](https://user-images.githubusercontent.com/169746/77887392-1078b700-729d-11ea-911c-3fd94ba1b9e0.png)
