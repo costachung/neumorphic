@@ -13,7 +13,7 @@
 		AA1C8442240CDD090082F452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8441240CDD090082F452 /* Assets.xcassets */; };
 		AA1C8445240CDD090082F452 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8444240CDD090082F452 /* Preview Assets.xcassets */; };
 		AA1C8448240CDD090082F452 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8446240CDD090082F452 /* LaunchScreen.storyboard */; };
-		AA7066332417839100D7F3E3 /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = AA7066322417839100D7F3E3 /* Neumorphic */; };
+		AAB9DDA82480D0500047A0DC /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = AAB9DDA72480D0500047A0DC /* Neumorphic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		AA1C8444240CDD090082F452 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA1C8447240CDD090082F452 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA1C8449240CDD090082F452 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AAB2D0EA24288DED0057BC64 /* neumorphic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = neumorphic; path = ..; sourceTree = "<group>"; };
+		AAB9DDA62480D03B0047A0DC /* neumorphic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = neumorphic; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA7066332417839100D7F3E3 /* Neumorphic in Frameworks */,
+				AAB9DDA82480D0500047A0DC /* Neumorphic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +43,7 @@
 		AA1C842F240CDD090082F452 = {
 			isa = PBXGroup;
 			children = (
-				AAB2D0EA24288DED0057BC64 /* neumorphic */,
+				AAB9DDA62480D03B0047A0DC /* neumorphic */,
 				AA1C843A240CDD090082F452 /* neumorphic-ios-example */,
 				AA1C8439240CDD090082F452 /* Products */,
 				AA1C844F240CDFC20082F452 /* Frameworks */,
@@ -104,7 +104,7 @@
 			);
 			name = "neumorphic-ios-example";
 			packageProductDependencies = (
-				AA7066322417839100D7F3E3 /* Neumorphic */,
+				AAB9DDA72480D0500047A0DC /* Neumorphic */,
 			);
 			productName = "neumorphic-ios-example";
 			productReference = AA1C8438240CDD090082F452 /* neumorphic-ios-example.app */;
@@ -361,7 +361,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AA7066322417839100D7F3E3 /* Neumorphic */ = {
+		AAB9DDA72480D0500047A0DC /* Neumorphic */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Neumorphic;
 		};
