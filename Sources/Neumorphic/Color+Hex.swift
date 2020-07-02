@@ -11,8 +11,12 @@ extension Color {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
         assert(blue >= 0 && blue <= 255, "Invalid blue component")
-
+        
+        #if os(iOS)
         self.init(UIColor(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha))
+        #else
+        self.init(NSColor(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha))
+        #endif
     }
     
     public init(rgb: Int, alpha: CGFloat) {
