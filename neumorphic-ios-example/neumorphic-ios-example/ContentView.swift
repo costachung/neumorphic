@@ -58,19 +58,20 @@ struct ContentView: View {
                     
                     Rectangle().fill(mainColor).frame(width: 90, height: 90)
                         .softOuterShadow()
+                    
                 }
                 
                 //You can simply create soft button with softButtonStyle method.
                 Button(action: {}) {
-                    Text("Soft Button").fontWeight(.bold).frame(width: 300, height:20)
-                }
-                .softButtonStyle(RoundedRectangle(cornerRadius: cornerRadius))
+                    Text("Soft Button").fontWeight(.bold)
+                }.softButtonStyle(RoundedRectangle(cornerRadius: cornerRadius))
                 
-                HStack(spacing: 30) {
+                HStack(spacing: 20) {
                     //Circle Button
                     Button(action: {}) {
                         Image(systemName: "heart.fill")
                     }.softButtonStyle(Circle())
+                    
                     
                     //Ellipse Button
                     Button(action: {}) {
@@ -100,9 +101,11 @@ struct ContentView_Previews: PreviewProvider {
 
            ContentView()
               .environment(\.colorScheme, .dark)
+
         }
     }
 }
+
 
 
 
