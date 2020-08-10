@@ -93,19 +93,7 @@ You can change the color, offset of the shadow, and the shadow radius of the out
 softOuterShadow(darkShadow: Color, lightShadow: Color, offset: CGFloat, radius:CGFloat)
 ```
 
-For example,
 ![Neumorphic SwiftUI Search bar](https://user-images.githubusercontent.com/169746/77886613-c8a56000-729b-11ea-87d8-3742146645e6.png)
-```swift
-            ZStack {
-                RoundedRectangle(cornerRadius: 30).fill(mainColor)
-                            .softInnerShadow(RoundedRectangle(cornerRadius: 30), darkShadow: darkShadow, lightShadow: lightShadow, spread: 0.05, radius: 2)
-                HStack{
-                    Image(systemName: "magnifyingglass").foregroundColor(secondaryColor).font(Font.body.weight(.bold))
-                    Text("Search ...").foregroundColor(secondaryColor).fontWeight(.bold)
-                    Spacer()
-                }.padding()
-            }.frame(width: 300, height:50)
-```
 
 Example of using background method to add it under TextField:
 ```swift
@@ -141,6 +129,30 @@ ZStack(alignment: .bottom){
 
 ## Example Project
 Check out the __neumorphic-ios-example__ XCode project to see how to build neumorphic UI and buttons. If you use the default shadow colors of Neumorphic, you can also get dark mode support for free.
+
+## Soft Button - Pressed Effects (v1.2.1)
+
+![ezgif-4-88fec6ab5eaa](https://user-images.githubusercontent.com/169746/89747202-400fb980-daf0-11ea-8e23-64fb5b0bfc3c.gif)
+
+```swift
+                    HStack {
+                        Spacer()
+                        Button(action: {}) {
+                            Text(".none").fontWeight(.bold)
+                        }.softButtonStyle(Capsule(), pressedEffect: .none)
+                        Spacer()
+                        Button(action: {}) {
+                            Text(".flat").fontWeight(.bold)
+                        }.softButtonStyle(Capsule(), pressedEffect: .flat)
+                        Spacer()
+                        Button(action: {}) {
+                            Text(".hard").fontWeight(.bold)
+                        }.softButtonStyle(Capsule(), pressedEffect: .hard)
+                        Spacer()
+                    }
+```
+
+
 
 ## Contacts
 https://twitter.com/costachung
