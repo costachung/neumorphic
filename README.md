@@ -130,7 +130,13 @@ ZStack(alignment: .bottom){
 ## Example Project
 Check out the __neumorphic-ios-example__ XCode project to see how to build neumorphic UI and buttons. If you use the default shadow colors of Neumorphic, you can also get dark mode support for free.
 
-## Soft Button - Pressed Effects (v1.2.1)
+
+## Soft Button Style Customization 
+```swift
+softButtonStyle<S : Shape>(_ content: S, padding: CGFloat, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color, pressedEffect: SoftButtonPressedEffect)
+```
+
+## Soft Button - Pressed Effects
 
 ![ezgif-4-88fec6ab5eaa](https://user-images.githubusercontent.com/169746/89747202-400fb980-daf0-11ea-8e23-64fb5b0bfc3c.gif)
 
