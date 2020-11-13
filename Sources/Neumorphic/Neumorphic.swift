@@ -8,15 +8,16 @@ import SwiftUI
 
 public struct Neumorphic {
 
-    public static let defaultMainColor = Color(rgb: 0xecf0f3, alpha: 1)
-    public static let defaultSecondaryColor = Color(rgb: 0x7b808c, alpha: 1)
-    public static let defaultLightShadowColor = Color(rgb:0xffffff, alpha: 1)
-    public static let defaultDarkShadowColor = Color(rgb: 0xd1d9e6, alpha: 1)
+    public static let defaultMainColor = Color(red: 0.925, green: 0.941, blue: 0.953, opacity: 1.000)
+    public static let defaultSecondaryColor = Color(red: 0.482, green: 0.502, blue: 0.549, opacity: 1.000)
+    public static let defaultLightShadowColor = Color(red: 1.000, green: 1.000, blue: 1.000, opacity: 1.000)
+    public static let defaultDarkShadowColor = Color(red: 0.820, green: 0.851, blue: 0.902, opacity: 1.000)
 
-    public static let darkThemeMainColor = Color(rgb: 0x303135, alpha: 1)
-    public static let darkThemeSecondaryColor = Color(rgb: 0xe8e8e8, alpha: 1)
-    public static let darkThemeLightShadowColor = Color(rgb:0x3e3f46, alpha: 1)
-    public static let darkThemeDarkShadowColor = Color(rgb: 0x232323, alpha: 1)
+    public static let darkThemeMainColor = Color(red: 0.188, green: 0.192, blue: 0.208, opacity: 1.000)
+    public static let darkThemeSecondaryColor = Color(red: 0.910, green: 0.910, blue: 0.910, opacity: 1.000)
+    public static let darkThemeLightShadowColor = Color(red: 0.243, green: 0.247, blue: 0.275, opacity: 1.000)
+    public static let darkThemeDarkShadowColor = Color(red: 0.137, green: 0.137, blue: 0.137, opacity: 1.000)
+    
         
     public static var shared = Neumorphic()
     
