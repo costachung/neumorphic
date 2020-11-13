@@ -20,79 +20,81 @@ struct SoftButtonDemoView: View {
                 Neumorphic.shared.mainColor().edgesIgnoringSafeArea(.all)
 
                 ScrollView {
-                    Spacer(minLength: 15)
-                    
-                    HStack {
-                        Button(action: {}) {
-                            Text("Capsule").fontWeight(.bold)
-                        }.softButtonStyle(Capsule())
-                        .padding(10)
-                        
-                        Button(action: {}) {
-                            Text("RoundedRectangle").fontWeight(.bold)
-                        }.softButtonStyle(RoundedRectangle(cornerRadius: 20))
-                        .padding(10)
-                    }
+                    VStack(spacing:25){
 
-                    HStack {
-                        Button(action: {}) {
-                            Image(systemName: "heart.fill")
-                        }.softButtonStyle(Circle())
-                        .padding(10)
-
-                        Button(action: {}) {
-                            Text("Ellipse").fontWeight(.bold).frame(width: 150, height: 20)
-                        }.softButtonStyle(Ellipse())
-                        .padding(10)
-                        
-                        Button(action: {}) {
-                            Image(systemName: "heart.fill")
-                        }.softButtonStyle(Circle(), mainColor: Color.red, textColor: Color.white, darkShadowColor: Color(rgb: 0x993333, alpha: 1), lightShadowColor:Color("redButtonLightShadow"))
-                        .padding(10)
-                    }
-                    
-                    Spacer(minLength: 95)
-                    
-                    Text("Pressed Effect").font(.headline).foregroundColor(Neumorphic.shared.secondaryColor())
-                        
-                    HStack {
-                        Spacer()
-                        Button(action: {}) {
-                            Text(".none").fontWeight(.bold)
-                        }.softButtonStyle(Capsule(), pressedEffect: .none)
-                        Spacer()
-                        Button(action: {}) {
-                            Text(".flat").fontWeight(.bold)
-                        }.softButtonStyle(Capsule(), pressedEffect: .flat)
-                        Spacer()
-                        Button(action: {}) {
-                            Text(".hard").fontWeight(.bold)
-                        }.softButtonStyle(Capsule(), pressedEffect: .hard)
-                        Spacer()
-                    }
-                    
-                    Spacer(minLength: 95)
-
-                    Text("ContextMenu").font(.headline).foregroundColor(Neumorphic.shared.secondaryColor())
-                    
-                    Button(action: {}) {
-                        Text("Button").fontWeight(.bold)
-                    }
-                    .softButtonStyle(Capsule(), pressedEffect: .none)
-                    .contentShape(Capsule())
-                    .contextMenu(
-                        ContextMenu(menuItems: {
-                            Text("Menu Item 1")
-                            Text("Menu Item 2")
+                        HStack(spacing:15) {
+                            Button(action: {}) {
+                                Text("Capsule")
+                                    .fontWeight(.bold)
+                            }.softButtonStyle(Capsule())
+                            
+                            Button(action: {}) {
+                                Text("RoundedRectangle")
+                                    .fontWeight(.bold)
+                            }.softButtonStyle(RoundedRectangle(cornerRadius: 20))
                         }
-                    ))
-                    .background(
-                        Capsule().fill(Neumorphic.shared.mainColor()).softOuterShadow()
-                    )
-                    
-                    
-                
-                    
+
+                        HStack(spacing:15) {
+                            Button(action: {}) {
+                                Image(systemName: "heart.fill")
+                            }.softButtonStyle(Circle())
+
+                            Button(action: {}) {
+                                Text("Ellipse").fontWeight(.bold)
+                                    .frame(width: 150, height: 20)
+                            }.softButtonStyle(Ellipse())
+                            
+                            Button(action: {}) {
+                                Image(systemName: "heart.fill")
+                            }.softButtonStyle(Circle(), mainColor: Color.red, textColor: Color.white, darkShadowColor: Color("redButtonDarkShadow"), lightShadowColor:Color("redButtonLightShadow"))
+                        }
+                        
+                        
+                        HStack {
+                            Button(action: {}) {
+                                Text("Padding").fontWeight(.bold)
+                            }
+                            .softButtonStyle(RoundedRectangle(cornerRadius: 20), padding: 10)
+                        }
+                        
+                        
+                        Text("Pressed Effect").font(.headline).foregroundColor(Neumorphic.shared.secondaryColor())
+                            
+                        HStack {
+                            Spacer()
+                            Button(action: {}) {
+                                Text(".none").fontWeight(.bold)
+                            }.softButtonStyle(Capsule(), pressedEffect: .none)
+                            Spacer()
+                            Button(action: {}) {
+                                Text(".flat").fontWeight(.bold)
+                            }.softButtonStyle(Capsule(), pressedEffect: .flat)
+                            Spacer()
+                            Button(action: {}) {
+                                Text(".hard").fontWeight(.bold)
+                            }.softButtonStyle(Capsule(), pressedEffect: .hard)
+                            Spacer()
+                        }
+                        
+
+                        Text("ContextMenu").font(.headline).foregroundColor(Neumorphic.shared.secondaryColor())
+                        
+                        Button(action: {}) {
+                            Text("Button").fontWeight(.bold)
+                        }
+                        .softButtonStyle(Capsule(), pressedEffect: .none)
+                        .contentShape(Capsule())
+                        .contextMenu(
+                            ContextMenu(menuItems: {
+                                Text("Menu Item 1")
+                                Text("Menu Item 2")
+                            }
+                        ))
+                        .background(
+                            Capsule().fill(Neumorphic.shared.mainColor()).softOuterShadow()
+                        )
+                    }
+
                 }.navigationBarTitle("Soft Button Demo")
             }
         }

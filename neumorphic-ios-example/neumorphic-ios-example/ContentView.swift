@@ -81,7 +81,7 @@ struct ContentView: View {
                     //Circle Button
                     Button(action: {}) {
                         Image(systemName: "heart.fill")
-                    }.softButtonStyle(Circle(), mainColor: Color.red, textColor: Color.white, darkShadowColor: Color(rgb: 0x993333, alpha: 1), lightShadowColor:Color("redButtonLightShadow"))
+                    }.softButtonStyle(Circle(), mainColor: Color.red, textColor: Color.white, darkShadowColor: Color("redButtonDarkShadow"), lightShadowColor:Color("redButtonLightShadow"))
                     
                 }
                  

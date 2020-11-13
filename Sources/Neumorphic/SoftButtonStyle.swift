@@ -20,20 +20,22 @@ public struct SoftDynamicButtonStyle<S: Shape> : ButtonStyle {
     var darkShadowColor : Color
     var lightShadowColor : Color
     var pressedEffect : SoftButtonPressedEffect
+    var padding : CGFloat
     
-    public init(_ shape: S, mainColor : Color, textColor : Color, darkShadowColor: Color, lightShadowColor: Color, pressedEffect : SoftButtonPressedEffect) {
+    public init(_ shape: S, mainColor : Color, textColor : Color, darkShadowColor: Color, lightShadowColor: Color, pressedEffect : SoftButtonPressedEffect, padding : CGFloat = 16) {
         self.shape = shape
         self.mainColor = mainColor
         self.textColor = textColor
         self.darkShadowColor = darkShadowColor
         self.lightShadowColor = lightShadowColor
         self.pressedEffect = pressedEffect
+        self.padding = padding
     }
     
     public func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
                 .foregroundColor(textColor)
-                .padding()
+                .padding(padding)
                 .scaleEffect(configuration.isPressed ? 0.97 : 1)
                 .background(
                     ZStack{
@@ -97,8 +99,8 @@ public struct SoftButtonStyle<S: Shape> : ButtonStyle {
 
 extension Button {
 
-    public func softButtonStyle<S : Shape>(_ content: S, mainColor : Color = Neumorphic.shared.mainColor(), textColor : Color = Neumorphic.shared.secondaryColor(), darkShadowColor: Color = Neumorphic.shared.darkShadowColor(), lightShadowColor: Color = Neumorphic.shared.lightShadowColor(), pressedEffect : SoftButtonPressedEffect = .hard) -> some View {
-        self.buttonStyle(SoftDynamicButtonStyle(content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect : pressedEffect))
+    public func softButtonStyle<S : Shape>(_ content: S, padding : CGFloat = 16, mainColor : Color = Neumorphic.shared.mainColor(), textColor : Color = Neumorphic.shared.secondaryColor(), darkShadowColor: Color = Neumorphic.shared.darkShadowColor(), lightShadowColor: Color = Neumorphic.shared.lightShadowColor(), pressedEffect : SoftButtonPressedEffect = .hard) -> some View {
+        self.buttonStyle(SoftDynamicButtonStyle(content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect : pressedEffect, padding:padding))
     }
 
     
