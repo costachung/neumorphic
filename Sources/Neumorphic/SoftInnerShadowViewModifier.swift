@@ -32,7 +32,7 @@ private struct SoftInnerShadowViewModifier<S: Shape> : ViewModifier {
     }
     
     fileprivate func shadowOffset(_ geo: GeometryProxy) -> CGFloat {
-        return geo.size.width * 0.5 * min(max(spread, 0), 1)
+        return (geo.size.width <= geo.size.height ? geo.size.width : geo.size.height) * 0.5 * min(max(spread, 0), 1)
     }
     
 

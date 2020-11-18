@@ -49,6 +49,13 @@ struct SoftButtonDemoView: View {
                             }.softButtonStyle(Circle(), mainColor: Color.red, textColor: Color.white, darkShadowColor: Color("redButtonDarkShadow"), lightShadowColor:Color("redButtonLightShadow"))
                         }
                         
+                        Button(action: {}) {
+                            Text("Custom Size")
+                                .fontWeight(.bold)
+                                .frame(width: 300, height: 20)
+                        }
+                        .softButtonStyle(Capsule(), padding: 15)
+                        
                         
                         HStack {
                             Button(action: {}) {
@@ -93,9 +100,14 @@ struct SoftButtonDemoView: View {
                         .background(
                             Capsule().fill(Neumorphic.shared.mainColor()).softOuterShadow()
                         )
+                        
+
+                        
+                        
                     }
 
-                }.navigationBarTitle("Soft Button Demo")
+                }
+                .navigationBarTitle("Soft Button Demo")
             }
         }
     }
@@ -105,10 +117,12 @@ struct SoftButtonDemoView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             SoftButtonDemoView()
-              .environment(\.colorScheme, .light)
+                .navigationViewStyle(StackNavigationViewStyle())
+                .environment(\.colorScheme, .light)
 
             SoftButtonDemoView()
-              .environment(\.colorScheme, .dark)
+                .navigationViewStyle(StackNavigationViewStyle())
+                .environment(\.colorScheme, .dark)
         }
     }
 }
