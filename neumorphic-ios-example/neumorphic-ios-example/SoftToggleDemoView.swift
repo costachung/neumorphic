@@ -19,19 +19,34 @@ struct SoftToggleDemoView: View {
         return ZStack {
             Neumorphic.shared.mainColor().edgesIgnoringSafeArea(.all)
             ScrollView {
-                VStack(spacing:5){
-                    Text("Toggle Demo")
-                        .font(.caption)
-                    
+                VStack(spacing:8){
+                    Text("softSwitchToggleStyle")
                     HStack(spacing:15) {
                         Spacer()
                         Toggle(isOn: $toggleIsOn, label: {
-                            Text("Toggle")
+                            Text("Toggle Switch")
                         })
-                        
+                        .softSwitchToggleStyle(tint: .green)
                         Spacer()
                     }
                     .padding()
+                
+                    
+                    Text("softToggleStyle")
+
+                    //Play Button
+                    HStack(spacing:15) {
+                        Toggle(isOn: $toggleIsOn, label: {
+                            if toggleIsOn {
+                                Image(systemName: "stop.fill")
+                            }
+                            else{
+                                Image(systemName: "play.fill")
+                            }
+                        })
+                        .softToggleStyle(Circle())
+                    }
+
                     
                     //Rect
                     HStack(spacing:15) {
@@ -62,6 +77,20 @@ struct SoftToggleDemoView: View {
                     }
                     .padding()
                     
+                    //Capsule
+                    HStack(spacing:15) {
+                        Toggle(isOn: $toggleIsOn, label: {
+                            Text("Capsule")
+                        })
+                        .softToggleStyle(Capsule())
+                        
+                        Toggle(isOn: $toggleIsOn, label: {
+                            Text("Capsule")
+                        })
+                        .softToggleStyle(Capsule(), pressedEffect: .flat)
+                    }
+                    .padding()
+                     
                     //Circle
                     HStack(spacing:15) {
                         Toggle(isOn: $toggleIsOn, label: {
@@ -76,19 +105,7 @@ struct SoftToggleDemoView: View {
                     }
                     .padding()
                     
-                    //Capsule
-                    HStack(spacing:15) {
-                        Toggle(isOn: $toggleIsOn, label: {
-                            Text("Capsule")
-                        })
-                        .softToggleStyle(Capsule())
-                        
-                        Toggle(isOn: $toggleIsOn, label: {
-                            Text("Capsule")
-                        })
-                        .softToggleStyle(Capsule(), pressedEffect: .flat)
-                    }
-                    .padding()
+                    
                 }
             }
             
@@ -99,6 +116,13 @@ struct SoftToggleDemoView: View {
 struct SoftToggleDemoView_Previews: PreviewProvider {
     
     static var previews: some View {
-        SoftToggleDemoView()
+        Group {
+            NavigationView {
+                SoftToggleDemoView()
+                    .navigationBarTitle("Toggle Demo")
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .environment(\.colorScheme, .light)
+        }
     }
 }
