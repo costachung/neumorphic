@@ -15,6 +15,7 @@
 		AA1C8448240CDD090082F452 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8446240CDD090082F452 /* LaunchScreen.storyboard */; };
 		AA5ABDD624E0B3EF00622BAF /* SoftButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5ABDD524E0B3EF00622BAF /* SoftButtonDemoView.swift */; };
 		AAB9DDA82480D0500047A0DC /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = AAB9DDA72480D0500047A0DC /* Neumorphic */; };
+		AAEAE0CF258315AA00D79970 /* SoftToggleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAE0CE258315AA00D79970 /* SoftToggleDemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AA1C8449240CDD090082F452 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA5ABDD524E0B3EF00622BAF /* SoftButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftButtonDemoView.swift; sourceTree = "<group>"; };
 		AAB9DDA62480D03B0047A0DC /* neumorphic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = neumorphic; path = ..; sourceTree = "<group>"; };
+		AAEAE0CE258315AA00D79970 /* SoftToggleDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftToggleDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				AA1C843D240CDD090082F452 /* SceneDelegate.swift */,
 				AA1C843F240CDD090082F452 /* ContentView.swift */,
 				AA5ABDD524E0B3EF00622BAF /* SoftButtonDemoView.swift */,
+				AAEAE0CE258315AA00D79970 /* SoftToggleDemoView.swift */,
 				AA1C8441240CDD090082F452 /* Assets.xcassets */,
 				AA1C8446240CDD090082F452 /* LaunchScreen.storyboard */,
 				AA1C8449240CDD090082F452 /* Info.plist */,
@@ -168,6 +171,7 @@
 				AA1C843E240CDD090082F452 /* SceneDelegate.swift in Sources */,
 				AA1C8440240CDD090082F452 /* ContentView.swift in Sources */,
 				AA5ABDD624E0B3EF00622BAF /* SoftButtonDemoView.swift in Sources */,
+				AAEAE0CF258315AA00D79970 /* SoftToggleDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
