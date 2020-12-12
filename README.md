@@ -173,17 +173,17 @@ Toggle("Toggle", isOn: $toggleIsOn)
 
 For example, Play and Stop Button
 ```swift
-Toggle(isOn: $toggleIsOn, label: {
-                            if toggleIsOn {
-                                Image(systemName: "stop.fill")
-                                    .font(.title)
-                            }
-                            else{
-                                Image(systemName: "play.fill")
-                                    .font(.title)
-                            }
-                        })
-                        .softToggleStyle(Circle(), padding: 20)
+    Toggle(isOn: $toggleIsOn, label: {
+        if toggleIsOn {
+            Image(systemName: "stop.fill")
+                .font(.title)
+        }
+        else{
+            Image(systemName: "play.fill")
+                .font(.title)
+        }
+    })
+    .softToggleStyle(Circle(), padding: 20)
 ```
 
 
