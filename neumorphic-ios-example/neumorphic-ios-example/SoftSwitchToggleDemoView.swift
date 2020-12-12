@@ -27,13 +27,13 @@ struct SoftSwitchToggleDemoView: View {
         return ZStack {
             Neumorphic.shared.mainColor().edgesIgnoringSafeArea(.all)
             VStack(spacing:8){
-                Text("Demo")
+                Text("Toggle")
                     .font(.title)
                     .fontWeight(.bold)
-                
+
                 Text("System Default Toggle Button")
                     .demoViewSectionTitle()
-                
+
                 //System Toggle Button
                 HStack(spacing:15) {
                     Spacer()
@@ -49,6 +49,29 @@ struct SoftSwitchToggleDemoView: View {
                     .demoViewSectionTitle()
                 Text("Soft Switch Toggle Style")
                     .demoViewSectionTitle()
+                
+                HStack(spacing:15) {
+                    Spacer()
+                    Toggle("Toggle", isOn: .constant(false))
+                    .softSwitchToggleStyle(tint: .green, labelsHidden: true)
+                    Spacer()
+                }
+                .padding()
+                
+                HStack(spacing:15) {
+                    Spacer()
+                    Toggle("Toggle", isOn: $toggleIsOn)
+                    .softSwitchToggleStyle(tint: .green, labelsHidden: true)
+                    Spacer()
+                }
+                .padding()
+                HStack(spacing:15) {
+                    Spacer()
+                    Toggle("Toggle", isOn: $toggleIsOn)
+                    .softSwitchToggleStyle(tint: .blue, labelsHidden: true)
+                    Spacer()
+                }
+                .padding()
                 HStack(spacing:15) {
                     Spacer()
                     Toggle("Toggle", isOn: $toggleIsOn)
@@ -56,6 +79,8 @@ struct SoftSwitchToggleDemoView: View {
                     Spacer()
                 }
                 .padding()
+                
+                
             }
             .padding()
         }
