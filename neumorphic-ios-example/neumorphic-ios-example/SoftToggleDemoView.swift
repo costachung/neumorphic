@@ -20,34 +20,45 @@ struct SoftToggleDemoView: View {
             Neumorphic.shared.mainColor().edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack(spacing:8){
-                    Text("softSwitchToggleStyle")
+                    //System Toggle Button
                     HStack(spacing:15) {
                         Spacer()
                         Toggle(isOn: $toggleIsOn, label: {
-                            Text("Toggle Switch")
+                            Text("Toggle")
                         })
-                        .softSwitchToggleStyle(tint: .green)
+                        Spacer()
+                    }
+                    .padding()
+                    
+                    //softSwitchToggleStyle
+                    Text("softSwitchToggleStyle()")
+                    HStack(spacing:15) {
+                        Spacer()
+                        Toggle(isOn: $toggleIsOn, label: {
+                            Text("Toggle")
+                        })
+                        .softSwitchToggleStyle()
+
                         Spacer()
                     }
                     .padding()
                 
-                    
-                    Text("softToggleStyle")
-
+                    //softToggleStyle
+                    Text("softToggleStyle()")
                     //Play Button
                     HStack(spacing:15) {
                         Toggle(isOn: $toggleIsOn, label: {
                             if toggleIsOn {
                                 Image(systemName: "stop.fill")
+                                    .font(.title)
                             }
                             else{
                                 Image(systemName: "play.fill")
+                                    .font(.title)
                             }
                         })
-                        .softToggleStyle(Circle())
+                        .softToggleStyle(Circle(), padding: 20)
                     }
-
-                    
                     //Rect
                     HStack(spacing:15) {
   
@@ -62,7 +73,6 @@ struct SoftToggleDemoView: View {
                         .softToggleStyle(Rectangle(), pressedEffect: .flat)
                     }
                     .padding()
-                    
                     //Rounded
                     HStack(spacing:15) {
                         Toggle(isOn: $toggleIsOn, label: {
@@ -76,7 +86,6 @@ struct SoftToggleDemoView: View {
                         .softToggleStyle(RoundedRectangle(cornerRadius: 8), pressedEffect: .flat)
                     }
                     .padding()
-                    
                     //Capsule
                     HStack(spacing:15) {
                         Toggle(isOn: $toggleIsOn, label: {
@@ -90,7 +99,6 @@ struct SoftToggleDemoView: View {
                         .softToggleStyle(Capsule(), pressedEffect: .flat)
                     }
                     .padding()
-                     
                     //Circle
                     HStack(spacing:15) {
                         Toggle(isOn: $toggleIsOn, label: {
