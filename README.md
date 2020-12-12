@@ -169,7 +169,7 @@ Toggle("Toggle", isOn: $toggleIsOn)
 ```
 
 ## SoftToggleStyle
-![b](https://user-images.githubusercontent.com/169746/101979839-7f673600-3c9b-11eb-83f8-50c37877e33f.jpeg)
+![b500](https://user-images.githubusercontent.com/169746/101979866-b76e7900-3c9b-11eb-8d47-ef6f12fa1061.jpeg)
 
 For example, Play and Stop Button
 ```swift
