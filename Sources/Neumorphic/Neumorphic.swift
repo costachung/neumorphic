@@ -36,11 +36,11 @@ public struct Neumorphic {
     }
     
     public func lightShadowColor() -> Color {
-        colorScheme == .light ? Neumorphic.defaultLightShadowColor : Neumorphic.darkThemeLightShadowColor
+        colorScheme == .light ? Neumorphic.defaultLightShadowSolidColor : Neumorphic.darkThemeLightShadowSolidColor
     }
     
     public func darkShadowColor() -> Color {
-        colorScheme == .light ? Neumorphic.defaultDarkShadowColor : Neumorphic.darkThemeDarkShadowColor
+        colorScheme == .light ? Neumorphic.defaultDarkShadowSolidColor : Neumorphic.darkThemeDarkShadowSolidColor
     }
     
     
