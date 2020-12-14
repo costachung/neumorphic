@@ -130,6 +130,13 @@ struct SoftToggleDemoView_Previews: PreviewProvider {
                     .navigationBarTitle("Toggle Demo")
             }
             .navigationViewStyle(StackNavigationViewStyle())
+            .environment(\.colorScheme, .dark)
+            
+            NavigationView {
+                SoftToggleDemoView()
+                    .navigationBarTitle("Toggle Demo")
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
             .environment(\.colorScheme, .light)
         }
     }

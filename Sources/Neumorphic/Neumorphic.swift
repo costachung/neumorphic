@@ -19,8 +19,8 @@ public struct Neumorphic {
     public static let darkThemeSecondaryColor = Color(red: 0.910, green: 0.910, blue: 0.910, opacity: 1.000)
     public static let darkThemeLightShadowSolidColor = Color(red: 0.243, green: 0.247, blue: 0.275, opacity: 1.000)
     public static let darkThemeDarkShadowSolidColor = Color(red: 0.137, green: 0.137, blue: 0.137, opacity: 1.000)
-    public static let darkThemeLightShadowColor = Color(red: 0.243, green: 0.247, blue: 0.275, opacity: 0.5)
-    public static let darkThemeDarkShadowColor = Color(red: 0.137, green: 0.137, blue: 0.137, opacity: 0.5)
+    public static let darkThemeLightShadowColor = Color(red: 1, green: 1, blue: 1, opacity: 0.1)
+    public static let darkThemeDarkShadowColor = Color(red: 0, green: 0, blue: 0, opacity: 0.5)
 
         
     public static var shared = Neumorphic()
