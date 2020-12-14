@@ -158,6 +158,33 @@ softButtonStyle<S : Shape>(_ content: S, padding: CGFloat, mainColor: Color, tex
                     }
 ```
 
+## Soft Toggle 
+
+## SoftSwitchToggleStyle
+![Screen Shot 2020-12-12 at 4 16 16 PM](https://user-images.githubusercontent.com/169746/101979392-ce12d100-3c97-11eb-9d45-4e82cef6337b.png)
+
+```swift
+Toggle("Toggle", isOn: $toggleIsOn)
+  .softSwitchToggleStyle(tint: .green, labelsHidden: true)
+```
+
+## SoftToggleStyle
+![b500](https://user-images.githubusercontent.com/169746/101979866-b76e7900-3c9b-11eb-8d47-ef6f12fa1061.jpeg)
+
+For example, Play and Stop Button
+```swift
+    Toggle(isOn: $toggleIsOn, label: {
+        if toggleIsOn {
+            Image(systemName: "stop.fill")
+                .font(.title)
+        }
+        else{
+            Image(systemName: "play.fill")
+                .font(.title)
+        }
+    })
+    .softToggleStyle(Circle(), padding: 20)
+```
 
 
 ## Contacts
