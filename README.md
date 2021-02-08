@@ -36,7 +36,7 @@ Simply use **.softOuterShadow** and **.softInnerShadow** methods to create outer
 ![Neumorphic SwiftUI Outer Shadow](https://user-images.githubusercontent.com/169746/77294908-fcbed500-6d1f-11ea-9125-cab24891a03d.png)
 
 ```swift
-RoundedRectangle(cornerRadius: 20).fill(Neumorphic.shared.mainColor()).softOuterShadow()
+RoundedRectangle(cornerRadius: 20).fill(Color.Neumorphic.main).softOuterShadow()
 ```
 
 #### Create Rounded Rectangle with Inner Shadow
@@ -44,7 +44,7 @@ RoundedRectangle(cornerRadius: 20).fill(Neumorphic.shared.mainColor()).softOuter
 ![Neumorphic SwiftUI Inner Shadow](https://user-images.githubusercontent.com/169746/77295134-57f0c780-6d20-11ea-8e40-88b7a15319aa.png)
 
 ```swift
-RoundedRectangle(cornerRadius: 20).fill(Neumorphic.shared.mainColor()).softInnerShadow(RoundedRectangle(cornerRadius: 20))
+RoundedRectangle(cornerRadius: 20).fill(Color.Neumorphic.main).softInnerShadow(RoundedRectangle(cornerRadius: 20))
 ```
 
 #### Create Circles
@@ -52,8 +52,8 @@ RoundedRectangle(cornerRadius: 20).fill(Neumorphic.shared.mainColor()).softInner
 
 ```swift
   HStack {
-      Circle().fill(Neumorphic.shared.mainColor()).softOuterShadow()
-      Circle().fill(Neumorphic.shared.mainColor()).softInnerShadow(Circle())
+      Circle().fill(Color.Neumorphic.main).softOuterShadow()
+      Circle().fill(Color.Neumorphic.main).softInnerShadow(Circle())
   }
 ```
 

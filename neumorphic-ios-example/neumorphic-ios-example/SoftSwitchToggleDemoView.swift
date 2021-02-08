@@ -13,7 +13,7 @@ extension Text {
     public func demoViewSectionTitle() -> some View {
         return self.font(.body)
             .fontWeight(.bold)
-            .foregroundColor(Neumorphic.shared.secondaryColor())
+            .foregroundColor(Color.Neumorphic.secondary)
     }
 }
 
@@ -23,9 +23,8 @@ struct SoftSwitchToggleDemoView: View {
     @State var toggleIsOn : Bool = false
     
     var body: some View {
-        Neumorphic.shared.colorScheme = colorScheme
         return ZStack {
-            Neumorphic.shared.mainColor().edgesIgnoringSafeArea(.all)
+            Color.Neumorphic.main.edgesIgnoringSafeArea(.all)
             VStack(spacing:8){
                 Text("Toggle")
                     .font(.title)
@@ -90,8 +89,13 @@ struct SoftSwitchToggleDemoView: View {
 
 struct SoftSwitchToggleDemoView_Previews: PreviewProvider {
     static var previews: some View {
-        SoftSwitchToggleDemoView()
-            .environment(\.colorScheme, .light)
+        Group {
+            SoftSwitchToggleDemoView()
+                .environment(\.colorScheme, .light)
+            
+            SoftSwitchToggleDemoView()
+                .environment(\.colorScheme, .dark)
+        }
         
     }
 }
