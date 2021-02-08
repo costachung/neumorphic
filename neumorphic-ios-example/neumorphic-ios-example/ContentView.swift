@@ -14,9 +14,8 @@ struct ContentView: View {
     
     var body: some View {
         let cornerRadius : CGFloat = 15
-        Neumorphic.shared.colorScheme = colorScheme
-        let mainColor = Neumorphic.shared.mainColor()
-        let secondaryColor = Neumorphic.shared.secondaryColor()
+        let mainColor = Color.Neumorphic.main
+        let secondaryColor = Color.Neumorphic.secondary
         
         return ZStack {
             mainColor.edgesIgnoringSafeArea(.all)
