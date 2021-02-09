@@ -14,10 +14,9 @@ struct SoftButtonDemoView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
-        Neumorphic.shared.colorScheme = colorScheme
         return NavigationView {
             ZStack {
-                Neumorphic.shared.mainColor().edgesIgnoringSafeArea(.all)
+                Color.Neumorphic.main.edgesIgnoringSafeArea(.all)
 
                 ScrollView {
                     VStack(spacing:25){
@@ -65,7 +64,7 @@ struct SoftButtonDemoView: View {
                         }
                         
                         
-                        Text("Pressed Effect").font(.headline).foregroundColor(Neumorphic.shared.secondaryColor())
+                        Text("Pressed Effect").font(.headline).foregroundColor(Color.Neumorphic.secondary)
                             
                         HStack {
                             Spacer()
@@ -84,7 +83,7 @@ struct SoftButtonDemoView: View {
                         }
                         
 
-                        Text("ContextMenu").font(.headline).foregroundColor(Neumorphic.shared.secondaryColor())
+                        Text("ContextMenu").font(.headline).foregroundColor(Color.Neumorphic.secondary)
                         
                         Button(action: {}) {
                             Text("Button").fontWeight(.bold)
@@ -98,7 +97,7 @@ struct SoftButtonDemoView: View {
                             }
                         ))
                         .background(
-                            Capsule().fill(Neumorphic.shared.mainColor()).softOuterShadow()
+                            Capsule().fill(Color.Neumorphic.main).softOuterShadow()
                         )
                         
 

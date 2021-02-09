@@ -115,11 +115,11 @@ public struct SoftSwitchToggleStyle : ToggleStyle {
 
 extension Toggle {
     
-    public func softToggleStyle<S : Shape>(_ content: S, padding : CGFloat = 16, mainColor : Color = Neumorphic.shared.mainColor(), textColor : Color = Neumorphic.shared.secondaryColor(), darkShadowColor: Color = Neumorphic.shared.darkShadowColor(), lightShadowColor: Color = Neumorphic.shared.lightShadowColor(), pressedEffect : SoftButtonPressedEffect = .hard) -> some View {
+    public func softToggleStyle<S : Shape>(_ content: S, padding : CGFloat = 16, mainColor : Color = Color.Neumorphic.main, textColor : Color = Color.Neumorphic.secondary, darkShadowColor: Color = Color.Neumorphic.darkShadow, lightShadowColor: Color = Color.Neumorphic.lightShadow, pressedEffect : SoftButtonPressedEffect = .hard) -> some View {
         self.toggleStyle(SoftDynamicToggleStyle(content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect : pressedEffect, padding:padding))
     }
 
-    public func softSwitchToggleStyle(tint: Color = .green, offTint: Color = Neumorphic.shared.mainColor(), mainColor : Color = Neumorphic.shared.mainColor(), darkShadowColor: Color = Neumorphic.shared.darkShadowColor(), lightShadowColor: Color = Neumorphic.shared.lightShadowColor(), labelsHidden : Bool = false) -> some View {
+    public func softSwitchToggleStyle(tint: Color = .green, offTint: Color = Color.Neumorphic.main, mainColor : Color = Color.Neumorphic.main, darkShadowColor: Color = Color.Neumorphic.darkShadow, lightShadowColor: Color = Color.Neumorphic.lightShadow, labelsHidden : Bool = false) -> some View {
         return self.toggleStyle(SoftSwitchToggleStyle(tintColor: tint, offTintColor: offTint, mainColor: mainColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, hideLabel: labelsHidden))
     }
     

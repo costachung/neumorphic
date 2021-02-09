@@ -15,9 +15,8 @@ struct SoftToggleDemoView: View {
     @State var toggleIsOn : Bool = false
     
     var body: some View {
-        Neumorphic.shared.colorScheme = colorScheme
         return ZStack {
-            Neumorphic.shared.mainColor().edgesIgnoringSafeArea(.all)
+            Color.Neumorphic.main.edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack(spacing:8){
                     //System Toggle Button
@@ -122,22 +121,21 @@ struct SoftToggleDemoView: View {
 }
 
 struct SoftToggleDemoView_Previews: PreviewProvider {
+    static var demoView: some View {
+        NavigationView {
+            SoftToggleDemoView()
+                .navigationBarTitle("Toggle Demo")
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
     
     static var previews: some View {
         Group {
-            NavigationView {
-                SoftToggleDemoView()
-                    .navigationBarTitle("Toggle Demo")
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
-            .environment(\.colorScheme, .dark)
+            demoView
+                .environment(\.colorScheme, .light)
             
-            NavigationView {
-                SoftToggleDemoView()
-                    .navigationBarTitle("Toggle Demo")
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
-            .environment(\.colorScheme, .light)
+            demoView
+                .environment(\.colorScheme, .dark)
         }
     }
 }
