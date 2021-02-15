@@ -10,11 +10,9 @@ import SwiftUI
 import Neumorphic
 
 struct ContentView: View {
-
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State var toggleIsOn : Bool = false
     
-    var body: some View {
+    var body: some View {        
         return ZStack {
             Color.Neumorphic.main.ignoresSafeArea(.all)
             VStack() {

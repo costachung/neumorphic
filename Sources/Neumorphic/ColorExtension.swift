@@ -24,9 +24,23 @@ public extension Color {
         
         private static func color(light: ColorType, dark: ColorType) -> Color {
             #if os(iOS)
-            return Color(.init { $0.userInterfaceStyle == .light ? light : dark })
+            switch neumorphicColorScheme {
+            case .light:
+                return Color(light)
+            case .dark:
+                return Color(dark)
+            case .auto:
+                return Color(.init { $0.userInterfaceStyle == .light ? light : dark })
+            }
             #else
-            return isDarkMode() ? dark : light
+            switch neumorphicColorScheme {
+            case .light:
+                return light
+            case .dark:
+                return dark
+            case .auto:
+                return isDarkMode() ? dark : light
+            }
             #endif
         }
         
