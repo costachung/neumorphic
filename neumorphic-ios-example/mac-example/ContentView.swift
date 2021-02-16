@@ -10,55 +10,20 @@ import SwiftUI
 import Neumorphic
 
 struct ContentView: View {
-    @State var toggleIsOn : Bool = false
-    
-    var body: some View {        
+
+    var body: some View {
+        Color.Neumorphic.colorSchemeType = .dark
         return ZStack {
             Color.Neumorphic.main.ignoresSafeArea(.all)
             VStack() {
-                HStack(spacing: 16) {
-                    Toggle(isOn: $toggleIsOn, label: {
-                            if toggleIsOn {
-                                Image(systemName: "stop.fill")
-                                    .font(.title)
-                            }
-                            else{
-                                Image(systemName: "play.fill")
-                                    .font(.title)
-                            }
-                        })
-                        .softToggleStyle(Circle(), padding: 20)
-                    
-                    Toggle("Toggle", isOn: $toggleIsOn)
-                      .softSwitchToggleStyle(tint: .green, labelsHidden: true)
-                    
-                    Button(action: {}) {
-                        Text("Soft Button").fontWeight(.bold)
-                    }
-                    .softButtonStyle(RoundedRectangle(cornerRadius: 20))
-                }
-                .padding()
+                DemoButtonsView()
+                    .padding()
                 
-                HStack(spacing: 16) {
-                      Circle()
-                        .fill(Color.Neumorphic.main)
-                        .softOuterShadow()
-                      Circle()
-                        .fill(Color.Neumorphic.main)
-                        .softInnerShadow(Circle())
-                }
-                .padding()
+                DemoCirclesView()
+                    .padding()
                 
-                HStack(spacing: 16) {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.Neumorphic.main)
-                        .softOuterShadow()
-                    
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.Neumorphic.main)
-                        .softInnerShadow(RoundedRectangle(cornerRadius: 20))
-                }
-                .padding()
+                DemoRectView()
+                    .padding()
             }
             .frame(width:500)
         }
@@ -66,12 +31,75 @@ struct ContentView: View {
     }
 }
 
+struct DemoButtonsView : View {
+
+    @State var toggleIsOn : Bool = false
+    
+    var body: some View {
+        return HStack(spacing: 16) {
+            Toggle(isOn: $toggleIsOn, label: {
+                    if toggleIsOn {
+                        Image(systemName: "stop.fill")
+                            .font(.title)
+                    }
+                    else{
+                        Image(systemName: "play.fill")
+                            .font(.title)
+                    }
+                })
+                .softToggleStyle(Circle(), padding: 20)
+            
+            Toggle("Toggle", isOn: $toggleIsOn)
+              .softSwitchToggleStyle(tint: .green, labelsHidden: true)
+            
+            Button(action: {}) {
+                Text("Soft Button").fontWeight(.bold)
+            }
+            .softButtonStyle(RoundedRectangle(cornerRadius: 20))
+        }
+    }
+    
+}
+
+struct DemoCirclesView : View {
+    
+    var body: some View {
+        return HStack(spacing: 16) {
+              Circle()
+                .fill(Color.Neumorphic.main)
+                .softOuterShadow()
+              Circle()
+                .fill(Color.Neumorphic.main)
+                .softInnerShadow(Circle())
+        }
+    }
+}
+
+struct DemoRectView : View {
+    
+    var body: some View {
+        return HStack(spacing: 16) {
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.Neumorphic.main)
+                .softOuterShadow()
+            
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.Neumorphic.main)
+                .softInnerShadow(RoundedRectangle(cornerRadius: 20))
+        }
+    }
+}
 
 
 struct ContentView_Previews: PreviewProvider {
+
     static var previews: some View {
-        Group {
+        return Group {
             ContentView()
+                .environment(\.colorScheme, .light)
+            ContentView()
+                .environment(\.colorScheme, .dark)
         }
     }
+    
 }
