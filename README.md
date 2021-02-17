@@ -186,6 +186,23 @@ For example, Play and Stop Button
     .softToggleStyle(Circle(), padding: 20)
 ```
 
+## Auto, Light, and Dark Mode for iOS and MacOS
+
+#### Default Neumorphic Colors
+Access default neumorphic colors using Color.Neumorphic, for example,
+```swift
+Color.Neumorphic.main
+ ```
+
+#### Auto ColorScheme
+- Color.Neumorphic supports light and dark mode on both iOS and MacOS automatically by default.
+
+#### Set the color scheme manually
+- When you use default neumorphic colors and you want to set the color scheme manually, you can do it by setting Color.Neumorphic.colorSchemeType to the type you want. For example, to force the color scheme in dark mode, use:
+```swift
+Color.Neumorphic.colorSchemeType = .dark
+ ```
+
 
 ## Contacts
 https://twitter.com/costachung
