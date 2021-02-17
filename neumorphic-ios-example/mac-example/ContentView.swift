@@ -12,7 +12,6 @@ import Neumorphic
 struct ContentView: View {
 
     var body: some View {
-        Color.Neumorphic.colorSchemeType = .dark
         return ZStack {
             Color.Neumorphic.main.ignoresSafeArea(.all)
             VStack() {
