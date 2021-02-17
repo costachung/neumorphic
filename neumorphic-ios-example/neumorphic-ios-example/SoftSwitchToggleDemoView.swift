@@ -18,8 +18,6 @@ extension Text {
 }
 
 struct SoftSwitchToggleDemoView: View {
-
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State var toggleIsOn : Bool = false
     
     var body: some View {

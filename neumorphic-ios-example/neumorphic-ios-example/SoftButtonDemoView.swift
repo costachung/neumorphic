@@ -9,10 +9,7 @@
 import SwiftUI
 import Neumorphic
 
-struct SoftButtonDemoView: View {
-    
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+struct SoftButtonDemoView: View {    
     var body: some View {
         return NavigationView {
             ZStack {

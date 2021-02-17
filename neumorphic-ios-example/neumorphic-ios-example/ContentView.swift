@@ -8,10 +8,7 @@
 import SwiftUI
 import Neumorphic
 
-struct ContentView: View {
-
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+struct ContentView: View {    
     var body: some View {
         let cornerRadius : CGFloat = 15
         let mainColor = Color.Neumorphic.main

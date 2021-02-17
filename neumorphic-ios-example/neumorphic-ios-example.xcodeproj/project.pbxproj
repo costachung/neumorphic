@@ -13,6 +13,11 @@
 		AA1C8442240CDD090082F452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8441240CDD090082F452 /* Assets.xcassets */; };
 		AA1C8445240CDD090082F452 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8444240CDD090082F452 /* Preview Assets.xcassets */; };
 		AA1C8448240CDD090082F452 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8446240CDD090082F452 /* LaunchScreen.storyboard */; };
+		AA24DA5C25D8E2B2009C17C8 /* mac_exampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA24DA5B25D8E2B2009C17C8 /* mac_exampleApp.swift */; };
+		AA24DA5E25D8E2B2009C17C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA24DA5D25D8E2B2009C17C8 /* ContentView.swift */; };
+		AA24DA6025D8E2B4009C17C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA24DA5F25D8E2B4009C17C8 /* Assets.xcassets */; };
+		AA24DA6325D8E2B4009C17C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA24DA6225D8E2B4009C17C8 /* Preview Assets.xcassets */; };
+		AA24DA6E25D8E308009C17C8 /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = AA24DA6D25D8E308009C17C8 /* Neumorphic */; };
 		AA5420E925847A7A007A3665 /* SoftSwitchToggleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5420E825847A7A007A3665 /* SoftSwitchToggleDemoView.swift */; };
 		AA5ABDD624E0B3EF00622BAF /* SoftButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5ABDD524E0B3EF00622BAF /* SoftButtonDemoView.swift */; };
 		AAB9DDA82480D0500047A0DC /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = AAB9DDA72480D0500047A0DC /* Neumorphic */; };
@@ -28,6 +33,13 @@
 		AA1C8444240CDD090082F452 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA1C8447240CDD090082F452 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA1C8449240CDD090082F452 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA24DA5925D8E2B2009C17C8 /* mac-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA24DA5B25D8E2B2009C17C8 /* mac_exampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mac_exampleApp.swift; sourceTree = "<group>"; };
+		AA24DA5D25D8E2B2009C17C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AA24DA5F25D8E2B4009C17C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA24DA6225D8E2B4009C17C8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AA24DA6425D8E2B4009C17C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA24DA6525D8E2B4009C17C8 /* mac_example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mac_example.entitlements; sourceTree = "<group>"; };
 		AA5420E825847A7A007A3665 /* SoftSwitchToggleDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftSwitchToggleDemoView.swift; sourceTree = "<group>"; };
 		AA5ABDD524E0B3EF00622BAF /* SoftButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftButtonDemoView.swift; sourceTree = "<group>"; };
 		AAB9DDA62480D03B0047A0DC /* neumorphic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = neumorphic; path = ..; sourceTree = "<group>"; };
@@ -43,6 +55,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA24DA5625D8E2B2009C17C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA24DA6E25D8E308009C17C8 /* Neumorphic in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -51,6 +71,7 @@
 			children = (
 				AAB9DDA62480D03B0047A0DC /* neumorphic */,
 				AA1C843A240CDD090082F452 /* neumorphic-ios-example */,
+				AA24DA5A25D8E2B2009C17C8 /* mac-example */,
 				AA1C8439240CDD090082F452 /* Products */,
 				AA1C844F240CDFC20082F452 /* Frameworks */,
 			);
@@ -60,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				AA1C8438240CDD090082F452 /* neumorphic-ios-example.app */,
+				AA24DA5925D8E2B2009C17C8 /* mac-example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,6 +118,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA24DA5A25D8E2B2009C17C8 /* mac-example */ = {
+			isa = PBXGroup;
+			children = (
+				AA24DA5B25D8E2B2009C17C8 /* mac_exampleApp.swift */,
+				AA24DA5D25D8E2B2009C17C8 /* ContentView.swift */,
+				AA24DA5F25D8E2B4009C17C8 /* Assets.xcassets */,
+				AA24DA6425D8E2B4009C17C8 /* Info.plist */,
+				AA24DA6525D8E2B4009C17C8 /* mac_example.entitlements */,
+				AA24DA6125D8E2B4009C17C8 /* Preview Content */,
+			);
+			path = "mac-example";
+			sourceTree = "<group>";
+		};
+		AA24DA6125D8E2B4009C17C8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AA24DA6225D8E2B4009C17C8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,18 +162,41 @@
 			productReference = AA1C8438240CDD090082F452 /* neumorphic-ios-example.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AA24DA5825D8E2B2009C17C8 /* mac-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA24DA6825D8E2B4009C17C8 /* Build configuration list for PBXNativeTarget "mac-example" */;
+			buildPhases = (
+				AA24DA5525D8E2B2009C17C8 /* Sources */,
+				AA24DA5625D8E2B2009C17C8 /* Frameworks */,
+				AA24DA5725D8E2B2009C17C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mac-example";
+			packageProductDependencies = (
+				AA24DA6D25D8E308009C17C8 /* Neumorphic */,
+			);
+			productName = "mac-example";
+			productReference = AA24DA5925D8E2B2009C17C8 /* mac-example.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		AA1C8430240CDD090082F452 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1240;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Costa Chung";
 				TargetAttributes = {
 					AA1C8437240CDD090082F452 = {
 						CreatedOnToolsVersion = 11.2.1;
+					};
+					AA24DA5825D8E2B2009C17C8 = {
+						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
@@ -148,6 +214,7 @@
 			projectRoot = "";
 			targets = (
 				AA1C8437240CDD090082F452 /* neumorphic-ios-example */,
+				AA24DA5825D8E2B2009C17C8 /* mac-example */,
 			);
 		};
 /* End PBXProject section */
@@ -160,6 +227,15 @@
 				AA1C8448240CDD090082F452 /* LaunchScreen.storyboard in Resources */,
 				AA1C8445240CDD090082F452 /* Preview Assets.xcassets in Resources */,
 				AA1C8442240CDD090082F452 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA24DA5725D8E2B2009C17C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA24DA6325D8E2B4009C17C8 /* Preview Assets.xcassets in Resources */,
+				AA24DA6025D8E2B4009C17C8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +252,15 @@
 				AA1C8440240CDD090082F452 /* ContentView.swift in Sources */,
 				AA5ABDD624E0B3EF00622BAF /* SoftButtonDemoView.swift in Sources */,
 				AAEAE0CF258315AA00D79970 /* SoftToggleDemoView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA24DA5525D8E2B2009C17C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA24DA5E25D8E2B2009C17C8 /* ContentView.swift in Sources */,
+				AA24DA5C25D8E2B2009C17C8 /* mac_exampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +304,6 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -280,7 +364,6 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -349,6 +432,58 @@
 			};
 			name = Release;
 		};
+		AA24DA6625D8E2B4009C17C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "mac-example/mac_example.entitlements";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"mac-example/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "mac-example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "neumorphic.mac-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA24DA6725D8E2B4009C17C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "mac-example/mac_example.entitlements";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"mac-example/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "mac-example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "neumorphic.mac-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -370,9 +505,22 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		AA24DA6825D8E2B4009C17C8 /* Build configuration list for PBXNativeTarget "mac-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA24DA6625D8E2B4009C17C8 /* Debug */,
+				AA24DA6725D8E2B4009C17C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AA24DA6D25D8E308009C17C8 /* Neumorphic */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Neumorphic;
+		};
 		AAB9DDA72480D0500047A0DC /* Neumorphic */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Neumorphic;

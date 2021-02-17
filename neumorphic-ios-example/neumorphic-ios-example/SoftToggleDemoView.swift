@@ -9,9 +9,7 @@
 import SwiftUI
 import Neumorphic
 
-struct SoftToggleDemoView: View {
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+struct SoftToggleDemoView: View {    
     @State var toggleIsOn : Bool = false
     
     var body: some View {
