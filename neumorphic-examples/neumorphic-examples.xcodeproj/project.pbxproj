@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA1C8438240CDD090082F452 /* neumorphic-ios-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "neumorphic-ios-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA1C8438240CDD090082F452 /* ios-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1C843B240CDD090082F452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA1C843D240CDD090082F452 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AA1C843F240CDD090082F452 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				AAB9DDA62480D03B0047A0DC /* neumorphic */,
-				AA1C843A240CDD090082F452 /* neumorphic-ios-example */,
+				AA1C843A240CDD090082F452 /* ios-example */,
 				AA24DA5A25D8E2B2009C17C8 /* mac-example */,
 				AA1C8439240CDD090082F452 /* Products */,
 				AA1C844F240CDFC20082F452 /* Frameworks */,
@@ -80,13 +80,13 @@
 		AA1C8439240CDD090082F452 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA1C8438240CDD090082F452 /* neumorphic-ios-example.app */,
+				AA1C8438240CDD090082F452 /* ios-example.app */,
 				AA24DA5925D8E2B2009C17C8 /* mac-example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AA1C843A240CDD090082F452 /* neumorphic-ios-example */ = {
+		AA1C843A240CDD090082F452 /* ios-example */ = {
 			isa = PBXGroup;
 			children = (
 				AA1C843B240CDD090082F452 /* AppDelegate.swift */,
@@ -100,7 +100,7 @@
 				AA1C8449240CDD090082F452 /* Info.plist */,
 				AA1C8443240CDD090082F452 /* Preview Content */,
 			);
-			path = "neumorphic-ios-example";
+			path = "ios-example";
 			sourceTree = "<group>";
 		};
 		AA1C8443240CDD090082F452 /* Preview Content */ = {
@@ -142,9 +142,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA1C8437240CDD090082F452 /* neumorphic-ios-example */ = {
+		AA1C8437240CDD090082F452 /* ios-example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA1C844C240CDD090082F452 /* Build configuration list for PBXNativeTarget "neumorphic-ios-example" */;
+			buildConfigurationList = AA1C844C240CDD090082F452 /* Build configuration list for PBXNativeTarget "ios-example" */;
 			buildPhases = (
 				AA1C8434240CDD090082F452 /* Sources */,
 				AA1C8435240CDD090082F452 /* Frameworks */,
@@ -154,12 +154,12 @@
 			);
 			dependencies = (
 			);
-			name = "neumorphic-ios-example";
+			name = "ios-example";
 			packageProductDependencies = (
 				AAB9DDA72480D0500047A0DC /* Neumorphic */,
 			);
 			productName = "neumorphic-ios-example";
-			productReference = AA1C8438240CDD090082F452 /* neumorphic-ios-example.app */;
+			productReference = AA1C8438240CDD090082F452 /* ios-example.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AA24DA5825D8E2B2009C17C8 /* mac-example */ = {
@@ -200,7 +200,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AA1C8433240CDD090082F452 /* Build configuration list for PBXProject "neumorphic-ios-example" */;
+			buildConfigurationList = AA1C8433240CDD090082F452 /* Build configuration list for PBXProject "neumorphic-examples" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -213,7 +213,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AA1C8437240CDD090082F452 /* neumorphic-ios-example */,
+				AA1C8437240CDD090082F452 /* ios-example */,
 				AA24DA5825D8E2B2009C17C8 /* mac-example */,
 			);
 		};
@@ -397,15 +397,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_ASSET_PATHS = "\"neumorphic-ios-example/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ios-example/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "neumorphic-ios-example/Info.plist";
+				INFOPLIST_FILE = "ios-example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "neumorphic-ios-example";
+				PRODUCT_BUNDLE_IDENTIFIER = "neumorphic.ios-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -417,15 +417,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_ASSET_PATHS = "\"neumorphic-ios-example/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ios-example/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "neumorphic-ios-example/Info.plist";
+				INFOPLIST_FILE = "ios-example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "neumorphic-ios-example";
+				PRODUCT_BUNDLE_IDENTIFIER = "neumorphic.ios-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -487,7 +487,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA1C8433240CDD090082F452 /* Build configuration list for PBXProject "neumorphic-ios-example" */ = {
+		AA1C8433240CDD090082F452 /* Build configuration list for PBXProject "neumorphic-examples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA1C844A240CDD090082F452 /* Debug */,
@@ -496,7 +496,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA1C844C240CDD090082F452 /* Build configuration list for PBXNativeTarget "neumorphic-ios-example" */ = {
+		AA1C844C240CDD090082F452 /* Build configuration list for PBXNativeTarget "ios-example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA1C844D240CDD090082F452 /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  mac-example
+//  neumorphic-examples
 //
 //  Created by Costa Chung on 14/2/2021.
 //  Copyright © 2021 Costa Chung. All rights reserved.

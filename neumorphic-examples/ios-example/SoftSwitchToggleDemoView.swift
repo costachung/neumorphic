@@ -1,6 +1,6 @@
 //
 //  SoftSwitchToggleDemoView.swift
-//  neumorphic-ios-example
+//  neumorphic-examples
 //
 //  Created by Costa Chung on 12/12/2020.
 //  Copyright © 2020 Costa Chung. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  neumorphic-ios-example
+//  neumorphic-examples
 //
 //  Created by Costa Chung on 2/3/2020.
 //  Copyright © 2020 Costa Chung. All rights reserved.
