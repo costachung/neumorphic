@@ -128,7 +128,7 @@ ZStack(alignment: .bottom){
 
 
 ## Example Project
-Check out the __neumorphic-ios-example__ XCode project to see how to build neumorphic UI and buttons. If you use the default shadow colors of Neumorphic, you can also get dark mode support for free.
+Check out the __neumorphic-examples__ XCode project to see how to build neumorphic UI and buttons. If you use the default shadow colors of Neumorphic, you can also get dark mode support for free.
 
 
 ## Soft Button Style Customization 
