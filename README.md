@@ -19,7 +19,7 @@ Requirements
 
 #### Swift Package
 ```swift
-.package(url: "https://github.com/costachung/neumorphic/", .upToNextMajor(from: "1.2.0"))
+.package(url: "https://github.com/costachung/neumorphic/", .upToNextMajor(from: "2.0.5"))
 ```
 
 ## Usage
