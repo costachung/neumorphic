@@ -33,28 +33,54 @@ public struct SoftDynamicButtonStyle<S: Shape> : ButtonStyle {
     }
     
     public func makeBody(configuration: Self.Configuration) -> some View {
+        SoftDynamicButton(configuration: configuration, shape: shape, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect: pressedEffect, padding: padding)
+    }
+
+    struct SoftDynamicButton: View {
+        let configuration: ButtonStyle.Configuration
+        
+        var shape: S
+        var mainColor : Color
+        var textColor : Color
+        var darkShadowColor : Color
+        var lightShadowColor : Color
+        var pressedEffect : SoftButtonPressedEffect
+        var padding : CGFloat
+        
+        @Environment(\.isEnabled) private var isEnabled: Bool
+        
+        var body: some View {
             configuration.label
-                .foregroundColor(textColor)
+                .foregroundColor(isEnabled ? textColor : darkShadowColor)
                 .padding(padding)
                 .scaleEffect(configuration.isPressed ? 0.97 : 1)
                 .background(
                     ZStack{
-                        if pressedEffect == .flat {
-                            shape.stroke(darkShadowColor, lineWidth : configuration.isPressed ? 1 : 0)
-                            .opacity(configuration.isPressed ? 1 : 0)
-                            shape.fill(mainColor)
-                        }
-                        else if pressedEffect == .hard {
-                            shape.fill(mainColor)
-                                .softInnerShadow(shape, darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.15, radius: 3)
+                        if isEnabled {
+                            if pressedEffect == .flat {
+                                shape.stroke(darkShadowColor, lineWidth : configuration.isPressed ? 1 : 0)
                                 .opacity(configuration.isPressed ? 1 : 0)
+                                shape.fill(mainColor)
+                            }
+                            else if pressedEffect == .hard {
+                                shape.fill(mainColor)
+                                    .softInnerShadow(shape, darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.15, radius: 3)
+                                    .opacity(configuration.isPressed ? 1 : 0)
+                            }
+                            shape.fill(mainColor)
+                                .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 6, radius: 3)
+                                .opacity(pressedEffect == .none ? 1 : (configuration.isPressed ? 0 : 1) )
+                        }else{
+                            shape.stroke(darkShadowColor, lineWidth : 1)
+                            .opacity(1)
+                            shape.fill(mainColor)
                         }
                         
-                        shape.fill(mainColor)
-                            .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 6, radius: 3)
-                            .opacity(pressedEffect == .none ? 1 : (configuration.isPressed ? 0 : 1) )
+                        
+                        
                     }
                 )
+        }
     }
     
 }

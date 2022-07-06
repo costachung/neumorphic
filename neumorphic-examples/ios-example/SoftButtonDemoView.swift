@@ -58,6 +58,12 @@ struct SoftButtonDemoView: View {
                                 Text("Padding").fontWeight(.bold)
                             }
                             .softButtonStyle(RoundedRectangle(cornerRadius: 20), padding: 10)
+                            
+                            Button(action: {}) {
+                                Text("Disabled").fontWeight(.bold)
+                            }
+                            .softButtonStyle(RoundedRectangle(cornerRadius: 20), padding: 10)
+                            .disabled(true)
                         }
                         
                         
