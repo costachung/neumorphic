@@ -8,7 +8,10 @@
 import SwiftUI
 import Neumorphic
 
-struct ContentView: View {    
+struct ContentView: View {
+    @State private var toggleOn = false
+    @State private var middleToggleOn = false
+    
     var body: some View {
         let cornerRadius : CGFloat = 15
         let mainColor = Color.Neumorphic.main
@@ -61,6 +64,19 @@ struct ContentView: View {
                 Button(action: {}) {
                     Text("Soft Button").fontWeight(.bold)
                 }.softButtonStyle(RoundedRectangle(cornerRadius: cornerRadius))
+                
+                HStack(spacing: 20) {
+                    Toggle(isOn: $toggleOn) {}
+                        .softSwitchToggleStyle(labelsHidden: true)
+                        .labelsHidden()
+                    
+                    Toggle(isOn: $middleToggleOn) {}
+                        .softSwitchToggleStyle(labelsHidden: true)
+                        .disabled(toggleOn)
+                    
+                    Toggle(isOn: $middleToggleOn) {}
+                        .softSwitchToggleStyle(labelsHidden: true)
+                }
                 
                 HStack(spacing: 20) {
                     //Circle Button
