@@ -76,35 +76,71 @@ public struct SoftSwitchToggleStyle : ToggleStyle {
     var hideLabel : Bool
     
     public func makeBody(configuration: Self.Configuration) -> some View {
-        return HStack {
-            if !hideLabel {
-                configuration.label
-                    .font(.body)
-                Spacer()
-            }
-            ZStack {
-                Capsule()
-                    .fill(mainColor)
-                    .softOuterShadow()
-                    .frame(width: 75, height: 45)
-                
-                Capsule()
-                    .fill(configuration.isOn ? tintColor : offTintColor)
-                    .softInnerShadow(Capsule(), darkShadow: configuration.isOn ? tintColor : darkShadowColor, lightShadow: configuration.isOn ? tintColor : lightShadowColor, spread: 0.35, radius: 3)
-                    .frame(width: 70, height: 40)
-                    
-                Circle()
-                    .fill(mainColor)
-                    .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 2, radius: 1)
-                    .frame(width: 30, height: 30)
-                    .offset(x: configuration.isOn ? 15 : -15)
-                    .animation(.easeInOut(duration: 0.2), value: configuration.isOn)
-            }
-            .onTapGesture {
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    configuration.isOn.toggle()
+        SoftSwitchToggle(configuration: configuration, hideLabel: hideLabel, mainColor: mainColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, tintColor: tintColor, offTintColor: offTintColor)
+    }
+    
+    private struct SoftSwitchToggle: View {
+        @Environment(\.isEnabled) private var isEnabled
+        
+        let configuration: ToggleStyle.Configuration
+        let hideLabel: Bool
+        let mainColor: Color
+        let darkShadowColor: Color
+        let lightShadowColor: Color
+        let tintColor: Color
+        let offTintColor: Color
+        
+        var body: some View {
+            HStack {
+                if !hideLabel {
+                    configuration.label
+                        .font(.body)
+                    Spacer()
+                }
+                if isEnabled {
+                    ZStack {
+                        Capsule()
+                            .fill(mainColor)
+                            .softOuterShadow()
+                            .frame(width: 75, height: 45)
+                        
+                        Capsule()
+                            .fill(configuration.isOn ? tintColor : offTintColor)
+                            .softInnerShadow(Capsule(), darkShadow: configuration.isOn ? tintColor : darkShadowColor, lightShadow: configuration.isOn ? tintColor : lightShadowColor, spread: 0.35, radius: 3)
+                            .frame(width: 70, height: 40)
+                        
+                        Circle()
+                            .fill(mainColor)
+                            .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 2, radius: 1)
+                            .frame(width: 30, height: 30)
+                            .offset(x: configuration.isOn ? 15 : -15)
+                            .animation(.easeInOut(duration: 0.2), value: configuration.isOn)
+                    }
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            configuration.isOn.toggle()
+                        }
+                    }
+                } else {
+                    ZStack {
+                        Capsule()
+                            .stroke(darkShadowColor, lineWidth : 1)
+                            .frame(width: 75, height: 45)
+                        
+                        Capsule()
+                            .fill(configuration.isOn ? tintColor : offTintColor)
+                            .brightness(configuration.isOn ? -0.1 : 0)
+                            .frame(width: 70, height: 40)
+                        
+                        Circle()
+                            .fill(darkShadowColor)
+                            .frame(width: 30, height: 30)
+                            .offset(x: configuration.isOn ? 15 : -15)
+                            .animation(.easeInOut(duration: 0.2), value: configuration.isOn)
+                    }
                 }
             }
+            .animation(.easeInOut, value: isEnabled)
         }
     }
     
