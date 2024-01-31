@@ -27,7 +27,7 @@ public struct NeumorphicKit {
     #endif
     
     public static func color(light: ColorType, dark: ColorType) -> Color {
-        #if os(iOS)
+        #if os(iOS) || os(visionOS)
         switch NeumorphicKit.colorSchemeType {
         case .light:
             return Color(light)
