@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <Group
+      location = "group:neumorphic-examples"
+      name = "neumorphic-examples">
+      <FileRef
+         location = "group:neumorphic-examples.xcodeproj">
+      </FileRef>
+      <Group
+         location = "group:mac-example"
+         name = "mac-example">
+         <FileRef
+            location = "group:mac_example.entitlements">
+         </FileRef>
+         <FileRef
+            location = "group:Assets.xcassets">
+         </FileRef>
+         <Group
+            location = "group:Preview Content"
+            name = "Preview Content">
+            <FileRef
+               location = "group:Preview Assets.xcassets">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:mac_exampleApp.swift">
+         </FileRef>
+         <FileRef
+            location = "group:ContentView.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Info.plist">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:ios-example"
+         name = "ios-example">
+         <FileRef
+            location = "group:SoftToggleDemoView.swift">
+         </FileRef>
+         <FileRef
+            location = "group:SoftSwitchToggleDemoView.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Assets.xcassets">
+         </FileRef>
+         <Group
+            location = "group:Preview Content"
+            name = "Preview Content">
+            <FileRef
+               location = "group:Preview Assets.xcassets">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Base.lproj"
+            name = "Base.lproj">
+            <FileRef
+               location = "group:LaunchScreen.storyboard">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:SoftButtonDemoView.swift">
+         </FileRef>
+         <FileRef
+            location = "group:AppDelegate.swift">
+         </FileRef>
+         <FileRef
+            location = "group:ContentView.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Info.plist">
+         </FileRef>
+         <FileRef
+            location = "group:SceneDelegate.swift">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:Package.swift">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <Group
+      location = "group:Sources"
+      name = "Sources">
+      <Group
+         location = "group:Neumorphic"
+         name = "Neumorphic">
+         <FileRef
+            location = "group:SoftButtonStyle.swift">
+         </FileRef>
+         <FileRef
+            location = "group:NeumorphicKit.swift">
+         </FileRef>
+         <FileRef
+            location = "group:SoftOuterShadowViewModifier.swift">
+         </FileRef>
+         <FileRef
+            location = "group:SoftInnerShadowViewModifier.swift">
+         </FileRef>
+         <FileRef
+            location = "group:View+InverseMask.swift">
+         </FileRef>
+         <FileRef
+            location = "group:ColorExtension.swift">
+         </FileRef>
+         <FileRef
+            location = "group:SoftDynamicToggleStyle.swift">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "group:Tests"
+      name = "Tests">
+      <FileRef
+         location = "group:LinuxMain.swift">
+      </FileRef>
+      <Group
+         location = "group:NeumorphicTests"
+         name = "NeumorphicTests">
+         <FileRef
+            location = "group:XCTestManifests.swift">
+         </FileRef>
+         <FileRef
+            location = "group:NeumorphicTests.swift">
+         </FileRef>
+      </Group>
+   </Group>
+</Workspace>
