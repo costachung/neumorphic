@@ -20,66 +20,80 @@ extension Text {
 struct SoftSwitchToggleDemoView: View {
     @State var toggleIsOn : Bool = false
     
-    var body: some View {
-        return ZStack {
-            Color.Neumorphic.main.edgesIgnoringSafeArea(.all)
-            VStack(spacing:8){
-                Text("Toggle")
-                    .font(.title)
-                    .fontWeight(.bold)
-
-                Text("System Default Toggle Button")
+    @ViewBuilder
+    fileprivate func demoView() -> some View {
+        VStack{
+            HStack {
+                Text("System Default Toggle")
                     .demoViewSectionTitle()
-
-                //System Toggle Button
-                HStack(spacing:15) {
-                    Spacer()
+            }
+            //System Toggle Button
+            HStack {
+                Spacer()
+                VStack{
                     Toggle("Toggle", isOn: $toggleIsOn)
-                    .toggleStyle(SwitchToggleStyle(tint: .red))
-                    .labelsHidden()
-                    Spacer()
+                        .toggleStyle(SwitchToggleStyle(tint: .red))
+                        .labelsHidden()
+                    Text("Enabled")
                 }
-                .padding()
-                
-                //softSwitchToggleStyle
+                Spacer()
+                VStack{
+                    Toggle("Toggle", isOn: $toggleIsOn)
+                        .toggleStyle(SwitchToggleStyle(tint: .red))
+                        .labelsHidden()
+                        .disabled(true)
+                    Text("Disabled")
+                }
+                Spacer()
+            }
+            .padding()
+
+            //softSwitchToggleStyle
+            VStack {
                 Text("Neumorphic")
                     .demoViewSectionTitle()
                 Text("Soft Switch Toggle Style")
                     .demoViewSectionTitle()
-                
-                HStack(spacing:15) {
-                    Spacer()
-                    Toggle("Toggle", isOn: .constant(false))
-                    .softSwitchToggleStyle(tint: .green, labelsHidden: true)
-                    Spacer()
-                }
-                .padding()
-                
-                HStack(spacing:15) {
-                    Spacer()
-                    Toggle("Toggle", isOn: $toggleIsOn)
-                    .softSwitchToggleStyle(tint: .green, labelsHidden: true)
-                    Spacer()
-                }
-                .padding()
-                HStack(spacing:15) {
-                    Spacer()
-                    Toggle("Toggle", isOn: $toggleIsOn)
-                    .softSwitchToggleStyle(tint: .blue, labelsHidden: true)
-                    Spacer()
-                }
-                .padding()
-                HStack(spacing:15) {
-                    Spacer()
-                    Toggle("Toggle", isOn: $toggleIsOn)
-                    .softSwitchToggleStyle(tint: .red, labelsHidden: true)
-                    Spacer()
-                }
-                .padding()
-                
-                
+                softTogglePairView(tint: .gray)
+                softTogglePairView(tint: .green)
+                softTogglePairView(tint: .blue)
+                softTogglePairView(tint: .red)
             }
             .padding()
+        }
+        .padding()
+    }
+    
+    @ViewBuilder
+    fileprivate func softTogglePairView(tint: Color = .green) -> some View {
+        HStack(spacing:15) {
+            Spacer()
+            VStack{
+                Toggle("Toggle", isOn: $toggleIsOn)
+                    .softSwitchToggleStyle(tint: tint, labelsHidden: true)
+                Text("Enabled")
+            }
+            Spacer()
+            VStack{
+                Toggle("Toggle", isOn: $toggleIsOn)
+                    .softSwitchToggleStyle(tint: tint, labelsHidden: true)
+                    .disabled(true)
+                Text("Disabled")
+            }
+            Spacer()
+        }
+    }
+    
+    var body: some View {
+        ZStack {
+            Color.Neumorphic.main.edgesIgnoringSafeArea(.all)
+            NavigationView {
+                ScrollView {
+                    demoView()
+                }
+                .navigationTitle("SoftSwitchToggle")
+                .padding()
+            }
         }
     }
     
