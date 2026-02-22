@@ -9,6 +9,8 @@ import SwiftUI
 
 public struct SoftDynamicToggleStyle<S: Shape> : ToggleStyle {
     
+    @Environment(\.isEnabled) private var isEnabled
+    
     var shape: S
     var mainColor : Color
     var textColor : Color
@@ -54,6 +56,7 @@ public struct SoftDynamicToggleStyle<S: Shape> : ToggleStyle {
                         .opacity(pressedEffect == .none ? 1 : (configuration.isOn ? 0 : 1) )
                 }
             )
+            .opacity(isEnabled ? 1 : 0.3)
             .onTapGesture {
                 withAnimation(.easeInOut(duration: 0.2)) {
                     configuration.isOn = !configuration.isOn
@@ -65,7 +68,9 @@ public struct SoftDynamicToggleStyle<S: Shape> : ToggleStyle {
 
 
 public struct SoftSwitchToggleStyle : ToggleStyle {
-
+    
+    @Environment(\.isEnabled) private var isEnabled
+    
     var tintColor : Color
     var offTintColor : Color
     
@@ -100,6 +105,7 @@ public struct SoftSwitchToggleStyle : ToggleStyle {
                     .offset(x: configuration.isOn ? 15 : -15)
                     .animation(.easeInOut(duration: 0.2), value: configuration.isOn)
             }
+            .opacity(isEnabled ? 1 : 0.3)
             .onTapGesture {
                 withAnimation(.easeInOut(duration: 0.2)) {
                     configuration.isOn.toggle()

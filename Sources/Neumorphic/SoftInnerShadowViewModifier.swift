@@ -38,11 +38,36 @@ private struct SoftInnerShadowViewModifier<S: Shape> : ViewModifier {
 
     fileprivate func addSoftInnerShadow(_ content: SoftInnerShadowViewModifier.Content) -> some View {
         return GeometryReader { geo in
-            
+        #if os(macOS)
+            //The mask on macOS doesn't work properly with shadow. The shadow disappear after calling the mask modifier.
+            //Workaround: Use blur instead of shadow. 
             self.shape.fill(self.lightShadowColor)
                 .inverseMask(
                     self.shape
-                    .offset(x: -self.shadowOffset(geo), y: -self.shadowOffset(geo))
+                        .offset(x: -self.shadowOffset(geo), y: -self.shadowOffset(geo))
+                )
+                .blur(radius: self.radius)
+                .mask(
+                    self.shape
+                )
+                .overlay(
+                    self.shape
+                        .fill(self.darkShadowColor)
+                        .inverseMask(
+                            self.shape
+                                .offset(x: self.shadowOffset(geo), y: self.shadowOffset(geo))
+                        )
+                        .blur(radius: self.radius)
+                )
+                .mask(
+                    self.shape
+                )
+        #else
+            // iOS
+            self.shape.fill(self.lightShadowColor)
+                .inverseMask(
+                    self.shape
+                        .offset(x: -self.shadowOffset(geo), y: -self.shadowOffset(geo))
                 )
                 .offset(x: self.shadowOffset(geo) , y: self.shadowOffset(geo))
                 .blur(radius: self.radius)
@@ -55,7 +80,7 @@ private struct SoftInnerShadowViewModifier<S: Shape> : ViewModifier {
                         .fill(self.darkShadowColor)
                         .inverseMask(
                             self.shape
-                            .offset(x: self.shadowOffset(geo), y: self.shadowOffset(geo))
+                                .offset(x: self.shadowOffset(geo), y: self.shadowOffset(geo))
                         )
                         .offset(x: -self.shadowOffset(geo) , y: -self.shadowOffset(geo))
                         .blur(radius: self.radius)
@@ -64,6 +89,8 @@ private struct SoftInnerShadowViewModifier<S: Shape> : ViewModifier {
                 .mask(
                     self.shape
                 )
+            #endif
+            
         }
     }
 
