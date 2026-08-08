@@ -20,6 +20,7 @@ struct ExampleShowcaseView: View {
                     DemoSwitchesView()
                     DemoCommonControlsView()
                     DemoSelectionControlsView()
+                    DemoNavigationControlsView()
                     DemoShadowsView()
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -72,6 +73,28 @@ private struct DemoSelectionControlsView: View {
                 NeumorphicRadio("Dark", value: "Dark", selection: $choice)
             }
             .neumorphicCard(padding: 14)
+        }
+    }
+}
+
+private struct DemoNavigationControlsView: View {
+    @State private var date = Date()
+    @State private var mode = "Light"
+    @State private var expanded = true
+
+    var body: some View {
+        DemoSection("Navigation & Feedback") {
+            DemoLabeledControl("DatePicker") { NeumorphicDatePicker("Start", selection: $date, displayedComponents: .date) }
+            DemoLabeledControl("Menu") { NeumorphicMenu("Mode", selection: $mode, options: ["Light", "Dark"]) }
+            NeumorphicDisclosureGroup("Details", isExpanded: $expanded) {
+                Text("Expandable content")
+                    .foregroundColor(Color.Neumorphic.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            HStack(spacing: 16) {
+                DemoLabeledControl("Link") { NeumorphicLink("Website", destination: URL(string: "https://example.com")!) }
+                DemoLabeledControl("Circular") { NeumorphicCircularProgressView(value: 0.65, tint: .green) }
+            }
         }
     }
 }

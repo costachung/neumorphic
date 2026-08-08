@@ -129,6 +129,20 @@ final class NeumorphicTests: XCTestCase {
         XCTAssertFalse(String(describing: type(of: card)).isEmpty)
     }
 
+    func testNextCommonControlEntryPointsCompile() {
+        let datePicker = NeumorphicDatePicker("Start", selection: .constant(Date()))
+        let menu = NeumorphicMenu("Mode", selection: .constant("Light"), options: ["Light", "Dark"])
+        let disclosure = NeumorphicDisclosureGroup("Details", isExpanded: .constant(true)) { Text("Content") }
+        let link = NeumorphicLink("Website", destination: URL(string: "https://example.com")!)
+        let circular = NeumorphicCircularProgressView(value: 0.5)
+
+        XCTAssertFalse(String(describing: type(of: datePicker)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: menu)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: disclosure)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: link)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: circular)).isEmpty)
+    }
+
     private func isColorScheme(
         _ lhs: NeumorphicKit.ColorSchemeType,
         equalTo rhs: NeumorphicKit.ColorSchemeType
@@ -152,5 +166,6 @@ final class NeumorphicTests: XCTestCase {
         ("testShadowPresetsNormalizeParameters", testShadowPresetsNormalizeParameters),
         ("testCommonControlEntryPointsCompile", testCommonControlEntryPointsCompile),
         ("testRemainingControlEntryPointsCompile", testRemainingControlEntryPointsCompile),
+        ("testNextCommonControlEntryPointsCompile", testNextCommonControlEntryPointsCompile),
     ]
 }
