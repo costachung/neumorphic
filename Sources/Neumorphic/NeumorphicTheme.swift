@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// A group of colors used by Neumorphic controls.
-public struct NeumorphicTheme {
+public struct NeumorphicTheme: @unchecked Sendable {
     public let mainColor: Color
     public let secondaryColor: Color
     public let darkShadowColor: Color
@@ -37,7 +37,7 @@ public struct NeumorphicTheme {
 }
 
 /// Tunable shadow parameters for balancing depth and rendering cost.
-public struct NeumorphicShadowPreset {
+public struct NeumorphicShadowPreset: @unchecked Sendable {
     public let darkShadowColor: Color
     public let lightShadowColor: Color
     public let offset: CGFloat
