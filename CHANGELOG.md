@@ -1,8 +1,19 @@
 # Changelog
 
-## Unreleased
+## 2.1.0 - 2026-08-09
 
-- Removed the tvOS platform declaration.
-- Added macOS tests, iOS build validation, Swift 6 strict-concurrency checks, and API breakage diagnostics.
-- Improved toggle accessibility, hit targets, Reduce Motion behavior, and light-mode contrast.
-- Renamed the conflicting public switch style to `NeumorphicSwitchToggleStyle` and added `.toggleStyle(.neumorphicSwitch)`.
+### Added
+
+- Added Neumorphic Slider, TextField, ProgressView, Picker, Stepper, Checkbox, Radio, Card, DatePicker, Menu, DisclosureGroup, Link, and circular ProgressView controls.
+- Added Focus Ring, macOS Hover, Theme, high-contrast Theme, and Shadow Preset APIs.
+- Added Swift Package Index configuration and README compatibility badges.
+
+### Accessibility
+
+- Added VoiceOver labels, values, adjustable actions, selected states, and 44-point interaction targets for custom controls.
+- Improved Dynamic Type layouts, Reduce Motion behavior, disabled-state visibility, and non-color selection cues.
+
+### Tooling
+
+- Added macOS tests, iOS/macOS build validation, Swift 6 strict-concurrency checks, and API breakage diagnostics.
+- Removed the tvOS platform declaration and renamed the conflicting public switch style to `NeumorphicSwitchToggleStyle`.
