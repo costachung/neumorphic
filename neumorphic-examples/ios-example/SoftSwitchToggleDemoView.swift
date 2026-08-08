@@ -11,7 +11,7 @@ import Neumorphic
 
 extension Text {
     public func demoViewSectionTitle() -> some View {
-        return self.font(.body)
+        self.font(.body)
             .fontWeight(.bold)
             .foregroundColor(Color.Neumorphic.secondary)
     }
@@ -19,7 +19,7 @@ extension Text {
 
 struct SoftSwitchToggleDemoView: View {
     @State var toggleIsOn : Bool = false
-    
+
     @ViewBuilder
     fileprivate func demoView() -> some View {
         VStack{
@@ -32,14 +32,16 @@ struct SoftSwitchToggleDemoView: View {
                 Spacer()
                 VStack{
                     Toggle("Toggle", isOn: $toggleIsOn)
-                        .toggleStyle(SwitchToggleStyle(tint: .red))
+                        .toggleStyle(.switch)
+                        .accentColor(.red)
                         .labelsHidden()
                     Text("Enabled")
                 }
                 Spacer()
                 VStack{
                     Toggle("Toggle", isOn: $toggleIsOn)
-                        .toggleStyle(SwitchToggleStyle(tint: .red))
+                        .toggleStyle(.switch)
+                        .accentColor(.red)
                         .labelsHidden()
                         .disabled(true)
                     Text("Disabled")
@@ -63,31 +65,31 @@ struct SoftSwitchToggleDemoView: View {
         }
         .padding()
     }
-    
+
     @ViewBuilder
     fileprivate func softTogglePairView(tint: Color = .green) -> some View {
         HStack(spacing:15) {
             Spacer()
             VStack{
                 Toggle("Toggle", isOn: $toggleIsOn)
-                    .softSwitchToggleStyle(tint: tint, labelsHidden: true)
+                    .switchToggleStyle(tint: tint, labelsHidden: true)
                 Text("Enabled")
             }
             Spacer()
             VStack{
                 Toggle("Toggle", isOn: $toggleIsOn)
-                    .softSwitchToggleStyle(tint: tint, labelsHidden: true)
+                    .switchToggleStyle(tint: tint, labelsHidden: true)
                     .disabled(true)
                 Text("Disabled")
             }
             Spacer()
         }
     }
-    
+
     var body: some View {
         ZStack {
             Color.Neumorphic.main.edgesIgnoringSafeArea(.all)
-            NavigationView {
+            demoNavigation {
                 ScrollView {
                     demoView()
                 }
@@ -96,7 +98,7 @@ struct SoftSwitchToggleDemoView: View {
             }
         }
     }
-    
+
 }
 
 struct SoftSwitchToggleDemoView_Previews: PreviewProvider {
@@ -104,10 +106,10 @@ struct SoftSwitchToggleDemoView_Previews: PreviewProvider {
         Group {
             SoftSwitchToggleDemoView()
                 .environment(\.colorScheme, .light)
-            
+
             SoftSwitchToggleDemoView()
                 .environment(\.colorScheme, .dark)
         }
-        
+
     }
 }

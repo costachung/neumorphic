@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: macos-15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Print toolchain
+        run: swift --version
+
+      - name: Check formatting
+        run: git diff --check
+
+      - name: Run package tests
+        run: swift test --scratch-path .build/macos
+
+      - name: Build for iOS
+        run: swift build --scratch-path .build/ios --sdk "$(xcrun --sdk iphoneos --show-sdk-path)" --triple arm64-apple-ios13.0
+
+      - name: Swift 6 strict concurrency check
+        run: swiftc -typecheck -swift-version 6 -strict-concurrency=complete -target arm64-apple-macosx14.0 -module-name Neumorphic Sources/Neumorphic/*.swift
+
+      - name: Diagnose API breakages
+        run: swift package diagnose-api-breaking-changes v2.0.7 --products Neumorphic

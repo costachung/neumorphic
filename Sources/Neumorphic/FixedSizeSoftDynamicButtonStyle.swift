@@ -1,5 +1,6 @@
 import SwiftUI
- 
+
+/// A dynamic soft button style with an explicit visual size.
 public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
     var shape: S
     var mainColor: Color
@@ -9,7 +10,8 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
     var pressedEffect: SoftButtonPressedEffect
     var padding: CGFloat
     var size: CGSize
-    
+
+    /// Creates a fixed-size soft button style.
     public init(_ shape: S, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color, pressedEffect: SoftButtonPressedEffect, padding: CGFloat = 16, size: CGSize) {
         self.shape = shape
         self.mainColor = mainColor
@@ -18,16 +20,17 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
         self.lightShadowColor = lightShadowColor
         self.pressedEffect = pressedEffect
         self.padding = padding
-        self.size = size
+        self.size = CGSize(width: max(size.width, 0), height: max(size.height, 0))
     }
-    
+
+    /// Builds the fixed-size button content for the current state.
     public func makeBody(configuration: Self.Configuration) -> some View {
         SoftDynamicButton(configuration: configuration, shape: shape, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect: pressedEffect, padding: padding, size: size)
     }
 
     struct SoftDynamicButton: View {
         let configuration: ButtonStyle.Configuration
-        
+
         var shape: S
         var mainColor: Color
         var textColor: Color
@@ -36,9 +39,9 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
         var pressedEffect: SoftButtonPressedEffect
         var padding: CGFloat
         var size: CGSize
-    
+
         @Environment(\.isEnabled) private var isEnabled: Bool
-        
+
         var body: some View {
             configuration.label
                 .foregroundColor(isEnabled ? textColor : darkShadowColor)
@@ -67,11 +70,13 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
                         }
                     }
                 )
+                .frame(minWidth: 44, minHeight: 44)
         }
     }
 }
 
 public extension View {
+    /// Applies a soft button style with an explicit visual size.
     func fixedSizeSoftButtonStyle<S: Shape>(_ content: S = Circle(), mainColor: Color = Color.Neumorphic.main, textColor: Color = Color.Neumorphic.secondary, darkShadowColor: Color = Color.Neumorphic.darkShadow, lightShadowColor: Color = Color.Neumorphic.lightShadow, pressedEffect: SoftButtonPressedEffect = .hard, size: CGSize = .init(width: 30, height: 30)) -> some View {
         buttonStyle(FixedSizeSoftDynamicButtonStyle(content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect: pressedEffect, padding: 0, size: size))
     }

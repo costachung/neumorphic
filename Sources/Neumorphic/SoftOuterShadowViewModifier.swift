@@ -11,12 +11,12 @@ private struct SoftOuterShadowViewModifier: ViewModifier {
     var darkShadowColor : Color
     var offset: CGFloat
     var radius : CGFloat
-    
+
     init(darkShadowColor: Color, lightShadowColor: Color, offset: CGFloat, radius: CGFloat) {
         self.darkShadowColor = darkShadowColor
         self.lightShadowColor = lightShadowColor
         self.offset = offset
-        self.radius = radius
+        self.radius = max(radius, 0)
     }
 
     func body(content: Content) -> some View {
@@ -29,9 +29,9 @@ private struct SoftOuterShadowViewModifier: ViewModifier {
 
 extension View {
 
+    /// Applies a soft outer shadow to the view.
     public func softOuterShadow(darkShadow: Color = Color.Neumorphic.darkShadow, lightShadow: Color = Color.Neumorphic.lightShadow, offset: CGFloat = 6, radius:CGFloat = 3) -> some View {
         modifier(SoftOuterShadowViewModifier(darkShadowColor: darkShadow, lightShadowColor: lightShadow, offset: offset, radius: radius))
     }
-    
-}
 
+}

@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA1C843C240CDD090082F452 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C843B240CDD090082F452 /* AppDelegate.swift */; };
-		AA1C843E240CDD090082F452 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C843D240CDD090082F452 /* SceneDelegate.swift */; };
+		AA1C8450240CDD090082F452 /* ios_exampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C8451240CDD090082F452 /* ios_exampleApp.swift */; };
 		AA1C8440240CDD090082F452 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C843F240CDD090082F452 /* ContentView.swift */; };
 		AA1C8442240CDD090082F452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8441240CDD090082F452 /* Assets.xcassets */; };
 		AA1C8445240CDD090082F452 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1C8444240CDD090082F452 /* Preview Assets.xcassets */; };
@@ -22,12 +21,12 @@
 		AA5ABDD624E0B3EF00622BAF /* SoftButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5ABDD524E0B3EF00622BAF /* SoftButtonDemoView.swift */; };
 		AAB9DDA82480D0500047A0DC /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = AAB9DDA72480D0500047A0DC /* Neumorphic */; };
 		AAEAE0CF258315AA00D79970 /* SoftToggleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAE0CE258315AA00D79970 /* SoftToggleDemoView.swift */; };
+		AAEAE0D0258315AA00D79970 /* DemoNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAE0D1258315AA00D79970 /* DemoNavigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA1C8438240CDD090082F452 /* ios-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA1C843B240CDD090082F452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AA1C843D240CDD090082F452 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AA1C8451240CDD090082F452 /* ios_exampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_exampleApp.swift; sourceTree = "<group>"; };
 		AA1C843F240CDD090082F452 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA1C8441240CDD090082F452 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA1C8444240CDD090082F452 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		AA5ABDD524E0B3EF00622BAF /* SoftButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftButtonDemoView.swift; sourceTree = "<group>"; };
 		AAB9DDA62480D03B0047A0DC /* neumorphic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = neumorphic; path = ..; sourceTree = "<group>"; };
 		AAEAE0CE258315AA00D79970 /* SoftToggleDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftToggleDemoView.swift; sourceTree = "<group>"; };
+		AAEAE0D1258315AA00D79970 /* DemoNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +89,12 @@
 		AA1C843A240CDD090082F452 /* ios-example */ = {
 			isa = PBXGroup;
 			children = (
-				AA1C843B240CDD090082F452 /* AppDelegate.swift */,
-				AA1C843D240CDD090082F452 /* SceneDelegate.swift */,
+				AA1C8451240CDD090082F452 /* ios_exampleApp.swift */,
 				AA1C843F240CDD090082F452 /* ContentView.swift */,
 				AA5ABDD524E0B3EF00622BAF /* SoftButtonDemoView.swift */,
 				AAEAE0CE258315AA00D79970 /* SoftToggleDemoView.swift */,
 				AA5420E825847A7A007A3665 /* SoftSwitchToggleDemoView.swift */,
+				AAEAE0D1258315AA00D79970 /* DemoNavigation.swift */,
 				AA1C8441240CDD090082F452 /* Assets.xcassets */,
 				AA1C8446240CDD090082F452 /* LaunchScreen.storyboard */,
 				AA1C8449240CDD090082F452 /* Info.plist */,
@@ -246,12 +246,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA1C843C240CDD090082F452 /* AppDelegate.swift in Sources */,
+				AA1C8450240CDD090082F452 /* ios_exampleApp.swift in Sources */,
 				AA5420E925847A7A007A3665 /* SoftSwitchToggleDemoView.swift in Sources */,
-				AA1C843E240CDD090082F452 /* SceneDelegate.swift in Sources */,
 				AA1C8440240CDD090082F452 /* ContentView.swift in Sources */,
 				AA5ABDD624E0B3EF00622BAF /* SoftButtonDemoView.swift in Sources */,
 				AAEAE0CF258315AA00D79970 /* SoftToggleDemoView.swift in Sources */,
+				AAEAE0D0258315AA00D79970 /* DemoNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +407,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "neumorphic.ios-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -427,7 +427,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "neumorphic.ios-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -454,7 +454,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.3;
 			};
 			name = Debug;
 		};
@@ -480,7 +480,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.3;
 			};
 			name = Release;
 		};

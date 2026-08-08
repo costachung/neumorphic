@@ -9,9 +9,9 @@
 import SwiftUI
 import Neumorphic
 
-struct SoftButtonDemoView: View {    
+struct SoftButtonDemoView: View {
     var body: some View {
-        return NavigationView {
+        demoNavigation {
             ZStack {
                 Color.Neumorphic.main.edgesIgnoringSafeArea(.all)
 
@@ -23,7 +23,7 @@ struct SoftButtonDemoView: View {
                                 Text("Capsule")
                                     .fontWeight(.bold)
                             }.softButtonStyle(Capsule())
-                            
+
                             Button(action: {}) {
                                 Text("RoundedRectangle")
                                     .fontWeight(.bold)
@@ -39,36 +39,36 @@ struct SoftButtonDemoView: View {
                                 Text("Ellipse").fontWeight(.bold)
                                     .frame(width: 150, height: 20)
                             }.softButtonStyle(Ellipse())
-                            
+
                             Button(action: {}) {
                                 Image(systemName: "heart.fill")
                             }.softButtonStyle(Circle(), mainColor: Color.red, textColor: Color.white, darkShadowColor: Color("redButtonDarkShadow"), lightShadowColor:Color("redButtonLightShadow"))
                         }
-                        
+
                         Button(action: {}) {
                             Text("Custom Size")
                                 .fontWeight(.bold)
                                 .frame(width: 300, height: 20)
                         }
                         .softButtonStyle(Capsule(), padding: 15)
-                        
-                        
+
+
                         HStack {
                             Button(action: {}) {
                                 Text("Padding").fontWeight(.bold)
                             }
                             .softButtonStyle(RoundedRectangle(cornerRadius: 20), padding: 10)
-                            
+
                             Button(action: {}) {
                                 Text("Disabled").fontWeight(.bold)
                             }
                             .softButtonStyle(RoundedRectangle(cornerRadius: 20), padding: 10)
                             .disabled(true)
                         }
-                        
-                        
+
+
                         Text("Pressed Effect").font(.headline).foregroundColor(Color.Neumorphic.secondary)
-                            
+
                         HStack {
                             Spacer()
                             Button(action: {}) {
@@ -84,10 +84,10 @@ struct SoftButtonDemoView: View {
                             }.softButtonStyle(Capsule(), pressedEffect: .hard)
                             Spacer()
                         }
-                        
+
 
                         Text("ContextMenu").font(.headline).foregroundColor(Color.Neumorphic.secondary)
-                        
+
                         Button(action: {}) {
                             Text("Button").fontWeight(.bold)
                         }
@@ -102,10 +102,10 @@ struct SoftButtonDemoView: View {
                         .background(
                             Capsule().fill(Color.Neumorphic.main).softOuterShadow()
                         )
-                        
 
-                        
-                        
+
+
+
                     }
 
                 }

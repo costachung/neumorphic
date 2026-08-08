@@ -9,7 +9,8 @@ Hi, I’m Costa. It is simple to create outer shadow in SwiftUI by writing two l
 
 ## Installation
 Requirements
-.iOS(.v13),.macOS(.v10_15)
+- iOS 13.0+
+- macOS 10.15+
 
 #### Swift Package Manager 
 1. In Xcode, open your project and navigate to File → Swift Packages → Add Package Dependency.
@@ -19,7 +20,7 @@ Requirements
 
 #### Swift Package
 ```swift
-.package(url: "https://github.com/costachung/neumorphic/", .upToNextMajor(from: "2.0.5"))
+.package(url: "https://github.com/costachung/neumorphic/", .upToNextMajor(from: "2.0.7"))
 ```
 
 ## Usage
@@ -166,6 +167,13 @@ softButtonStyle<S : Shape>(_ content: S, padding: CGFloat, mainColor: Color, tex
 ```swift
 Toggle("Toggle", isOn: $toggleIsOn)
   .softSwitchToggleStyle(tint: .green, labelsHidden: true)
+```
+
+For the standalone toggle style, use the unambiguous SwiftUI-compatible entry point:
+
+```swift
+Toggle("Toggle", isOn: $toggleIsOn)
+  .toggleStyle(.neumorphicSwitch)
 ```
 
 ## SoftToggleStyle

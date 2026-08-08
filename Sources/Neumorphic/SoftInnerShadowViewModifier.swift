@@ -13,34 +13,34 @@ private struct SoftInnerShadowViewModifier<S: Shape> : ViewModifier {
     var lightShadowColor : Color = .white
     var spread: CGFloat = 0.5    //The value of spread is between 0 to 1. Higher value makes the shadow look more intense.
     var radius: CGFloat = 10
-    
+
     init(shape: S, darkShadowColor: Color, lightShadowColor: Color, spread: CGFloat, radius:CGFloat) {
         self.shape = shape
         self.darkShadowColor = darkShadowColor
         self.lightShadowColor = lightShadowColor
         self.spread = spread
-        self.radius = radius
+        self.radius = max(radius, 0)
     }
 
     fileprivate func strokeLineWidth(_ geo: GeometryProxy) -> CGFloat {
         return geo.size.width * 0.10
     }
-    
+
     fileprivate func strokeLineScale(_ geo: GeometryProxy) -> CGFloat {
         let lineWidth = strokeLineWidth(geo)
         return geo.size.width / CGFloat(geo.size.width - lineWidth)
     }
-    
+
     fileprivate func shadowOffset(_ geo: GeometryProxy) -> CGFloat {
         return (geo.size.width <= geo.size.height ? geo.size.width : geo.size.height) * 0.5 * min(max(spread, 0), 1)
     }
-    
+
 
     fileprivate func addSoftInnerShadow(_ content: SoftInnerShadowViewModifier.Content) -> some View {
         return GeometryReader { geo in
         #if os(macOS)
             //The mask on macOS doesn't work properly with shadow. The shadow disappear after calling the mask modifier.
-            //Workaround: Use blur instead of shadow. 
+            //Workaround: Use blur instead of shadow.
             self.shape.fill(self.lightShadowColor)
                 .inverseMask(
                     self.shape
@@ -90,7 +90,7 @@ private struct SoftInnerShadowViewModifier<S: Shape> : ViewModifier {
                     self.shape
                 )
             #endif
-            
+
         }
     }
 
@@ -105,10 +105,11 @@ private struct SoftInnerShadowViewModifier<S: Shape> : ViewModifier {
 //For more readable, we extend the View and create a softInnerShadow function.
 extension View {
 
+    /// Applies an inner shadow using the supplied shape and shadow parameters.
     public func softInnerShadow<S : Shape>(_ content: S, darkShadow: Color = Color.Neumorphic.darkShadow, lightShadow: Color = Color.Neumorphic.lightShadow, spread: CGFloat = 0.5, radius: CGFloat = 10) -> some View {
         modifier(
             SoftInnerShadowViewModifier(shape: content, darkShadowColor: darkShadow, lightShadowColor: lightShadow, spread: spread, radius: radius)
         )
     }
-    
+
 }
