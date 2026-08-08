@@ -55,12 +55,13 @@ public struct SoftDynamicButtonStyle<S: Shape> : ButtonStyle {
         var padding : CGFloat
 
         @Environment(\.isEnabled) private var isEnabled: Bool
+        @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
         var body: some View {
             configuration.label
-                .foregroundColor(isEnabled ? textColor : darkShadowColor)
+                .foregroundColor(isEnabled ? textColor : textColor.opacity(0.55))
                 .padding(padding)
-                .scaleEffect(configuration.isPressed ? 0.97 : 1)
+                .scaleEffect(configuration.isPressed && !reduceMotion ? 0.97 : 1)
                 .background(
                     ZStack{
                         if isEnabled {

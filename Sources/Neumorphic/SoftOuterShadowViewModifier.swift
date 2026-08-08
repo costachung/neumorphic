@@ -30,8 +30,18 @@ private struct SoftOuterShadowViewModifier: ViewModifier {
 extension View {
 
     /// Applies a soft outer shadow to the view.
-    public func softOuterShadow(darkShadow: Color = Color.Neumorphic.darkShadow, lightShadow: Color = Color.Neumorphic.lightShadow, offset: CGFloat = 6, radius:CGFloat = 3) -> some View {
+public func softOuterShadow(darkShadow: Color = Color.Neumorphic.darkShadow, lightShadow: Color = Color.Neumorphic.lightShadow, offset: CGFloat = 6, radius:CGFloat = 3) -> some View {
         modifier(SoftOuterShadowViewModifier(darkShadowColor: darkShadow, lightShadowColor: lightShadow, offset: offset, radius: radius))
+    }
+
+    /// Applies an outer shadow using a reusable performance preset.
+    public func softOuterShadow(_ preset: NeumorphicShadowPreset) -> some View {
+        softOuterShadow(
+            darkShadow: preset.darkShadowColor,
+            lightShadow: preset.lightShadowColor,
+            offset: preset.offset,
+            radius: preset.radius
+        )
     }
 
 }

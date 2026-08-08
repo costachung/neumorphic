@@ -72,7 +72,7 @@ public struct NeumorphicSwitchToggleStyle: ToggleStyle {
                         .offset(x: configuration.isOn ? 15 * ratio : -15 * ratio)
                         .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: configuration.isOn)
                 }
-                .opacity(isEnabled ? 1 : 0.3)
+                .opacity(isEnabled ? 1 : 0.4)
             }
         }
         .buttonStyle(.plain)

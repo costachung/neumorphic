@@ -42,7 +42,7 @@ public struct SoftDynamicToggleStyle<S: Shape> : ToggleStyle {
             configuration.label
                 .foregroundColor(textColor)
                 .padding(padding)
-                .scaleEffect(configuration.isOn ? 0.97 : 1)
+                .scaleEffect(configuration.isOn && !reduceMotion ? 0.97 : 1)
                 .background(
                     ZStack{
                         if pressedEffect == .flat {
@@ -65,7 +65,7 @@ public struct SoftDynamicToggleStyle<S: Shape> : ToggleStyle {
                             .opacity(pressedEffect == .none ? 1 : (configuration.isOn ? 0 : 1) )
                     }
                 )
-                .opacity(isEnabled ? 1 : 0.3)
+                .opacity(isEnabled ? 1 : 0.4)
         }
         .buttonStyle(.plain)
         .stateAccessibilityValue(configuration.isOn)

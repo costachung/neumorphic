@@ -112,4 +112,15 @@ extension View {
         )
     }
 
+    /// Applies an inner shadow using a reusable performance preset.
+    public func softInnerShadow<S : Shape>(_ content: S, preset: NeumorphicShadowPreset) -> some View {
+        softInnerShadow(
+            content,
+            darkShadow: preset.darkShadowColor,
+            lightShadow: preset.lightShadowColor,
+            spread: preset.spread,
+            radius: preset.radius
+        )
+    }
+
 }

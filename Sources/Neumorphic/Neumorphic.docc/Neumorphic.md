@@ -14,6 +14,13 @@ Button("Save") { }
 
 Toggle("Enabled", isOn: $isEnabled)
     .toggleStyle(.neumorphicSwitch)
+
+Button("Save") { }
+    .neumorphicTheme(.highContrast)
+    .neumorphicThemedButtonStyle(Capsule())
+
+Text("Save")
+    .neumorphicFocusRing(Capsule(), isFocused: $isFocused)
 ```
 
 ## Topics
@@ -25,6 +32,10 @@ Toggle("Enabled", isOn: $isEnabled)
 - ``SoftDynamicToggleStyle``
 - ``SoftSwitchToggleStyle``
 - ``NeumorphicSwitchToggleStyle``
+- ``NeumorphicFocusRing``
+- ``NeumorphicTheme``
+- ``NeumorphicShadowPreset``
+- ``NeumorphicHoverEffect``
 
 ### Appearance
 
