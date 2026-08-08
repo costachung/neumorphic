@@ -105,6 +105,30 @@ final class NeumorphicTests: XCTestCase {
         XCTAssertFalse(String(describing: type(of: view)).isEmpty)
     }
 
+    func testCommonControlEntryPointsCompile() {
+        let slider = NeumorphicSlider(value: .constant(0.5), in: 0...1, step: 0.1)
+        let field = NeumorphicTextField("Name", text: .constant(""))
+        let progress = NeumorphicProgressView(value: 0.5, total: 1)
+        let picker = NeumorphicPicker(selection: .constant("One"), options: ["One", "Two"])
+
+        XCTAssertFalse(String(describing: type(of: slider)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: field)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: progress)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: picker)).isEmpty)
+    }
+
+    func testRemainingControlEntryPointsCompile() {
+        let stepper = NeumorphicStepper(value: .constant(2), in: 0...5)
+        let checkbox = NeumorphicCheckbox("Remember", isOn: .constant(true))
+        let radio = NeumorphicRadio("Light", value: "light", selection: .constant("light"))
+        let card = Text("Card").neumorphicCard()
+
+        XCTAssertFalse(String(describing: type(of: stepper)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: checkbox)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: radio)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: card)).isEmpty)
+    }
+
     private func isColorScheme(
         _ lhs: NeumorphicKit.ColorSchemeType,
         equalTo rhs: NeumorphicKit.ColorSchemeType
@@ -126,5 +150,7 @@ final class NeumorphicTests: XCTestCase {
         ("testThemeEntryPointsCompile", testThemeEntryPointsCompile),
         ("testHoverEntryPointCompiles", testHoverEntryPointCompiles),
         ("testShadowPresetsNormalizeParameters", testShadowPresetsNormalizeParameters),
+        ("testCommonControlEntryPointsCompile", testCommonControlEntryPointsCompile),
+        ("testRemainingControlEntryPointsCompile", testRemainingControlEntryPointsCompile),
     ]
 }

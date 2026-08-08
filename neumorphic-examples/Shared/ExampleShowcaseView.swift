@@ -18,6 +18,8 @@ struct ExampleShowcaseView: View {
                     DemoButtonsView()
                     DemoTogglesView()
                     DemoSwitchesView()
+                    DemoCommonControlsView()
+                    DemoSelectionControlsView()
                     DemoShadowsView()
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -26,6 +28,51 @@ struct ExampleShowcaseView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+private struct DemoCommonControlsView: View {
+    @State private var sliderValue = 65.0
+    @State private var name = ""
+    @State private var mode = "Light"
+
+    var body: some View {
+        DemoSection("Common Controls") {
+            DemoLabeledControl("Slider") {
+                NeumorphicSlider(value: $sliderValue, in: 0...100, step: 1, tint: .accentColor)
+                    .frame(width: 220)
+            }
+            DemoLabeledControl("TextField") {
+                NeumorphicTextField("Name", text: $name)
+                    .frame(width: 220)
+            }
+            DemoLabeledControl("ProgressView") {
+                NeumorphicProgressView(value: 0.65, tint: .green)
+                    .frame(width: 220)
+            }
+            DemoLabeledControl("Picker") {
+                NeumorphicPicker(selection: $mode, options: ["Light", "Dark"])
+                    .frame(width: 220)
+            }
+        }
+    }
+}
+
+private struct DemoSelectionControlsView: View {
+    @State private var quantity = 2
+    @State private var remember = true
+    @State private var choice = "Light"
+
+    var body: some View {
+        DemoSection("Selection & Containers") {
+            DemoLabeledControl("Stepper") { NeumorphicStepper("Quantity", value: $quantity, in: 0...10) }
+            DemoLabeledControl("Checkbox") { NeumorphicCheckbox("Remember me", isOn: $remember) }
+            VStack(alignment: .leading, spacing: 8) {
+                NeumorphicRadio("Light", value: "Light", selection: $choice)
+                NeumorphicRadio("Dark", value: "Dark", selection: $choice)
+            }
+            .neumorphicCard(padding: 14)
+        }
     }
 }
 

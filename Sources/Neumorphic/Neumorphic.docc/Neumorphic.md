@@ -21,6 +21,15 @@ Button("Save") { }
 
 Text("Save")
     .neumorphicFocusRing(Capsule(), isFocused: $isFocused)
+
+NeumorphicSlider(value: $volume, in: 0...100, step: 1)
+NeumorphicTextField("Name", text: $name)
+NeumorphicProgressView(value: 0.65)
+NeumorphicPicker(selection: $mode, options: ["Light", "Dark"])
+NeumorphicStepper("Quantity", value: $quantity, in: 0...10)
+NeumorphicCheckbox("Remember me", isOn: $remember)
+NeumorphicRadio("Light", value: "light", selection: $mode)
+Text("Card content").neumorphicCard()
 ```
 
 ## Topics
@@ -36,6 +45,14 @@ Text("Save")
 - ``NeumorphicTheme``
 - ``NeumorphicShadowPreset``
 - ``NeumorphicHoverEffect``
+- ``NeumorphicSlider``
+- ``NeumorphicTextField``
+- ``NeumorphicProgressView``
+- ``NeumorphicPicker``
+- ``NeumorphicStepper``
+- ``NeumorphicCheckbox``
+- ``NeumorphicRadio``
+- ``View/neumorphicCard(_:padding:preset:)``
 
 ### Appearance
 
