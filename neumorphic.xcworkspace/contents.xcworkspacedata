@@ -11,32 +11,6 @@
          location = "group:neumorphic-examples.xcodeproj">
       </FileRef>
       <Group
-         location = "group:mac-example"
-         name = "mac-example">
-         <FileRef
-            location = "group:mac_example.entitlements">
-         </FileRef>
-         <FileRef
-            location = "group:Assets.xcassets">
-         </FileRef>
-         <Group
-            location = "group:Preview Content"
-            name = "Preview Content">
-            <FileRef
-               location = "group:Preview Assets.xcassets">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:mac_exampleApp.swift">
-         </FileRef>
-         <FileRef
-            location = "group:ContentView.swift">
-         </FileRef>
-         <FileRef
-            location = "group:Info.plist">
-         </FileRef>
-      </Group>
-      <Group
          location = "group:ios-example"
          name = "ios-example">
          <FileRef
@@ -66,16 +40,10 @@
             location = "group:SoftButtonDemoView.swift">
          </FileRef>
          <FileRef
-            location = "group:AppDelegate.swift">
-         </FileRef>
-         <FileRef
             location = "group:ContentView.swift">
          </FileRef>
          <FileRef
             location = "group:Info.plist">
-         </FileRef>
-         <FileRef
-            location = "group:SceneDelegate.swift">
          </FileRef>
       </Group>
    </Group>
