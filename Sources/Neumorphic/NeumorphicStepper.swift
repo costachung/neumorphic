@@ -14,13 +14,15 @@ public struct NeumorphicStepper: View {
 
     public var body: some View {
         HStack(spacing: 12) {
-            Button { value = max(bounds.lowerBound, value - 1) } label: { Text("−").font(.body.weight(.semibold)) }
+            Button { value = max(bounds.lowerBound, value - 1) } label: { Text("−").font(.body.weight(.semibold)).frame(minWidth: 44, minHeight: 44) }
                 .buttonStyle(SoftDynamicButtonStyle(Circle(), mainColor: .Neumorphic.main, textColor: .Neumorphic.secondary, darkShadowColor: .Neumorphic.darkShadow, lightShadowColor: .Neumorphic.lightShadow, pressedEffect: .hard, padding: 10))
                 .disabled(value <= bounds.lowerBound)
+                .neumorphicButtonAccessibility(label: "Decrease \(label)")
             Text("\(label): \(value)").frame(minWidth: 72)
-            Button { value = min(bounds.upperBound, value + 1) } label: { Text("+").font(.body.weight(.semibold)) }
+            Button { value = min(bounds.upperBound, value + 1) } label: { Text("+").font(.body.weight(.semibold)).frame(minWidth: 44, minHeight: 44) }
                 .buttonStyle(SoftDynamicButtonStyle(Circle(), mainColor: .Neumorphic.main, textColor: .Neumorphic.secondary, darkShadowColor: .Neumorphic.darkShadow, lightShadowColor: .Neumorphic.lightShadow, pressedEffect: .hard, padding: 10))
                 .disabled(value >= bounds.upperBound)
+                .neumorphicButtonAccessibility(label: "Increase \(label)")
         }
         .foregroundColor(.Neumorphic.secondary)
     }

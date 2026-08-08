@@ -16,10 +16,11 @@ public struct NeumorphicPicker<Selection: Hashable>: View {
         HStack(spacing: 8) {
             ForEach(options, id: \.self) { option in
                 Button { selection = option } label: {
-                    Text(label(option)).font(.subheadline.weight(.medium)).lineLimit(1).frame(maxWidth: .infinity)
+                    Text(label(option)).font(.subheadline.weight(.medium)).multilineTextAlignment(.center).frame(maxWidth: .infinity, minHeight: 44)
                 }
                 .buttonStyle(SoftDynamicButtonStyle(Capsule(), mainColor: .Neumorphic.main, textColor: .Neumorphic.secondary, darkShadowColor: .Neumorphic.darkShadow, lightShadowColor: .Neumorphic.lightShadow, pressedEffect: selection == option ? .flat : .none, padding: 10))
                 .opacity(selection == option ? 1 : 0.75)
+                .neumorphicSelectionAccessibility(label: label(option), selected: selection == option)
             }
         }
     }

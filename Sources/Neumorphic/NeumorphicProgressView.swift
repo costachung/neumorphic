@@ -6,12 +6,14 @@ public struct NeumorphicProgressView: View {
     private let total: Double
     private let tint: Color
     private let height: CGFloat
+    private let accessibilityLabel: String
 
-    public init(value: Double?, total: Double = 1, tint: Color = .accentColor, height: CGFloat = 10) {
+    public init(value: Double?, total: Double = 1, tint: Color = .accentColor, height: CGFloat = 10, accessibilityLabel: String = "Progress") {
         self.value = value
         self.total = max(total, 0)
         self.tint = tint
         self.height = max(height, 2)
+        self.accessibilityLabel = accessibilityLabel
     }
 
     public var body: some View {
@@ -24,6 +26,7 @@ public struct NeumorphicProgressView: View {
             }
         }
         .frame(height: height)
+        .neumorphicProgressAccessibility(label: accessibilityLabel, value: value.map { String(format: "%.0f%%", ($0 / max(total, 1)) * 100) } ?? "In progress")
     }
 }
 

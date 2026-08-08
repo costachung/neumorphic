@@ -20,6 +20,8 @@ public struct NeumorphicCheckbox: View {
             }
         }
         .buttonStyle(PlainButtonStyle())
+        .neumorphicSelectionAccessibility(label: label, selected: isOn)
+        .frame(minHeight: 44)
     }
 }
 
@@ -45,5 +47,7 @@ public struct NeumorphicRadio<Value: Hashable>: View {
             }
         }
         .buttonStyle(PlainButtonStyle())
+        .neumorphicSelectionAccessibility(label: label, selected: selection == value)
+        .frame(minHeight: 44)
     }
 }

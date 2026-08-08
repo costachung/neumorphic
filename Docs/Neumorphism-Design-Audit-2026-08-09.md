@@ -78,6 +78,8 @@ Disabled 控件当前通过低不透明度表达，深色模式下几乎不可�
 - 新增 macOS 专用 `neumorphicHover(_:isHovered:)`，iOS 自动保持 no-op。
 - 新增 `NeumorphicShadowPreset`，提供 `standard`、低成本 `subtle` 和 `none` 预设。
 - iOS / macOS 共享示例已使用自适应网格，并完成浅色、深色运行态验证。
+- 自定义 Slider / Progress / Picker / Checkbox / Radio / Stepper 已补充 VoiceOver 标签、状态值、可调节操作和按钮语义（iOS 14+ / macOS 11+）。
+- 交互控件触控区域统一提升到至少 44pt，Picker 支持大字号多行标签，选择状态不再只依赖颜色。
 - Swift Package 测试、iOS 模拟器构建、macOS 构建均通过。
 
 系统 `accessibilityContrast` 自动切换、完整 macOS 键盘/VoiceOver 测试和真实设备阴影性能基准仍需后续验证；当前已提供显式 `highContrast` Theme、Focus/Hover API 和阴影成本预设。

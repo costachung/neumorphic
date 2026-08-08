@@ -106,9 +106,9 @@ final class NeumorphicTests: XCTestCase {
     }
 
     func testCommonControlEntryPointsCompile() {
-        let slider = NeumorphicSlider(value: .constant(0.5), in: 0...1, step: 0.1)
+        let slider = NeumorphicSlider(value: .constant(0.5), in: 0...1, step: 0.1, accessibilityLabel: "Volume")
         let field = NeumorphicTextField("Name", text: .constant(""))
-        let progress = NeumorphicProgressView(value: 0.5, total: 1)
+        let progress = NeumorphicProgressView(value: 0.5, total: 1, accessibilityLabel: "Upload progress")
         let picker = NeumorphicPicker(selection: .constant("One"), options: ["One", "Two"])
 
         XCTAssertFalse(String(describing: type(of: slider)).isEmpty)

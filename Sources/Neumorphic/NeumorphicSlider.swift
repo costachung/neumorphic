@@ -6,13 +6,15 @@ public struct NeumorphicSlider: View {
     private let bounds: ClosedRange<Double>
     private let step: Double
     private let tint: Color
+    private let accessibilityLabel: String
     private let onEditingChanged: (Bool) -> Void
 
-    public init(value: Binding<Double>, in bounds: ClosedRange<Double> = 0...1, step: Double = 0, tint: Color = .accentColor, onEditingChanged: @escaping (Bool) -> Void = { _ in }) {
+    public init(value: Binding<Double>, in bounds: ClosedRange<Double> = 0...1, step: Double = 0, tint: Color = .accentColor, accessibilityLabel: String = "Slider", onEditingChanged: @escaping (Bool) -> Void = { _ in }) {
         self._value = value
         self.bounds = bounds
         self.step = max(step, 0)
         self.tint = tint
+        self.accessibilityLabel = accessibilityLabel
         self.onEditingChanged = onEditingChanged
     }
 
@@ -36,6 +38,14 @@ public struct NeumorphicSlider: View {
             }.onEnded { _ in onEditingChanged(false) })
         }
         .frame(minHeight: 32)
+        .neumorphicSliderAccessibility(label: accessibilityLabel, value: String(format: "%.2f", value)) { direction in
+            let delta = step > 0 ? step : (bounds.upperBound - bounds.lowerBound) / 20
+            switch direction {
+            case .increment: value = min(bounds.upperBound, value + delta)
+            case .decrement: value = max(bounds.lowerBound, value - delta)
+            @unknown default: break
+            }
+        }
     }
 
     private var normalizedValue: CGFloat {
