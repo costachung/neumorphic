@@ -26,7 +26,7 @@ The upcoming release line requires Swift 5.7 / Xcode 14 or newer. Keep using the
 
 #### Swift Package
 ```swift
-.package(url: "https://github.com/gewill/neumorphic.git", from: "2.1.0")
+.package(url: "https://github.com/gewill/neumorphic.git", from: "2.2.0")
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ import Neumorphic
 
 ### Controls
 
-In addition to button and toggle styles, Neumorphic 2.1 provides:
+In addition to button and toggle styles, Neumorphic 2.2 provides:
 
 - Input: `NeumorphicSlider`, `NeumorphicTextField`, `NeumorphicStepper`, and `NeumorphicDatePicker`.
 - Selection: `NeumorphicPicker`, `NeumorphicCheckbox`, `NeumorphicRadio`, and `NeumorphicMenu`.

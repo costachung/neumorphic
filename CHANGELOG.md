@@ -1,10 +1,10 @@
 # Changelog
 
-## Unreleased
+## 2.2.0 - 2026-08-09
 
 ### Breaking
 
-- The minimum Swift tools version is now 5.7 (from 5.3). Xcode 13 and earlier must remain on the 2.1.x release line; publish this change as the next minor release.
+- The minimum Swift tools version is now 5.7 (from 5.3). Xcode 13 and earlier must remain on the 2.1.x release line.
 
 ### Changed
 
