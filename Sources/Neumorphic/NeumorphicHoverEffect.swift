@@ -22,17 +22,17 @@ public struct NeumorphicHoverEffect<S: Shape>: ViewModifier {
     }
 
     public func body(content: Content) -> some View {
-#if os(macOS)
-        content
-            .onHover { hovering in isHovered = hovering }
-            .overlay(
-                shape
-                    .stroke(isHovered ? color : .clear, lineWidth: lineWidth)
-                    .animation(reduceMotion ? nil : .easeInOut(duration: 0.15), value: isHovered)
-            )
-#else
-        content
-#endif
+        #if os(macOS)
+            content
+                .onHover { hovering in isHovered = hovering }
+                .overlay(
+                    shape
+                        .stroke(isHovered ? color : .clear, lineWidth: lineWidth)
+                        .animation(reduceMotion ? nil : .easeInOut(duration: 0.15), value: isHovered)
+                )
+        #else
+            content
+        #endif
     }
 }
 

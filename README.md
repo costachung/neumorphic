@@ -2,7 +2,7 @@
 
 [![Swift Package Index](https://img.shields.io/endpoint?url=https://swiftpackageindex.com/api/packages/gewill/neumorphic/badge?type=swift-versions)](https://swiftpackageindex.com/gewill/neumorphic) [![Platforms](https://img.shields.io/endpoint?url=https://swiftpackageindex.com/api/packages/gewill/neumorphic/badge?type=platforms)](https://swiftpackageindex.com/gewill/neumorphic) [![License](https://img.shields.io/github/license/gewill/neumorphic)](https://github.com/gewill/neumorphic/blob/master/LICENSE)
 
-Neumorphic is a SwiftUI utility to build Neumorphism Soft UI easily using custom view modifier and custom button style. It supports all shapes. 
+Neumorphic is a SwiftUI component library for building soft, accessible interfaces with reusable controls, view modifiers, button styles, and toggle styles.
 
 Hi, I’m Costa. It is simple to create outer shadow in SwiftUI by writing two lines of code. However, we can’t easily create inner shadow in SwiftUI. That’s the reason why I build this tool to make it simple and reusable.
 
@@ -11,8 +11,12 @@ Hi, I’m Costa. It is simple to create outer shadow in SwiftUI by writing two l
 
 ## Installation
 Requirements
+
+- Swift 5.7+ (Xcode 14+)
 - iOS 13.0+
 - macOS 10.15+
+
+The upcoming release line requires Swift 5.7 / Xcode 14 or newer. Keep using the 2.1.x release line with Xcode 13 or earlier.
 
 #### Swift Package Manager 
 1. In Xcode, open your project and navigate to File → Swift Packages → Add Package Dependency.
@@ -22,7 +26,7 @@ Requirements
 
 #### Swift Package
 ```swift
-.package(url: "https://github.com/gewill/neumorphic.git", .upToNextMajor(from: "2.0.7"))
+.package(url: "https://github.com/gewill/neumorphic.git", from: "2.1.0")
 ```
 
 ## Usage
@@ -31,6 +35,26 @@ Import Neumorphic package to your view.
 ```swift
 import Neumorphic
 ```
+
+### Controls
+
+In addition to button and toggle styles, Neumorphic 2.1 provides:
+
+- Input: `NeumorphicSlider`, `NeumorphicTextField`, `NeumorphicStepper`, and `NeumorphicDatePicker`.
+- Selection: `NeumorphicPicker`, `NeumorphicCheckbox`, `NeumorphicRadio`, and `NeumorphicMenu`.
+- Status and layout: `NeumorphicProgressView`, `NeumorphicCircularProgressView`, `NeumorphicDisclosureGroup`, and `neumorphicCard`.
+- Navigation: `NeumorphicLink`.
+
+```swift
+VStack(spacing: 20) {
+    NeumorphicSlider(value: $volume, in: 0...100, step: 1)
+    NeumorphicTextField("Name", text: $name)
+    NeumorphicProgressView(value: progress)
+    NeumorphicPicker(selection: $mode, options: ["Light", "Dark"])
+}
+```
+
+`NeumorphicMenu` and `NeumorphicLink` require iOS 14+/macOS 11+; the remaining controls support the package's base deployment targets.
 
 Simply use **.softOuterShadow** and **.softInnerShadow** methods to create outer shadow and inner shadow respectively.
 
@@ -66,7 +90,7 @@ RoundedRectangle(cornerRadius: 20).fill(Color.Neumorphic.main).softInnerShadow(R
 Button(action: {}) {
     Text("Soft Button").fontWeight(.bold)
 }
-.softButtonStyle(RoundedRectangle(cornerRadius: 20))
+.neumorphicThemedButtonStyle(RoundedRectangle(cornerRadius: 20))
 ```
 
 #### Create Soft Button with custom style
@@ -75,11 +99,22 @@ Button(action: {}) {
 HStack {
     Button(action: {}) {
         Image(systemName: "heart.fill")
-    }.softButtonStyle(Circle())
+    }
+    .neumorphicThemedButtonStyle(Circle())
 
     Button(action: {}) {
         Image(systemName: "heart.fill")
-    }.softButtonStyle(Circle(), mainColor: Color.red, textColor: Color.white, darkShadowColor: Color(rgb: 0x993333, alpha: 1), lightShadowColor:Color("redButtonLightShadow"))
+    }
+    .buttonStyle(
+        SoftDynamicButtonStyle(
+            Circle(),
+            mainColor: .red,
+            textColor: .white,
+            darkShadowColor: Color(red: 0.6, green: 0.2, blue: 0.2),
+            lightShadowColor: Color("redButtonLightShadow"),
+            pressedEffect: .hard
+        )
+    )
 }
 ```
 
@@ -131,13 +166,19 @@ ZStack(alignment: .bottom){
 
 
 ## Example Project
-Check out the __neumorphic-examples__ XCode project to see how to build neumorphic UI and buttons. If you use the default shadow colors of Neumorphic, you can also get dark mode support for free.
+Open the file-synchronized, multi-platform **neumorphic-examples** Xcode project to explore every control on iOS and macOS, including theme and accessibility previews.
 
 
-## Soft Button Style Customization 
+## Soft Button Style Customization
 ```swift
-softButtonStyle<S : Shape>(_ content: S, padding: CGFloat, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color, pressedEffect: SoftButtonPressedEffect)
+neumorphicThemedButtonStyle<S: Shape>(
+    _ shape: S,
+    padding: CGFloat,
+    pressedEffect: SoftButtonPressedEffect
+)
 ```
+
+Use `SoftDynamicButtonStyle` directly when a button needs colors that differ from the current `NeumorphicTheme`.
 
 ## Soft Button - Pressed Effects
 
@@ -148,15 +189,15 @@ softButtonStyle<S : Shape>(_ content: S, padding: CGFloat, mainColor: Color, tex
                         Spacer()
                         Button(action: {}) {
                             Text(".none").fontWeight(.bold)
-                        }.softButtonStyle(Capsule(), pressedEffect: .none)
+                        }.neumorphicThemedButtonStyle(Capsule(), pressedEffect: .none)
                         Spacer()
                         Button(action: {}) {
                             Text(".flat").fontWeight(.bold)
-                        }.softButtonStyle(Capsule(), pressedEffect: .flat)
+                        }.neumorphicThemedButtonStyle(Capsule(), pressedEffect: .flat)
                         Spacer()
                         Button(action: {}) {
                             Text(".hard").fontWeight(.bold)
-                        }.softButtonStyle(Capsule(), pressedEffect: .hard)
+                        }.neumorphicThemedButtonStyle(Capsule(), pressedEffect: .hard)
                         Spacer()
                     }
 ```
@@ -168,7 +209,7 @@ softButtonStyle<S : Shape>(_ content: S, padding: CGFloat, mainColor: Color, tex
 
 ```swift
 Toggle("Toggle", isOn: $toggleIsOn)
-  .softSwitchToggleStyle(tint: .green, labelsHidden: true)
+  .toggleStyle(NeumorphicSwitchToggleStyle(tint: .green, labelsHidden: true))
 ```
 
 For the standalone toggle style, use the unambiguous SwiftUI-compatible entry point:
@@ -193,25 +234,35 @@ For example, Play and Stop Button
                 .font(.title)
         }
     })
-    .softToggleStyle(Circle(), padding: 20)
+    .neumorphicThemedToggleStyle(Circle(), padding: 20)
 ```
 
-## Auto, Light, and Dark Mode for iOS and MacOS
+## Themes, Light Mode, and Dark Mode
 
-#### Default Neumorphic Colors
-Access default neumorphic colors using Color.Neumorphic, for example,
+Default `Color.Neumorphic` colors adapt to light and dark mode automatically. Use an environment theme for a custom palette or the included high-contrast preset. Built-in controls read this theme; buttons and toggles expose explicit themed style modifiers.
+
 ```swift
-Color.Neumorphic.main
- ```
+VStack {
+    NeumorphicTextField("Name", text: $name)
+    Button("Save") { }
+        .neumorphicThemedButtonStyle(RoundedRectangle(cornerRadius: 12))
+}
+.neumorphicTheme(.highContrast)
+```
 
-#### Auto ColorScheme
-- Color.Neumorphic supports light and dark mode on both iOS and MacOS automatically by default.
+Use `NeumorphicShadowPreset.standard`, `.subtle`, or `.none` to balance visual depth and rendering cost:
 
-#### Set the color scheme manually
-- When you use default neumorphic colors and you want to set the color scheme manually, you can do it by setting Color.Neumorphic.colorSchemeType to the type you want. For example, to force the color scheme in dark mode, use:
 ```swift
-Color.Neumorphic.colorSchemeType = .dark
- ```
+RoundedRectangle(cornerRadius: 16)
+    .fill(Color.Neumorphic.main)
+    .softOuterShadow(.subtle)
+```
+
+`NeumorphicKit.colorSchemeType` remains available for source compatibility when an app must override the legacy global color resolution. Prefer SwiftUI's `preferredColorScheme(_:)` and `.neumorphicTheme(_:)` for new code.
+
+## Accessibility
+
+Custom controls provide VoiceOver labels, values, traits, and adjustable actions on the full supported deployment range. Interactive targets are at least 44 points, selection uses symbols as well as color, and animated controls respect Reduce Motion. Keep labels specific by passing `accessibilityLabel` to sliders and progress indicators, and test with VoiceOver, Larger Text, Increase Contrast, Reduce Motion, and a hardware keyboard on macOS.
 
 
 ## Contacts

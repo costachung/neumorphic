@@ -4,21 +4,21 @@ Build soft, neumorphic interfaces with SwiftUI view modifiers, button styles, an
 
 ## Accessibility
 
-Custom controls expose VoiceOver labels and values where supported by the deployment target. `NeumorphicSlider` supports adjustable actions, `NeumorphicProgressView` reports its percentage or loading state, and selection controls report their selected state. Keep labels specific by providing `accessibilityLabel` for sliders and progress indicators, and test with VoiceOver, Larger Text, Increase Contrast, Reduce Motion, and a hardware keyboard on macOS.
+Custom controls expose VoiceOver labels and values across the supported deployment range. `NeumorphicSlider` supports adjustable actions, progress indicators report a clamped percentage or loading state, and selection controls report their selected state. Keep labels specific by providing `accessibilityLabel` for sliders and progress indicators, and test with VoiceOver, Larger Text, Increase Contrast, Reduce Motion, and a hardware keyboard on macOS.
 
-All interactive targets use a minimum 44-point hit area. Visual states also include text or symbols so selection is not communicated by color alone. On iOS 14+/macOS 11+, the semantic modifiers provide labels, values, and adjustable actions; the package keeps its iOS 13/macOS 10.15 deployment compatibility.
+All interactive targets use a minimum 44-point hit area. Visual states also include text or symbols so selection is not communicated by color alone, and indeterminate progress animations respect Reduce Motion.
 
 `NeumorphicMenu` and `NeumorphicLink` follow SwiftUI availability and require iOS 14+/macOS 11+; the other controls remain available on the package's base deployment targets.
 
 ## Overview
 
-The package supports iOS 13.0 and later and macOS 10.15 and later. Use the default colors in ``Color/Neumorphic`` to get light and dark appearance support, or provide custom colors to the styles and modifiers.
+The package supports iOS 13.0 and later and macOS 10.15 and later. Use the default `Color.Neumorphic` colors to get light and dark appearance support, or provide an environment `NeumorphicTheme`; built-in controls inherit that theme.
 
 ```swift
 import Neumorphic
 
 Button("Save") { }
-    .softButtonStyle(RoundedRectangle(cornerRadius: 12))
+    .neumorphicThemedButtonStyle(RoundedRectangle(cornerRadius: 12))
 
 Toggle("Enabled", isOn: $isEnabled)
     .toggleStyle(.neumorphicSwitch)
@@ -65,14 +65,16 @@ NeumorphicCircularProgressView(value: 0.65)
 - ``NeumorphicStepper``
 - ``NeumorphicCheckbox``
 - ``NeumorphicRadio``
-- ``View/neumorphicCard(_:padding:preset:)``
 - ``NeumorphicDatePicker``
 - ``NeumorphicMenu``
 - ``NeumorphicDisclosureGroup``
 - ``NeumorphicLink``
 - ``NeumorphicCircularProgressView``
 
+### View Modifiers
+
+The package provides `softOuterShadow`, `softInnerShadow`, and `neumorphicCard`, plus `neumorphicTheme` and themed button, toggle, and switch styles. Focus, hover, and switch behavior are available through `neumorphicFocusRing`, `neumorphicHover`, and `switchToggleStyle`.
+
 ### Appearance
 
-- ``Color/Neumorphic``
 - ``NeumorphicKit``

@@ -10,42 +10,6 @@
       <FileRef
          location = "group:neumorphic-examples.xcodeproj">
       </FileRef>
-      <Group
-         location = "group:ios-example"
-         name = "ios-example">
-         <FileRef
-            location = "group:SoftToggleDemoView.swift">
-         </FileRef>
-         <FileRef
-            location = "group:SoftSwitchToggleDemoView.swift">
-         </FileRef>
-         <FileRef
-            location = "group:Assets.xcassets">
-         </FileRef>
-         <Group
-            location = "group:Preview Content"
-            name = "Preview Content">
-            <FileRef
-               location = "group:Preview Assets.xcassets">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:Base.lproj"
-            name = "Base.lproj">
-            <FileRef
-               location = "group:LaunchScreen.storyboard">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:SoftButtonDemoView.swift">
-         </FileRef>
-         <FileRef
-            location = "group:ContentView.swift">
-         </FileRef>
-         <FileRef
-            location = "group:Info.plist">
-         </FileRef>
-      </Group>
    </Group>
    <FileRef
       location = "group:Package.swift">

@@ -57,17 +57,27 @@ public struct NeumorphicSwitchToggleStyle: ToggleStyle {
                 ZStack {
                     Capsule()
                         .fill(mainColor)
-                        .softOuterShadow()
+                        .softOuterShadow(
+                            darkShadow: darkShadowColor,
+                            lightShadow: lightShadowColor
+                        )
                         .frame(width: 75 * ratio, height: 45 * ratio)
 
                     Capsule()
                         .fill(configuration.isOn ? tintColor : offTintColor)
-                        .softInnerShadow(Capsule(), darkShadow: configuration.isOn ? tintColor : darkShadowColor, lightShadow: configuration.isOn ? tintColor : lightShadowColor, spread: 0.35, radius: 3 * ratio)
+                        .softInnerShadow(
+                            Capsule(), darkShadow: configuration.isOn ? tintColor : darkShadowColor,
+                            lightShadow: configuration.isOn ? tintColor : lightShadowColor, spread: 0.35,
+                            radius: 3 * ratio
+                        )
                         .frame(width: 70 * ratio, height: 40 * ratio)
 
                     Circle()
                         .fill(mainColor)
-                        .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 2 * ratio, radius: 1 * ratio)
+                        .softOuterShadow(
+                            darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 2 * ratio,
+                            radius: 1 * ratio
+                        )
                         .frame(width: 30 * ratio, height: 30 * ratio)
                         .offset(x: configuration.isOn ? 15 * ratio : -15 * ratio)
                         .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: configuration.isOn)
@@ -83,20 +93,22 @@ public struct NeumorphicSwitchToggleStyle: ToggleStyle {
 }
 
 private extension View {
-    @ViewBuilder
     func stateAccessibilityValue(_ isOn: Bool) -> some View {
-        if #available(macOS 11.0, iOS 14.0, *) {
-            accessibilityValue(isOn ? "On" : "Off")
-        } else {
-            self
-        }
+        accessibility(value: Text(LocalizedStringKey(isOn ? "On" : "Off")))
     }
 }
 
 public extension View {
     /// Applies the Neumorphic switch toggle style.
-    func switchToggleStyle(tint: Color = .green, offTint: Color = Color.Neumorphic.main, mainColor: Color = Color.Neumorphic.main, darkShadowColor: Color = Color.Neumorphic.darkShadow, lightShadowColor: Color = Color.Neumorphic.lightShadow, labelsHidden: Bool = false, height: CGFloat = 30) -> some View {
-        toggleStyle(NeumorphicSwitchToggleStyle(tint: tint, offTint: offTint, mainColor: mainColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, labelsHidden: labelsHidden, height: height))
+    func switchToggleStyle(
+        tint: Color = .green, offTint: Color = Color.Neumorphic.main, mainColor: Color = Color.Neumorphic.main,
+        darkShadowColor: Color = Color.Neumorphic.darkShadow, lightShadowColor: Color = Color.Neumorphic.lightShadow,
+        labelsHidden: Bool = false, height: CGFloat = 30
+    ) -> some View {
+        toggleStyle(
+            NeumorphicSwitchToggleStyle(
+                tint: tint, offTint: offTint, mainColor: mainColor, darkShadowColor: darkShadowColor,
+                lightShadowColor: lightShadowColor, labelsHidden: labelsHidden, height: height))
     }
 }
 
@@ -114,9 +126,17 @@ struct SwitchToggleStyleBox: View {
             Toggle("isEnabled", isOn: $isEnabled)
                 .switchToggleStyle(tint: .accentColor, height: 20)
             Toggle("isEnabled", isOn: $isEnabled)
-                .toggleStyle(SoftSwitchToggleStyle(tintColor: .accentColor, offTintColor: Color.Neumorphic.main, mainColor: Color.Neumorphic.main, darkShadowColor: Color.Neumorphic.darkShadow, lightShadowColor: Color.Neumorphic.lightShadow, hideLabel: false))
+                .toggleStyle(
+                    SoftSwitchToggleStyle(
+                        tintColor: .accentColor, offTintColor: Color.Neumorphic.main, mainColor: Color.Neumorphic.main,
+                        darkShadowColor: Color.Neumorphic.darkShadow, lightShadowColor: Color.Neumorphic.lightShadow,
+                        hideLabel: false))
             Toggle("isEnabled", isOn: $isEnabled)
-                .toggleStyle(SoftDynamicToggleStyle(RoundedRectangle(cornerRadius: 10, style: .continuous), mainColor: Color.Neumorphic.main, textColor: Color.Neumorphic.secondary, darkShadowColor: Color.Neumorphic.darkShadow, lightShadowColor: Color.Neumorphic.lightShadow, pressedEffect: .hard, padding: 10))
+                .toggleStyle(
+                    SoftDynamicToggleStyle(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous), mainColor: Color.Neumorphic.main,
+                        textColor: Color.Neumorphic.secondary, darkShadowColor: Color.Neumorphic.darkShadow,
+                        lightShadowColor: Color.Neumorphic.lightShadow, pressedEffect: .hard, padding: 10))
         }
         .padding()
         .background(Color.Neumorphic.main)

@@ -12,7 +12,10 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
     var size: CGSize
 
     /// Creates a fixed-size soft button style.
-    public init(_ shape: S, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color, pressedEffect: SoftButtonPressedEffect, padding: CGFloat = 16, size: CGSize) {
+    public init(
+        _ shape: S, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color,
+        pressedEffect: SoftButtonPressedEffect, padding: CGFloat = 16, size: CGSize
+    ) {
         self.shape = shape
         self.mainColor = mainColor
         self.textColor = textColor
@@ -25,7 +28,10 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
 
     /// Builds the fixed-size button content for the current state.
     public func makeBody(configuration: Self.Configuration) -> some View {
-        SoftDynamicButton(configuration: configuration, shape: shape, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect: pressedEffect, padding: padding, size: size)
+        SoftDynamicButton(
+            configuration: configuration, shape: shape, mainColor: mainColor, textColor: textColor,
+            darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect: pressedEffect,
+            padding: padding, size: size)
     }
 
     struct SoftDynamicButton: View {
@@ -41,13 +47,14 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
         var size: CGSize
 
         @Environment(\.isEnabled) private var isEnabled: Bool
+        @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
         var body: some View {
             configuration.label
-                .foregroundColor(isEnabled ? textColor : darkShadowColor)
+                .foregroundColor(isEnabled ? textColor : textColor.opacity(0.55))
                 .frame(width: size.width, height: size.height)
                 .padding(padding)
-                .scaleEffect(configuration.isPressed ? 0.97 : 1)
+                .scaleEffect(configuration.isPressed && !reduceMotion ? 0.97 : 1)
                 .background(
                     ZStack {
                         if isEnabled {
@@ -57,11 +64,16 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
                                 shape.fill(mainColor)
                             } else if pressedEffect == .hard {
                                 shape.fill(mainColor)
-                                    .softInnerShadow(shape, darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.15, radius: 3)
+                                    .softInnerShadow(
+                                        shape, darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.15,
+                                        radius: 3
+                                    )
                                     .opacity(configuration.isPressed ? 1 : 0)
                             }
                             shape.fill(mainColor)
-                                .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 6, radius: 3)
+                                .softOuterShadow(
+                                    darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 6, radius: 3
+                                )
                                 .opacity(pressedEffect == .none ? 1 : (configuration.isPressed ? 0 : 1))
                         } else {
                             shape.stroke(darkShadowColor, lineWidth: 1)
@@ -77,17 +89,29 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
 
 public extension View {
     /// Applies a soft button style with an explicit visual size.
-    func fixedSizeSoftButtonStyle<S: Shape>(_ content: S = Circle(), mainColor: Color = Color.Neumorphic.main, textColor: Color = Color.Neumorphic.secondary, darkShadowColor: Color = Color.Neumorphic.darkShadow, lightShadowColor: Color = Color.Neumorphic.lightShadow, pressedEffect: SoftButtonPressedEffect = .hard, size: CGSize = .init(width: 30, height: 30)) -> some View {
-        buttonStyle(FixedSizeSoftDynamicButtonStyle(content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect: pressedEffect, padding: 0, size: size))
+    func fixedSizeSoftButtonStyle<S: Shape>(
+        _ content: S = Circle(), mainColor: Color = Color.Neumorphic.main,
+        textColor: Color = Color.Neumorphic.secondary, darkShadowColor: Color = Color.Neumorphic.darkShadow,
+        lightShadowColor: Color = Color.Neumorphic.lightShadow, pressedEffect: SoftButtonPressedEffect = .hard,
+        size: CGSize = .init(width: 30, height: 30)
+    ) -> some View {
+        buttonStyle(
+            FixedSizeSoftDynamicButtonStyle(
+                content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor,
+                lightShadowColor: lightShadowColor, pressedEffect: pressedEffect, padding: 0, size: size))
     }
 }
 
 struct ButtonStyles_Previews: PreviewProvider {
     static var previews: some View {
-        Button {} label: {
+        Button {
+        } label: {
             Text("Close")
         }
-        .fixedSizeSoftButtonStyle(RoundedRectangle(cornerRadius: 12), mainColor: Color.accentColor, textColor: Color.Neumorphic.main, size: .init(width: 60, height: 60))
+        .fixedSizeSoftButtonStyle(
+            RoundedRectangle(cornerRadius: 12), mainColor: Color.accentColor, textColor: Color.Neumorphic.main,
+            size: .init(width: 60, height: 60)
+        )
         .padding()
     }
 }

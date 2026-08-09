@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version: 5.7
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -12,7 +12,7 @@ let package = Package(
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "Neumorphic",
-            targets: ["Neumorphic"]),
+            targets: ["Neumorphic"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,8 +23,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "Neumorphic",
-            dependencies: [],
-            exclude: ["Neumorphic.docc"]),
+            dependencies: []),
         .testTarget(
             name: "NeumorphicTests",
             dependencies: ["Neumorphic"]),

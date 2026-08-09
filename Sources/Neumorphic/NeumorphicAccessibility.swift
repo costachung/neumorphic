@@ -1,47 +1,47 @@
 import SwiftUI
 
 extension View {
-    @ViewBuilder
-    func neumorphicSliderAccessibility(label: String, value: String, adjust: @escaping (AccessibilityAdjustmentDirection) -> Void) -> some View {
-        #if os(iOS)
-        if #available(iOS 14.0, *) {
-            self.accessibilityElement().accessibilityLabel(Text(label)).accessibilityValue(Text(value)).accessibilityAdjustableAction(adjust)
-        } else { self }
-        #elseif os(macOS)
-        if #available(macOS 11.0, *) {
-            self.accessibilityElement().accessibilityLabel(Text(label)).accessibilityValue(Text(value)).accessibilityAdjustableAction(adjust)
-        } else { self }
-        #endif
+    func neumorphicSliderAccessibility(
+        label: Text, value: String, adjust: @escaping (AccessibilityAdjustmentDirection) -> Void
+    ) -> some View {
+        accessibilityElement(children: .ignore)
+            .accessibility(label: label)
+            .accessibility(value: Text(verbatim: value))
+            .accessibilityAdjustableAction(adjust)
     }
 
-    @ViewBuilder
-    func neumorphicProgressAccessibility(label: String, value: String) -> some View {
-        #if os(iOS)
-        if #available(iOS 14.0, *) { self.accessibilityElement().accessibilityLabel(Text(label)).accessibilityValue(Text(value)) } else { self }
-        #elseif os(macOS)
-        if #available(macOS 11.0, *) { self.accessibilityElement().accessibilityLabel(Text(label)).accessibilityValue(Text(value)) } else { self }
-        #endif
+    func neumorphicProgressAccessibility(label: Text, value: Text) -> some View {
+        accessibilityElement(children: .ignore)
+            .accessibility(label: label)
+            .accessibility(value: value)
     }
 
-    @ViewBuilder
     func neumorphicSelectionAccessibility(label: String, selected: Bool) -> some View {
-        #if os(iOS)
-        if #available(iOS 14.0, *) { self.accessibilityLabel(Text(label)).accessibilityValue(Text(selected ? "Selected" : "Not selected")) } else { self }
-        #elseif os(macOS)
-        if #available(macOS 11.0, *) { self.accessibilityLabel(Text(label)).accessibilityValue(Text(selected ? "Selected" : "Not selected")) } else { self }
-        #endif
+        accessibility(label: Text(verbatim: label))
+            .accessibility(
+                value: Text(LocalizedStringKey(selected ? "Selected" : "Not selected"))
+            )
     }
 
     @ViewBuilder
     func neumorphicButtonAccessibility(label: String, hint: String? = nil) -> some View {
-        #if os(iOS)
-        if #available(iOS 14.0, *) {
-            if let hint { self.accessibilityLabel(Text(label)).accessibilityHint(Text(hint)) } else { self.accessibilityLabel(Text(label)) }
-        } else { self }
-        #elseif os(macOS)
-        if #available(macOS 11.0, *) {
-            if let hint { self.accessibilityLabel(Text(label)).accessibilityHint(Text(hint)) } else { self.accessibilityLabel(Text(label)) }
-        } else { self }
-        #endif
+        if let hint = hint {
+            neumorphicButtonAccessibility(
+                label: Text(verbatim: label),
+                hint: Text(LocalizedStringKey(hint))
+            )
+        } else {
+            neumorphicButtonAccessibility(label: Text(verbatim: label))
+        }
+    }
+
+    @ViewBuilder
+    func neumorphicButtonAccessibility(label: Text, hint: Text? = nil) -> some View {
+        if let hint = hint {
+            accessibility(label: label)
+                .accessibility(hint: hint)
+        } else {
+            accessibility(label: label)
+        }
     }
 }

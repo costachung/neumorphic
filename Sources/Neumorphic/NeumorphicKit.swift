@@ -39,50 +39,53 @@ public struct NeumorphicKit {
 
     private static let colorSchemeStorage = ColorSchemeStorage()
 
-    /// The appearance used when resolving ``Color/Neumorphic`` colors.
+    /// The appearance used when resolving `Color.Neumorphic` colors.
     public static var colorSchemeType: ColorSchemeType {
         get { colorSchemeStorage.get() }
         set { colorSchemeStorage.set(newValue) }
     }
 
     #if os(macOS)
-    /// The native color type used by macOS.
-    public typealias ColorType = NSColor
-    /// Creates a native platform color from normalized RGB components.
-    public static func colorType(red: CGFloat, green: CGFloat, blue: CGFloat) -> ColorType {
-        .init(red: red, green: green, blue: blue, alpha: 1.0)
-    }
+        /// The native color type used by macOS.
+        public typealias ColorType = NSColor
+        /// Creates a native platform color from normalized RGB components.
+        public static func colorType(red: CGFloat, green: CGFloat, blue: CGFloat) -> ColorType {
+            .init(red: red, green: green, blue: blue, alpha: 1.0)
+        }
     #else
-    /// The native color type used by iOS.
-    public typealias ColorType = UIColor
-    /// Creates a native platform color from normalized RGB components.
-    public static func colorType(red: CGFloat, green: CGFloat, blue: CGFloat) -> ColorType {
-        .init(red: red, green: green, blue: blue, alpha: 1.0)
-    }
+        /// The native color type used by iOS.
+        public typealias ColorType = UIColor
+        /// Creates a native platform color from normalized RGB components.
+        public static func colorType(red: CGFloat, green: CGFloat, blue: CGFloat) -> ColorType {
+            .init(red: red, green: green, blue: blue, alpha: 1.0)
+        }
     #endif
 
     /// Creates a dynamic SwiftUI color from light and dark platform colors.
     public static func color(light: ColorType, dark: ColorType) -> Color {
         #if os(iOS)
-        switch NeumorphicKit.colorSchemeType {
-        case .light:
-            return Color(light)
-        case .dark:
-            return Color(dark)
-        case .auto:
-            return Color(.init { $0.userInterfaceStyle == .light ? light : dark })
-        }
+            switch NeumorphicKit.colorSchemeType {
+            case .light:
+                return Color(light)
+            case .dark:
+                return Color(dark)
+            case .auto:
+                return Color(.init { $0.userInterfaceStyle == .light ? light : dark })
+            }
         #else
-        switch NeumorphicKit.colorSchemeType {
-        case .light:
-            return Color(light)
-        case .dark:
-            return Color(dark)
-        case .auto:
-            return Color(.init(name: nil, dynamicProvider: { (appearance) -> NSColor in
-                return appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? dark : light
-            }))
-        }
+            switch NeumorphicKit.colorSchemeType {
+            case .light:
+                return Color(light)
+            case .dark:
+                return Color(dark)
+            case .auto:
+                return Color(
+                    .init(
+                        name: nil,
+                        dynamicProvider: { (appearance) -> NSColor in
+                            return appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? dark : light
+                        }))
+            }
         #endif
     }
 

@@ -1,5 +1,6 @@
-import XCTest
 import SwiftUI
+import XCTest
+
 @testable import Neumorphic
 
 final class NeumorphicTests: XCTestCase {
@@ -41,7 +42,7 @@ final class NeumorphicTests: XCTestCase {
         let button = Group {
             Button("Save", action: {})
         }
-            .softButtonStyle(Capsule())
+        .softButtonStyle(Capsule())
 
         _ = toggle
         _ = button
@@ -95,7 +96,8 @@ final class NeumorphicTests: XCTestCase {
     }
 
     func testShadowPresetsNormalizeParameters() {
-        let preset = NeumorphicShadowPreset(darkShadowColor: .black, lightShadowColor: .white, offset: -1, radius: -2, spread: 2)
+        let preset = NeumorphicShadowPreset(
+            darkShadowColor: .black, lightShadowColor: .white, offset: -1, radius: -2, spread: 2)
         XCTAssertEqual(preset.offset, 0)
         XCTAssertEqual(preset.radius, 0)
         XCTAssertEqual(preset.spread, 1)
@@ -143,6 +145,71 @@ final class NeumorphicTests: XCTestCase {
         XCTAssertFalse(String(describing: type(of: circular)).isEmpty)
     }
 
+    func testSliderStepIsAnchoredToLowerBound() {
+        let bounds = 5.0...10.0
+
+        XCTAssertEqual(NeumorphicSliderMath.value(at: 0, in: bounds, step: 2), 5)
+        XCTAssertEqual(NeumorphicSliderMath.value(at: 0.4, in: bounds, step: 2), 7)
+        XCTAssertEqual(NeumorphicSliderMath.value(at: 0.6, in: bounds, step: 2), 9)
+        XCTAssertEqual(NeumorphicSliderMath.value(at: 1, in: bounds, step: 2), 10)
+    }
+
+    func testSliderAccessibilityAdjustmentKeepsStepSequence() {
+        let bounds = 5.0...10.0
+
+        XCTAssertEqual(
+            NeumorphicSliderMath.adjustedValue(5, in: bounds, step: 2, incrementing: true),
+            7
+        )
+        XCTAssertEqual(
+            NeumorphicSliderMath.adjustedValue(6, in: bounds, step: 2, incrementing: true),
+            7
+        )
+        XCTAssertEqual(
+            NeumorphicSliderMath.adjustedValue(10, in: bounds, step: 2, incrementing: false),
+            9
+        )
+        XCTAssertEqual(
+            NeumorphicSliderMath.adjustedValue(9, in: bounds, step: 2, incrementing: true),
+            10
+        )
+    }
+
+    func testSliderEditingSessionOnlyReportsTransitions() {
+        var session = NeumorphicSliderEditingSession()
+
+        XCTAssertTrue(session.begin())
+        XCTAssertFalse(session.begin())
+        XCTAssertTrue(session.end())
+        XCTAssertFalse(session.end())
+    }
+
+    func testSliderDragMappingCompensatesThumbWidth() {
+        XCTAssertEqual(NeumorphicSliderMath.fraction(at: 14, width: 100), 0)
+        XCTAssertEqual(NeumorphicSliderMath.fraction(at: 50, width: 100), 0.5, accuracy: 0.001)
+        XCTAssertEqual(NeumorphicSliderMath.fraction(at: 86, width: 100), 1)
+    }
+
+    func testSliderMathRejectsNonFiniteValues() {
+        let bounds = 5.0...10.0
+
+        XCTAssertEqual(NeumorphicSliderMath.value(at: .nan, in: bounds, step: 1), 5)
+        XCTAssertEqual(
+            NeumorphicSliderMath.adjustedValue(.nan, in: bounds, step: 1, incrementing: true),
+            5
+        )
+        XCTAssertTrue(NeumorphicSliderMath.percentString(0.65).contains("65"))
+    }
+
+    func testProgressFractionClampsVisualAndAccessibilityValue() {
+        XCTAssertEqual(NeumorphicProgressMath.normalizedFraction(value: -1, total: 10), 0)
+        XCTAssertEqual(NeumorphicProgressMath.normalizedFraction(value: 5, total: 10), 0.5)
+        XCTAssertEqual(NeumorphicProgressMath.normalizedFraction(value: 20, total: 10), 1)
+        XCTAssertEqual(NeumorphicProgressMath.normalizedFraction(value: 5, total: 0), 0)
+        XCTAssertEqual(NeumorphicProgressMath.normalizedFraction(value: .infinity, total: 10), 0)
+        XCTAssertNil(NeumorphicProgressMath.normalizedFraction(value: nil, total: 10))
+    }
+
     private func isColorScheme(
         _ lhs: NeumorphicKit.ColorSchemeType,
         equalTo rhs: NeumorphicKit.ColorSchemeType
@@ -154,18 +221,4 @@ final class NeumorphicTests: XCTestCase {
             false
         }
     }
-
-    static var allTests = [
-        ("testColorSchemeTypeRoundTrips", testColorSchemeTypeRoundTrips),
-        ("testNeumorphicColorsCanBeResolvedForEveryColorScheme", testNeumorphicColorsCanBeResolvedForEveryColorScheme),
-        ("testPublicStyleEntryPointsCompile", testPublicStyleEntryPointsCompile),
-        ("testStyleParametersNormalizeNegativeGeometry", testStyleParametersNormalizeNegativeGeometry),
-        ("testFocusRingEntryPointCompiles", testFocusRingEntryPointCompiles),
-        ("testThemeEntryPointsCompile", testThemeEntryPointsCompile),
-        ("testHoverEntryPointCompiles", testHoverEntryPointCompiles),
-        ("testShadowPresetsNormalizeParameters", testShadowPresetsNormalizeParameters),
-        ("testCommonControlEntryPointsCompile", testCommonControlEntryPointsCompile),
-        ("testRemainingControlEntryPointsCompile", testRemainingControlEntryPointsCompile),
-        ("testNextCommonControlEntryPointsCompile", testNextCommonControlEntryPointsCompile),
-    ]
 }
