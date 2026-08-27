@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.2.1 - 2026-08-28
+
+### Documentation
+
+- Rewrote the README around this fork's maintenance status, stating where upstream stopped (`v2.0.7`, October 2024) and what has been added since, and reorganized it to introduce the two shadow modifiers before the controls built on them.
+- Added a Getting Started article covering installation, the first surface, the controls, theming, and shadow presets.
+- Moved accessibility guidance out of the module page into its own article, separating what the package guarantees from what callers still need to do.
+- Corrected the DocC theme example, which applied `neumorphicTheme(_:)` inside the themed modifier that reads it. Environment values only travel downward, so the example's `.highContrast` palette silently had no effect.
+- Documented parameters for 27 public declarations that had only a one-line summary, covering the view modifiers that make up the primary API.
+- Documented the normalization applied to `NeumorphicSlider.step`, `NeumorphicSwitchToggleStyle.height`, and `fixedSizeSoftButtonStyle(size:)`, and surfaced the `spread` range and its effect in the public `softInnerShadow` documentation.
+- Regrouped the DocC Topics from a single Styling section into Essentials, Shadows, Theming, control, style, and focus groups, and added the previously unlisted `SoftButtonPressedEffect` and `SoftButtonStyle`.
+- Corrected four file headers naming files that no longer exist, and clarified the inline comments in `ColorExtension` and `SoftInnerShadowViewModifier`.
+
+### Tooling
+
+- Added tests for the environment theme default and override, and for `NeumorphicShadowPreset` colour resolution: `.standard` and `.subtle` follow the applied theme, while presets built with explicit colours stay fixed across themes.
+
 ## 2.2.0 - 2026-08-09
 
 ### Breaking
