@@ -74,18 +74,68 @@ final class NeumorphicTests: XCTestCase {
     }
 
     func testThemeEntryPointsCompile() {
-        let button = Button("Save", action: {})
-            .neumorphicTheme(.highContrast)
-            .neumorphicThemedButtonStyle(Capsule())
-        let toggle = Toggle("Enabled", isOn: .constant(false))
-            .neumorphicTheme(.standard)
-            .neumorphicThemedToggleStyle(Capsule())
+        // The theme must sit above the themed modifiers: environment values only
+        // travel downward, so `neumorphicTheme` goes on an ancestor, never after
+        // the modifier that reads it.
+        let button = VStack {
+            Button("Save", action: {})
+                .neumorphicThemedButtonStyle(Capsule())
+        }
+        .neumorphicTheme(.highContrast)
+        let toggle = VStack {
+            Toggle("Enabled", isOn: .constant(false))
+                .neumorphicThemedToggleStyle(Capsule())
+        }
+        .neumorphicTheme(.standard)
         let switchView = Toggle("Switch", isOn: .constant(false))
             .neumorphicThemedSwitchStyle(labelsHidden: true)
 
         XCTAssertFalse(String(describing: type(of: button)).isEmpty)
         XCTAssertFalse(String(describing: type(of: toggle)).isEmpty)
         XCTAssertFalse(String(describing: type(of: switchView)).isEmpty)
+    }
+
+    func testThemeEnvironmentDefaultsToStandardAndAcceptsOverrides() {
+        var values = EnvironmentValues()
+        XCTAssertEqual(values.neumorphicTheme.mainColor, NeumorphicTheme.standard.mainColor)
+
+        values.neumorphicTheme = .highContrast
+        XCTAssertEqual(values.neumorphicTheme.mainColor, NeumorphicTheme.highContrast.mainColor)
+        XCTAssertNotEqual(values.neumorphicTheme.mainColor, NeumorphicTheme.standard.mainColor)
+    }
+
+    func testShadowPresetFollowsThemeUnlessColorsAreExplicit() {
+        let highContrast = NeumorphicTheme.highContrast
+
+        // `.standard` and `.subtle` derive their colors from whichever theme is applied.
+        let (standardDark, standardLight) = NeumorphicShadowPreset.standard
+            .resolvedShadowColors(for: highContrast)
+        XCTAssertEqual(standardDark, highContrast.darkShadowColor.opacity(1))
+        XCTAssertEqual(standardLight, highContrast.lightShadowColor.opacity(1))
+
+        let (subtleDark, subtleLight) = NeumorphicShadowPreset.subtle
+            .resolvedShadowColors(for: highContrast)
+        XCTAssertEqual(subtleDark, highContrast.darkShadowColor.opacity(0.65))
+        XCTAssertEqual(subtleLight, highContrast.lightShadowColor.opacity(0.65))
+
+        // Swapping the theme changes the result, proving the preset tracks the theme
+        // rather than the colors it was constructed with.
+        let (standardColors, _) = NeumorphicShadowPreset.standard
+            .resolvedShadowColors(for: .standard)
+        XCTAssertNotEqual(standardDark, standardColors)
+
+        // A preset built with explicit colors keeps them under any theme, which is the
+        // behavior promised by `NeumorphicShadowPreset.init`.
+        let custom = NeumorphicShadowPreset(darkShadowColor: .red, lightShadowColor: .blue)
+        let (customUnderHighContrast, _) = custom.resolvedShadowColors(for: highContrast)
+        let (customUnderStandard, _) = custom.resolvedShadowColors(for: .standard)
+        XCTAssertEqual(customUnderHighContrast, .red)
+        XCTAssertEqual(customUnderHighContrast, customUnderStandard)
+
+        // `.none` is explicit too, so it stays transparent regardless of theme.
+        let (noneDark, noneLight) = NeumorphicShadowPreset.none.resolvedShadowColors(for: highContrast)
+        XCTAssertEqual(noneDark, .clear)
+        XCTAssertEqual(noneLight, .clear)
     }
 
     func testHoverEntryPointCompiles() {

@@ -14,6 +14,8 @@ All interactive targets use a minimum 44-point hit area. Visual states also incl
 
 The package supports iOS 13.0 and later and macOS 10.15 and later. Use the default `Color.Neumorphic` colors to get light and dark appearance support, or provide an environment `NeumorphicTheme`; built-in controls inherit that theme.
 
+Apply `neumorphicTheme(_:)` to an *ancestor* of the views that should adopt it. Environment values only travel downward, so a themed modifier applied outside the `neumorphicTheme(_:)` call reads the ambient theme instead of the one you supplied.
+
 ```swift
 import Neumorphic
 
@@ -23,9 +25,11 @@ Button("Save") { }
 Toggle("Enabled", isOn: $isEnabled)
     .toggleStyle(.neumorphicSwitch)
 
-Button("Save") { }
-    .neumorphicTheme(.highContrast)
-    .neumorphicThemedButtonStyle(Capsule())
+VStack {
+    Button("Save") { }
+        .neumorphicThemedButtonStyle(Capsule())
+}
+.neumorphicTheme(.highContrast)
 
 Text("Save")
     .neumorphicFocusRing(Capsule(), isFocused: $isFocused)

@@ -9,6 +9,13 @@ public struct NeumorphicHoverEffect<S: Shape>: ViewModifier {
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
+    /// Creates a hover outline for the supplied shape.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape the outline is stroked along.
+    ///   - isHovered: Updated by the modifier on macOS; never written on iOS.
+    ///   - color: The outline color. Defaults to the accent color.
+    ///   - lineWidth: The outline thickness in points. Clamped to a minimum of 1.
     public init(
         _ shape: S,
         isHovered: Binding<Bool>,
@@ -21,6 +28,7 @@ public struct NeumorphicHoverEffect<S: Shape>: ViewModifier {
         self.lineWidth = max(lineWidth, 1)
     }
 
+    /// Overlays the hover outline on macOS and returns the content unchanged elsewhere.
     public func body(content: Content) -> some View {
         #if os(macOS)
             content

@@ -9,6 +9,13 @@ public struct NeumorphicFocusRing<S: Shape>: ViewModifier {
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
+    /// Creates a focus ring for the supplied shape.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape the ring is stroked along.
+    ///   - isFocused: Drives ring visibility; bind it to your own focus state.
+    ///   - color: The ring color. Defaults to the accent color.
+    ///   - lineWidth: The ring thickness in points. Clamped to a minimum of 1.
     public init(
         _ shape: S,
         isFocused: Binding<Bool>,
@@ -21,6 +28,7 @@ public struct NeumorphicFocusRing<S: Shape>: ViewModifier {
         self.lineWidth = max(lineWidth, 1)
     }
 
+    /// Overlays the focus ring, animating it unless Reduce Motion is on.
     public func body(content: Content) -> some View {
         content.overlay(
             shape
