@@ -2,15 +2,9 @@
 
 Build soft, neumorphic interfaces with SwiftUI view modifiers, button styles, and toggle styles.
 
-## Accessibility
-
-Custom controls expose VoiceOver labels and values across the supported deployment range. `NeumorphicSlider` supports adjustable actions, progress indicators report a clamped percentage or loading state, and selection controls report their selected state. Keep labels specific by providing `accessibilityLabel` for sliders and progress indicators, and test with VoiceOver, Larger Text, Increase Contrast, Reduce Motion, and a hardware keyboard on macOS.
-
-All interactive targets use a minimum 44-point hit area. Visual states also include text or symbols so selection is not communicated by color alone, and indeterminate progress animations respect Reduce Motion.
-
-`NeumorphicMenu` and `NeumorphicLink` follow SwiftUI availability and require iOS 14+/macOS 11+; the other controls remain available on the package's base deployment targets.
-
 ## Overview
+
+New here? <doc:GettingStarted> walks through the first surface, the controls, and theming.
 
 The package supports iOS 13.0 and later and macOS 10.15 and later. Use the default `Color.Neumorphic` colors to get light and dark appearance support, or provide an environment `NeumorphicTheme`; built-in controls inherit that theme.
 
@@ -50,6 +44,11 @@ NeumorphicCircularProgressView(value: 0.65)
 ```
 
 ## Topics
+
+### Essentials
+
+- <doc:GettingStarted>
+- <doc:Accessibility>
 
 ### Shadows
 
