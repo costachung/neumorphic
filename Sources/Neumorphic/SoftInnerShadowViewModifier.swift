@@ -126,6 +126,14 @@ private struct SoftInnerShadowPresetViewModifier<S: Shape>: ViewModifier {
 extension View {
 
     /// Applies an inner shadow using the supplied shape and shadow parameters.
+    ///
+    /// - Parameters:
+    ///   - content: The shape the inner shadow is clipped to.
+    ///   - darkShadow: The shadow color applied toward the lower-right edge.
+    ///   - lightShadow: The highlight color applied toward the upper-left edge.
+    ///   - spread: How far an inner shadow reaches into the shape, from zero through
+    ///     one. Higher values make the shadow more intense.
+    ///   - radius: The shadow blur radius. Negative values are normalized to zero.
     public func softInnerShadow<S: Shape>(
         _ content: S, darkShadow: Color = Color.Neumorphic.darkShadow,
         lightShadow: Color = Color.Neumorphic.lightShadow, spread: CGFloat = 0.5, radius: CGFloat = 10

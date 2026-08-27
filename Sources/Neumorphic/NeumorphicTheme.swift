@@ -165,6 +165,11 @@ public extension View {
     }
 
     /// Applies a button style using the current environment theme.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - padding: The inset between the label and the surface edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
     func neumorphicThemedButtonStyle<S: Shape>(
         _ shape: S,
         padding: CGFloat = 16,
@@ -174,6 +179,11 @@ public extension View {
     }
 
     /// Applies a shape-based toggle style using the current environment theme.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - padding: The inset between the label and the surface edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
     func neumorphicThemedToggleStyle<S: Shape>(
         _ shape: S,
         padding: CGFloat = 16,
@@ -183,6 +193,11 @@ public extension View {
     }
 
     /// Applies a switch style using the current environment theme.
+    ///
+    /// - Parameters:
+    ///   - tint: The track color while the control is on.
+    ///   - labelsHidden: A Boolean value that hides the label when `true`.
+    ///   - height: The control height in points. Values below 1 are normalized to 1.
     func neumorphicThemedSwitchStyle(
         tint: Color = .green,
         labelsHidden: Bool = false,

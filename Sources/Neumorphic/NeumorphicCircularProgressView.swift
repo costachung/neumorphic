@@ -29,6 +29,13 @@ public struct NeumorphicCircularProgressView: View {
     }
 
     /// Creates a circular progress indicator with an explicit accessibility label.
+    ///
+    /// - Parameters:
+    ///   - value: The completed amount, or `nil` to display an indeterminate indicator.
+    ///   - total: The amount that represents completion. Negative values are normalized to zero.
+    ///   - tint: The color of the progress arc.
+    ///   - diameter: The indicator diameter. Values below 24 points are normalized to 24.
+    ///   - accessibilityLabel: The label VoiceOver announces for the control.
     public init(
         value: Double?, total: Double = 1, tint: Color = .accentColor, diameter: CGFloat = 52,
         accessibilityLabel: String = "Progress"

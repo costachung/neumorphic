@@ -12,6 +12,16 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
     var size: CGSize
 
     /// Creates a fixed-size soft button style.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
+    ///   - padding: The inset between the label and the surface edge.
+    ///   - size: The visual size of the surface. Negative width or height is normalized to zero.
     public init(
         _ shape: S, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color,
         pressedEffect: SoftButtonPressedEffect, padding: CGFloat = 16, size: CGSize
@@ -89,6 +99,15 @@ public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {
 
 public extension View {
     /// Applies a soft button style with an explicit visual size.
+    ///
+    /// - Parameters:
+    ///   - content: The shape of the surface.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
+    ///   - size: The visual size of the surface. Negative width or height is normalized to zero.
     func fixedSizeSoftButtonStyle<S: Shape>(
         _ content: S = Circle(), mainColor: Color = Color.Neumorphic.main,
         textColor: Color = Color.Neumorphic.secondary, darkShadowColor: Color = Color.Neumorphic.darkShadow,

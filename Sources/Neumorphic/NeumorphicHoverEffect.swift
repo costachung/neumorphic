@@ -46,6 +46,12 @@ public struct NeumorphicHoverEffect<S: Shape>: ViewModifier {
 
 public extension View {
     /// Applies a pointer-hover outline on macOS.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - isHovered: Updated by the modifier on macOS; never written on iOS.
+    ///   - color: The stroke color. Defaults to the accent color.
+    ///   - lineWidth: The stroke thickness in points. Clamped to a minimum of 1.
     func neumorphicHover<S: Shape>(
         _ shape: S,
         isHovered: Binding<Bool>,

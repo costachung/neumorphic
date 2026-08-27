@@ -3,6 +3,11 @@ import SwiftUI
 /// Applies a raised neumorphic card surface to any view.
 public extension View {
     /// Applies a card using the current theme and supplied shadow preset.
+    ///
+    /// - Parameters:
+    ///   - shape: The card shape.
+    ///   - padding: The inset between the content and the card edge.
+    ///   - preset: The shadow preset used for the card surface.
     func neumorphicCard<S: Shape>(
         _ shape: S = RoundedRectangle(cornerRadius: 16, style: .continuous),
         padding: CGFloat = 16,

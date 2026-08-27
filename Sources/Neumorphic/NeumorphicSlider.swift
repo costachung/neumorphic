@@ -15,6 +15,14 @@ public struct NeumorphicSlider: View {
     private let onEditingChanged: (Bool) -> Void
 
     /// Creates a slider bound to a value within the supplied range.
+    ///
+    /// - Parameters:
+    ///   - value: A binding to the slider value.
+    ///   - bounds: The range of representable values.
+    ///   - step: The increment between selectable values. Zero allows continuous
+    ///     adjustment, and negative values are normalized to zero.
+    ///   - tint: The color of the filled portion of the track.
+    ///   - onEditingChanged: A closure called when editing begins and ends.
     public init(
         value: Binding<Double>, in bounds: ClosedRange<Double> = 0...1, step: Double = 0, tint: Color = .accentColor,
         onEditingChanged: @escaping (Bool) -> Void = { _ in }
@@ -30,6 +38,15 @@ public struct NeumorphicSlider: View {
     }
 
     /// Creates a slider with an explicit accessibility label.
+    ///
+    /// - Parameters:
+    ///   - value: A binding to the slider value.
+    ///   - bounds: The range of representable values.
+    ///   - step: The increment between selectable values. Zero allows continuous
+    ///     adjustment, and negative values are normalized to zero.
+    ///   - tint: The color of the filled portion of the track.
+    ///   - accessibilityLabel: The label VoiceOver announces for the control.
+    ///   - onEditingChanged: A closure called when editing begins and ends.
     public init(
         value: Binding<Double>, in bounds: ClosedRange<Double> = 0...1, step: Double = 0, tint: Color = .accentColor,
         accessibilityLabel: String = "Slider", onEditingChanged: @escaping (Bool) -> Void = { _ in }

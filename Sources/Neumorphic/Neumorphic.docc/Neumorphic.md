@@ -51,34 +51,70 @@ NeumorphicCircularProgressView(value: 0.65)
 
 ## Topics
 
-### Styling
+### Shadows
+
+The two modifiers everything else is built from: `softOuterShadow(darkShadow:lightShadow:offset:radius:)` raises a
+surface, and `softInnerShadow(_:darkShadow:lightShadow:spread:radius:)` insets one. Both take a
+``NeumorphicShadowPreset`` overload when you want `.standard`, `.subtle`, or `.none` instead of hand-tuned geometry.
+
+- ``NeumorphicShadowPreset``
+
+### Theming
+
+- ``NeumorphicTheme``
+- ``NeumorphicKit``
+
+Apply a theme with `neumorphicTheme(_:)` on an ancestor view, then use the themed modifiers —
+`neumorphicThemedButtonStyle(_:padding:pressedEffect:)`, `neumorphicThemedToggleStyle(_:padding:pressedEffect:)`, and
+`neumorphicThemedSwitchStyle(tint:labelsHidden:height:)` — on the controls below it.
+
+### Input Controls
+
+- ``NeumorphicSlider``
+- ``NeumorphicTextField``
+- ``NeumorphicStepper``
+- ``NeumorphicDatePicker``
+
+### Selection Controls
+
+- ``NeumorphicPicker``
+- ``NeumorphicCheckbox``
+- ``NeumorphicRadio``
+- ``NeumorphicMenu``
+
+### Progress and Layout
+
+- ``NeumorphicProgressView``
+- ``NeumorphicCircularProgressView``
+- ``NeumorphicDisclosureGroup``
+- ``NeumorphicLink``
+
+Wrap any view in a raised card surface with `neumorphicCard(_:padding:preset:)`.
+
+### Button Styles
 
 - ``SoftDynamicButtonStyle``
 - ``FixedSizeSoftDynamicButtonStyle``
+- ``SoftButtonPressedEffect``
+- ``SoftButtonStyle``
+
+Applied through `softButtonStyle(_:padding:mainColor:textColor:darkShadowColor:lightShadowColor:pressedEffect:)` and
+`fixedSizeSoftButtonStyle(_:mainColor:textColor:darkShadowColor:lightShadowColor:pressedEffect:size:)`.
+
+### Toggle Styles
+
 - ``SoftDynamicToggleStyle``
-- ``SoftSwitchToggleStyle``
 - ``NeumorphicSwitchToggleStyle``
+- ``SoftSwitchToggleStyle``
+
+Applied through `softToggleStyle(_:padding:mainColor:textColor:darkShadowColor:lightShadowColor:pressedEffect:)` and
+`switchToggleStyle(tint:offTint:mainColor:darkShadowColor:lightShadowColor:labelsHidden:height:)`, or the
+`.neumorphicSwitch` shorthand on `toggleStyle(_:)`.
+
+### Focus and Pointer
+
 - ``NeumorphicFocusRing``
-- ``NeumorphicTheme``
-- ``NeumorphicShadowPreset``
 - ``NeumorphicHoverEffect``
-- ``NeumorphicSlider``
-- ``NeumorphicTextField``
-- ``NeumorphicProgressView``
-- ``NeumorphicPicker``
-- ``NeumorphicStepper``
-- ``NeumorphicCheckbox``
-- ``NeumorphicRadio``
-- ``NeumorphicDatePicker``
-- ``NeumorphicMenu``
-- ``NeumorphicDisclosureGroup``
-- ``NeumorphicLink``
-- ``NeumorphicCircularProgressView``
 
-### View Modifiers
-
-The package provides `softOuterShadow`, `softInnerShadow`, and `neumorphicCard`, plus `neumorphicTheme` and themed button, toggle, and switch styles. Focus, hover, and switch behavior are available through `neumorphicFocusRing`, `neumorphicHover`, and `switchToggleStyle`.
-
-### Appearance
-
-- ``NeumorphicKit``
+Applied through `neumorphicFocusRing(_:isFocused:color:lineWidth:)` and `neumorphicHover(_:isHovered:color:lineWidth:)`.
+`NeumorphicHoverEffect` is a no-op outside macOS.

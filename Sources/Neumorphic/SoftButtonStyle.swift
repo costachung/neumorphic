@@ -28,6 +28,15 @@ public struct SoftDynamicButtonStyle<S: Shape>: ButtonStyle {
     var padding: CGFloat
 
     /// Creates a dynamic soft button style.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
+    ///   - padding: The inset between the label and the surface edge.
     public init(
         _ shape: S, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color,
         pressedEffect: SoftButtonPressedEffect, padding: CGFloat = 16
@@ -113,6 +122,13 @@ public struct SoftButtonStyle<S: Shape>: ButtonStyle {
     var lightShadowColor: Color
 
     /// Creates a fixed soft button style.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
     public init(_ shape: S, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color) {
         self.shape = shape
         self.mainColor = mainColor
@@ -157,6 +173,15 @@ private struct SoftButtonPressScaleModifier: ViewModifier {
 public extension View {
 
     /// Applies a soft button style to the view.
+    ///
+    /// - Parameters:
+    ///   - content: The shape of the surface.
+    ///   - padding: The inset between the label and the surface edge.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
     func softButtonStyle<S: Shape>(
         _ content: S, padding: CGFloat = 16, mainColor: Color = Color.Neumorphic.main,
         textColor: Color = Color.Neumorphic.secondary, darkShadowColor: Color = Color.Neumorphic.darkShadow,
@@ -173,6 +198,15 @@ public extension View {
 @available(*, deprecated, message: "Use the View-based softButtonStyle modifier.")
 public extension Button {
     /// Compatibility wrapper for the original Button-only API.
+    ///
+    /// - Parameters:
+    ///   - content: The shape of the surface.
+    ///   - padding: The inset between the label and the surface edge.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
     @MainActor
     func softButtonStyle<S: Shape>(
         _ content: S, padding: CGFloat = 16, mainColor: Color = Color.Neumorphic.main,

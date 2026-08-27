@@ -45,6 +45,12 @@ private struct SoftOuterShadowPresetViewModifier: ViewModifier {
 extension View {
 
     /// Applies a soft outer shadow to the view.
+    ///
+    /// - Parameters:
+    ///   - darkShadow: The shadow color applied toward the lower-right edge.
+    ///   - lightShadow: The highlight color applied toward the upper-left edge.
+    ///   - offset: The distance an outer shadow is displaced from its surface.
+    ///   - radius: The shadow blur radius. Negative values are normalized to zero.
     public func softOuterShadow(
         darkShadow: Color = Color.Neumorphic.darkShadow, lightShadow: Color = Color.Neumorphic.lightShadow,
         offset: CGFloat = 6, radius: CGFloat = 3

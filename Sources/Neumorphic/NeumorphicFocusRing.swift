@@ -41,6 +41,12 @@ public struct NeumorphicFocusRing<S: Shape>: ViewModifier {
 
 public extension View {
     /// Applies an explicit focus ring to a control.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - isFocused: Drives ring visibility; bind it to your own focus state.
+    ///   - color: The stroke color. Defaults to the accent color.
+    ///   - lineWidth: The stroke thickness in points. Clamped to a minimum of 1.
     func neumorphicFocusRing<S: Shape>(
         _ shape: S,
         isFocused: Binding<Bool>,

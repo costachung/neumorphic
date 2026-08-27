@@ -22,6 +22,15 @@ public struct SoftDynamicToggleStyle<S: Shape>: ToggleStyle {
     var padding: CGFloat
 
     /// Creates a shape-based soft toggle style.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
+    ///   - padding: The inset between the label and the surface edge.
     public init(
         _ shape: S, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color,
         pressedEffect: SoftButtonPressedEffect, padding: CGFloat = 16
@@ -153,6 +162,15 @@ private extension View {
 
 public extension View {
     /// Applies a shape-based soft toggle style.
+    ///
+    /// - Parameters:
+    ///   - content: The shape of the surface.
+    ///   - padding: The inset between the label and the surface edge.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
     func softToggleStyle<S: Shape>(
         _ content: S, padding: CGFloat = 16, mainColor: Color = Color.Neumorphic.main,
         textColor: Color = Color.Neumorphic.secondary, darkShadowColor: Color = Color.Neumorphic.darkShadow,
@@ -165,6 +183,14 @@ public extension View {
     }
 
     /// Applies a soft switch toggle style.
+    ///
+    /// - Parameters:
+    ///   - tint: The track color while the control is on.
+    ///   - offTint: The track color while the control is off.
+    ///   - mainColor: The surface color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - labelsHidden: A Boolean value that hides the label when `true`.
     func softSwitchToggleStyle(
         tint: Color = .green, offTint: Color = Color.Neumorphic.main, mainColor: Color = Color.Neumorphic.main,
         darkShadowColor: Color = Color.Neumorphic.darkShadow, lightShadowColor: Color = Color.Neumorphic.lightShadow,
@@ -181,6 +207,15 @@ public extension View {
 @available(*, deprecated, message: "Use the View-based softToggleStyle modifier.")
 public extension Toggle {
     /// Compatibility wrapper for the original Toggle-only API.
+    ///
+    /// - Parameters:
+    ///   - content: The shape of the surface.
+    ///   - padding: The inset between the label and the surface edge.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
     @MainActor
     func softToggleStyle<S: Shape>(
         _ content: S, padding: CGFloat = 16, mainColor: Color = Color.Neumorphic.main,
@@ -194,6 +229,14 @@ public extension Toggle {
     }
 
     /// Compatibility wrapper for the original switch toggle API.
+    ///
+    /// - Parameters:
+    ///   - tint: The track color while the control is on.
+    ///   - offTint: The track color while the control is off.
+    ///   - mainColor: The surface color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - labelsHidden: A Boolean value that hides the label when `true`.
     @MainActor
     func softSwitchToggleStyle(
         tint: Color = .green, offTint: Color = Color.Neumorphic.main, mainColor: Color = Color.Neumorphic.main,

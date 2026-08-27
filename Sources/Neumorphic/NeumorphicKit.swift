@@ -49,6 +49,11 @@ public struct NeumorphicKit {
         /// The native color type used by macOS.
         public typealias ColorType = NSColor
         /// Creates a native platform color from normalized RGB components.
+        ///
+        /// - Parameters:
+        ///   - red: The red component, from zero through one.
+        ///   - green: The green component, from zero through one.
+        ///   - blue: The blue component, from zero through one.
         public static func colorType(red: CGFloat, green: CGFloat, blue: CGFloat) -> ColorType {
             .init(red: red, green: green, blue: blue, alpha: 1.0)
         }
@@ -56,6 +61,11 @@ public struct NeumorphicKit {
         /// The native color type used by iOS.
         public typealias ColorType = UIColor
         /// Creates a native platform color from normalized RGB components.
+        ///
+        /// - Parameters:
+        ///   - red: The red component, from zero through one.
+        ///   - green: The green component, from zero through one.
+        ///   - blue: The blue component, from zero through one.
         public static func colorType(red: CGFloat, green: CGFloat, blue: CGFloat) -> ColorType {
             .init(red: red, green: green, blue: blue, alpha: 1.0)
         }

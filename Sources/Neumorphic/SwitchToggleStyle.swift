@@ -24,6 +24,15 @@ public struct NeumorphicSwitchToggleStyle: ToggleStyle {
     var ratio: CGFloat { height / 45 }
 
     /// Creates a switch style with customizable colors and dimensions.
+    ///
+    /// - Parameters:
+    ///   - tint: The track color while the control is on.
+    ///   - offTint: The track color while the control is off.
+    ///   - mainColor: The switch surface color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - labelsHidden: A Boolean value that hides the label when `true`.
+    ///   - height: The control height in points. Values below 1 are normalized to 1.
     public init(
         tint: Color = .green,
         offTint: Color = Color.Neumorphic.main,
@@ -100,6 +109,15 @@ private extension View {
 
 public extension View {
     /// Applies the Neumorphic switch toggle style.
+    ///
+    /// - Parameters:
+    ///   - tint: The track color while the control is on.
+    ///   - offTint: The track color while the control is off.
+    ///   - mainColor: The switch surface color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - labelsHidden: A Boolean value that hides the label when `true`.
+    ///   - height: The control height in points. Values below 1 are normalized to 1.
     func switchToggleStyle(
         tint: Color = .green, offTint: Color = Color.Neumorphic.main, mainColor: Color = Color.Neumorphic.main,
         darkShadowColor: Color = Color.Neumorphic.darkShadow, lightShadowColor: Color = Color.Neumorphic.lightShadow,
