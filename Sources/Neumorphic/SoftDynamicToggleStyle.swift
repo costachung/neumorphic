@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  SoftDynamicToggleStyle.swift
 //
 //
 //  Created by Costa Chung on 11/12/2020.

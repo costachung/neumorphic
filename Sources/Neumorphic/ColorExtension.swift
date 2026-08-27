@@ -4,13 +4,14 @@ public extension Color {
 
     /// Default colors used by Neumorphic controls and modifiers.
     struct Neumorphic {
-        //Color
+        // Light appearance defaults.
         private static let defaultMainColor = NeumorphicKit.colorType(red: 0.925, green: 0.941, blue: 0.953)
         // Keep the default text/accent color above WCAG AA contrast on the light surface.
         private static let defaultSecondaryColor = NeumorphicKit.colorType(red: 0.350, green: 0.370, blue: 0.420)
         private static let defaultLightShadowSolidColor = NeumorphicKit.colorType(red: 1.000, green: 1.000, blue: 1.000)
         private static let defaultDarkShadowSolidColor = NeumorphicKit.colorType(red: 0.820, green: 0.851, blue: 0.902)
 
+        // Dark appearance defaults.
         private static let darkThemeMainColor = NeumorphicKit.colorType(red: 0.188, green: 0.192, blue: 0.208)
         private static let darkThemeSecondaryColor = NeumorphicKit.colorType(red: 0.910, green: 0.910, blue: 0.910)
         private static let darkThemeLightShadowSolidColor = NeumorphicKit.colorType(

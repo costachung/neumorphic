@@ -1,5 +1,5 @@
 //
-//  SoftInnerShadowModifier.swift
+//  SoftInnerShadowViewModifier.swift
 //  Created by Costa Chung on 18/3/2020.
 //  Copyright © 2020 Costa Chung. All rights reserved.
 //  Neumorphism Soft UI
@@ -11,7 +11,10 @@ private struct SoftInnerShadowViewModifier<S: Shape>: ViewModifier {
     var shape: S
     var darkShadowColor: Color = .black
     var lightShadowColor: Color = .white
-    var spread: CGFloat = 0.5  //The value of spread is between 0 to 1. Higher value makes the shadow look more intense.
+    /// How far the shadow reaches into the shape, from zero through one.
+    ///
+    /// Higher values make the shadow more intense.
+    var spread: CGFloat = 0.5
     var radius: CGFloat = 10
 
     init(shape: S, darkShadowColor: Color, lightShadowColor: Color, spread: CGFloat, radius: CGFloat) {
@@ -38,8 +41,9 @@ private struct SoftInnerShadowViewModifier<S: Shape>: ViewModifier {
     fileprivate func addSoftInnerShadow(_ content: SoftInnerShadowViewModifier.Content) -> some View {
         return GeometryReader { geo in
             #if os(macOS)
-                //The mask on macOS doesn't work properly with shadow. The shadow disappear after calling the mask modifier.
-                //Workaround: Use blur instead of shadow.
+                // The mask on macOS doesn't work properly with shadow: the shadow
+                // disappears after calling the mask modifier.
+                // Workaround: use blur instead of shadow.
                 self.shape.fill(self.lightShadowColor)
                     .inverseMask(
                         self.shape
@@ -122,7 +126,7 @@ private struct SoftInnerShadowPresetViewModifier<S: Shape>: ViewModifier {
     }
 }
 
-//For more readable, we extend the View and create a softInnerShadow function.
+// Public entry points. The modifier above does the actual drawing.
 extension View {
 
     /// Applies an inner shadow using the supplied shape and shadow parameters.
