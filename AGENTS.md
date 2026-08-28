@@ -64,7 +64,7 @@
 
 ```bash
 git diff --check
-swift format lint --recursive --strict Package.swift Sources Tests neumorphic-examples/Shared
+swift format lint --recursive --strict Package.swift Sources Tests neumorphic-examples/Shared Scripts/readme-shots/Package.swift Scripts/readme-shots/Sources
 swift test --scratch-path .build/macos -Xswiftc -warnings-as-errors
 swiftc -typecheck -swift-version 6 -strict-concurrency=complete -target arm64-apple-macosx14.0 -module-name Neumorphic Sources/Neumorphic/*.swift
 swift package diagnose-api-breaking-changes "$(git describe --tags --abbrev=0 --match 'v*' HEAD^)" --products Neumorphic
@@ -125,6 +125,7 @@ swift package diagnose-api-breaking-changes "$(git describe --tags --abbrev=0 --
 | `Docs/Project-Audit-2026-08-08.md` | 项目规范与兼容性审计结论及未完成项 |
 | `Docs/Neumorphism-Design-Audit-2026-08-09.md` | Neumorphism 设计与无障碍适配审计 |
 | `Sources/Neumorphic/Neumorphic.docc/` | 面向用户的 API 文档与文章 |
+| `Scripts/readme-shots/README.md` | README 示意图的渲染工具与截图流程 |
 | `CLAUDE.md` | Claude Code 专属约定 |
 | `AGENTS.md` | 本文件 |
 

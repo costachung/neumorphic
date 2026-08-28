@@ -38,7 +38,7 @@ jobs:
           git diff --check "$base_sha" "${{ github.sha }}"
 
       - name: Lint Swift formatting
-        run: swift format lint --recursive --strict Package.swift Sources Tests neumorphic-examples/Shared
+        run: swift format lint --recursive --strict Package.swift Sources Tests neumorphic-examples/Shared Scripts/readme-shots/Package.swift Scripts/readme-shots/Sources
 
       - name: Run package tests
         run: swift test --scratch-path .build/macos -Xswiftc -warnings-as-errors

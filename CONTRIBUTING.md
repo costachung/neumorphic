@@ -13,7 +13,7 @@ Run the same checks as CI:
 
 ```sh
 git diff --check
-swift format lint --recursive --strict Package.swift Sources Tests neumorphic-examples/Shared
+swift format lint --recursive --strict Package.swift Sources Tests neumorphic-examples/Shared Scripts/readme-shots/Package.swift Scripts/readme-shots/Sources
 swift test --scratch-path .build/macos
 swift build --target Neumorphic --scratch-path .build/macos-minimum --sdk "$(xcrun --sdk macosx --show-sdk-path)" --triple x86_64-apple-macosx10.15
 swift build --scratch-path .build/ios --sdk "$(xcrun --sdk iphoneos --show-sdk-path)" --triple arm64-apple-ios13.0

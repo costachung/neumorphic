@@ -89,3 +89,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 .DS_Store
+
+# Generated for the nested tooling package
+Scripts/readme-shots/.swiftpm/
