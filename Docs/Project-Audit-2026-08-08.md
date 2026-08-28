@@ -1,7 +1,7 @@
 # 项目规范与最佳实践审计
 
-审计日期：2026-08-08  
-审计基线：Swift 6.3.3、SwiftUI、Swift Package Manager
+- 审计日期：2026-08-08
+- 审计基线：Swift 6.3.3、SwiftUI、Swift Package Manager
 
 ## 结论
 

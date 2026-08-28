@@ -29,7 +29,10 @@ jobs:
           else
             base_sha="${{ github.event.before }}"
             if [ "$base_sha" = "0000000000000000000000000000000000000000" ]; then
-              base_sha="$(git rev-list --max-parents=0 HEAD)"
+              # Tag pushes always report an all-zero "before". Compare against the
+              # previous tag instead, falling back to the root commit for the first one.
+              base_sha="$(git describe --tags --abbrev=0 --match 'v*' HEAD^ 2>/dev/null \
+                || git rev-list --max-parents=0 HEAD)"
             fi
           fi
           git diff --check "$base_sha" "${{ github.sha }}"
