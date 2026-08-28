@@ -98,7 +98,9 @@ a symbol, or a trait.
 
 VoiceOver, Larger Text, Increase Contrast, Reduce Motion, and a hardware keyboard on macOS. The
 **neumorphic-examples** project includes a settings screen that toggles the high-contrast theme and
-simulates Reduce Motion, which makes these comparisons quick to eyeball on both platforms.
+simulates Reduce Motion, which makes these comparisons quick to eyeball on both platforms. The same
+screen renders both button roles side by side, under the shipped themes and under a six-color palette
+whose accent pair was measured rather than assumed.
 
 ## Availability
 

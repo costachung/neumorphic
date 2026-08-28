@@ -32,6 +32,21 @@ struct ExampleSettingsView: View {
                                 .neumorphicThemedToggleStyle(Capsule(), padding: 10)
                                 .frame(maxWidth: .infinity)
                         }
+                        AdaptiveStack(spacing: 12, minimumHorizontalWidth: 420) {
+                            ThemedRoleButton(
+                                title: "Surface Role",
+                                caption: "mainColor + secondaryColor",
+                                role: .surface
+                            )
+                            ThemedRoleButton(
+                                title: "Accent Role",
+                                caption: "accentColor + onAccentColor",
+                                role: .accent
+                            )
+                        }
+                    }
+                    SettingsSection("Custom Palette") {
+                        CustomThemeDemo()
                     }
                     SettingsSection("Accessibility States") {
                         FocusRingPreview()
@@ -268,6 +283,89 @@ private struct ShadowPresetDemo: View {
         }
         .frame(maxWidth: .infinity)
     }
+}
+
+private struct ThemedRoleButton: View {
+    @Environment(\.neumorphicTheme) private var theme
+
+    let title: String
+    let caption: String
+    let role: NeumorphicButtonRole
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Button(title, action: {})
+                .neumorphicThemedButtonStyle(Capsule(), role: role)
+            Text(caption)
+                .font(.caption)
+                .foregroundColor(theme.secondaryColor)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+private struct CustomThemeDemo: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            AdaptiveStack(spacing: 12, minimumHorizontalWidth: 420) {
+                ThemedRoleButton(title: "Cancel", caption: "role: .surface", role: .surface)
+                ThemedRoleButton(title: "Save", caption: "role: .accent", role: .accent)
+            }
+            ResolvedColorChip(title: "Chip built with resolvedButtonColors(for:)", role: .accent)
+            CustomThemeCaption()
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .neumorphicCard(padding: 16)
+        .neumorphicTheme(.exampleBrand)
+    }
+}
+
+/// Resolves its colors through the theme instead of switching over the role,
+/// which is what a custom modifier should do so a new role keeps working.
+private struct ResolvedColorChip: View {
+    @Environment(\.neumorphicTheme) private var theme
+
+    let title: String
+    let role: NeumorphicButtonRole
+
+    private var colors: (surface: Color, foreground: Color) {
+        theme.resolvedButtonColors(for: role)
+    }
+
+    var body: some View {
+        Text(title)
+            .font(.caption)
+            .foregroundColor(colors.foreground)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(Capsule().fill(colors.surface))
+    }
+}
+
+private struct CustomThemeCaption: View {
+    @Environment(\.neumorphicTheme) private var theme
+
+    var body: some View {
+        Text("Fixed six-color palette. Measured contrast: 13.17:1 surface pair, 7.09:1 accent pair.")
+            .font(.caption)
+            .foregroundColor(theme.secondaryColor)
+            .fixedSize(horizontal: false, vertical: true)
+    }
+}
+
+private extension NeumorphicTheme {
+    /// A six-color palette whose accent pair is independent of the surface pair,
+    /// so its contrast is verified against the accent fill rather than the surface.
+    static let exampleBrand = NeumorphicTheme(
+        mainColor: Color(red: 0.93, green: 0.94, blue: 0.96),
+        secondaryColor: Color(red: 0.13, green: 0.15, blue: 0.20),
+        accentColor: Color(red: 0.16, green: 0.30, blue: 0.72),
+        onAccentColor: Color(red: 0.97, green: 0.98, blue: 1.00),
+        darkShadowColor: Color(red: 0.70, green: 0.73, blue: 0.79),
+        lightShadowColor: .white
+    )
 }
 
 struct ExampleSettingsView_Previews: PreviewProvider {
