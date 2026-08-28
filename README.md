@@ -42,7 +42,7 @@ File → Add Package Dependencies, paste `https://github.com/gewill/neumorphic.g
 ### Package.swift
 
 ```swift
-.package(url: "https://github.com/gewill/neumorphic.git", from: "2.2.1")
+.package(url: "https://github.com/gewill/neumorphic.git", from: "2.3.0")
 ```
 
 Then import it:
@@ -192,6 +192,13 @@ func neumorphicThemedButtonStyle<S: Shape>(
     padding: CGFloat = 16,
     pressedEffect: SoftButtonPressedEffect = .hard
 ) -> some View
+
+func neumorphicThemedButtonStyle<S: Shape>(
+    _ shape: S,
+    role: NeumorphicButtonRole,
+    padding: CGFloat = 16,
+    pressedEffect: SoftButtonPressedEffect = .hard
+) -> some View
 ```
 
 Any shape works, and `SoftDynamicButtonStyle` is there for buttons that need colors outside the current theme:
@@ -203,7 +210,7 @@ HStack {
     Button(action: {}) {
         Image(systemName: "heart.fill")
     }
-    .neumorphicThemedButtonStyle(Circle())
+    .neumorphicThemedButtonStyle(Circle(), role: .accent)
 
     Button(action: {}) {
         Image(systemName: "heart.fill")
@@ -269,18 +276,18 @@ Toggle(isOn: $toggleIsOn) {
 
 ## Themes, light and dark
 
-`Color.Neumorphic` adapts to light and dark mode on its own. For anything beyond that, put a theme in the environment — built-in controls read it, and the themed button and toggle modifiers follow it:
+`Color.Neumorphic` adapts to light and dark mode on its own. For anything beyond that, put a theme in the environment — built-in controls read it, and the themed button and toggle modifiers follow it. Buttons use `.surface` by default; use `.accent` for the theme's accent/onAccent pair:
 
 ```swift
 VStack {
     NeumorphicTextField("Name", text: $name)
     Button("Save") { }
-        .neumorphicThemedButtonStyle(RoundedRectangle(cornerRadius: 12))
+        .neumorphicThemedButtonStyle(RoundedRectangle(cornerRadius: 12), role: .accent)
 }
 .neumorphicTheme(.highContrast)
 ```
 
-`.standard` and `.highContrast` ship with the package; `NeumorphicTheme` is a plain struct, so your own palette is just another value.
+`.standard` and `.highContrast` ship with the package; `NeumorphicTheme` is a plain struct, so your own palette is just another value. The four-color initializer remains available and maps accent/onAccent to secondary/main for source-compatible behavior; use the six-color initializer when those semantic pairs differ.
 
 `NeumorphicKit.colorSchemeType` still exists for source compatibility with apps that override color resolution globally. New code should prefer `preferredColorScheme(_:)` and `.neumorphicTheme(_:)`.
 

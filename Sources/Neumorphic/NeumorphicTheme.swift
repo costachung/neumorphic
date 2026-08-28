@@ -1,11 +1,23 @@
 import SwiftUI
 
+/// The semantic color role of a themed neumorphic button.
+public enum NeumorphicButtonRole: Sendable {
+    /// Uses the theme's surface and foreground colors.
+    case surface
+    /// Uses the theme's accent and on-accent colors.
+    case accent
+}
+
 /// A group of colors used by Neumorphic controls.
 public struct NeumorphicTheme: @unchecked Sendable {
     /// The surface color used by controls and containers.
     public let mainColor: Color
     /// The foreground color used by labels and symbols.
     public let secondaryColor: Color
+    /// The surface color used by emphasized controls.
+    public let accentColor: Color
+    /// The foreground color used on emphasized controls.
+    public let onAccentColor: Color
     /// The shadow color applied toward the lower-right edge of raised surfaces.
     public let darkShadowColor: Color
     /// The highlight color applied toward the upper-left edge of raised surfaces.
@@ -24,8 +36,37 @@ public struct NeumorphicTheme: @unchecked Sendable {
         darkShadowColor: Color,
         lightShadowColor: Color
     ) {
+        self.init(
+            mainColor: mainColor,
+            secondaryColor: secondaryColor,
+            accentColor: secondaryColor,
+            onAccentColor: mainColor,
+            darkShadowColor: darkShadowColor,
+            lightShadowColor: lightShadowColor
+        )
+    }
+
+    /// Creates a theme with separate colors for surface and emphasized controls.
+    ///
+    /// - Parameters:
+    ///   - mainColor: The surface color used by controls and containers.
+    ///   - secondaryColor: The foreground color used by labels and symbols.
+    ///   - accentColor: The surface color used by emphasized controls.
+    ///   - onAccentColor: The foreground color used on emphasized controls.
+    ///   - darkShadowColor: The darker shadow color for raised and inset surfaces.
+    ///   - lightShadowColor: The lighter highlight color for raised and inset surfaces.
+    public init(
+        mainColor: Color,
+        secondaryColor: Color,
+        accentColor: Color,
+        onAccentColor: Color,
+        darkShadowColor: Color,
+        lightShadowColor: Color
+    ) {
         self.mainColor = mainColor
         self.secondaryColor = secondaryColor
+        self.accentColor = accentColor
+        self.onAccentColor = onAccentColor
         self.darkShadowColor = darkShadowColor
         self.lightShadowColor = lightShadowColor
     }
@@ -34,6 +75,8 @@ public struct NeumorphicTheme: @unchecked Sendable {
     public static let standard = NeumorphicTheme(
         mainColor: .Neumorphic.main,
         secondaryColor: .Neumorphic.secondary,
+        accentColor: .Neumorphic.secondary,
+        onAccentColor: .Neumorphic.main,
         darkShadowColor: .Neumorphic.darkShadow,
         lightShadowColor: .Neumorphic.lightShadow
     )
@@ -42,9 +85,20 @@ public struct NeumorphicTheme: @unchecked Sendable {
     public static let highContrast = NeumorphicTheme(
         mainColor: Color(red: 0.88, green: 0.90, blue: 0.93),
         secondaryColor: Color(red: 0.08, green: 0.09, blue: 0.12),
+        accentColor: Color(red: 0.08, green: 0.09, blue: 0.12),
+        onAccentColor: Color(red: 0.88, green: 0.90, blue: 0.93),
         darkShadowColor: Color(red: 0.55, green: 0.58, blue: 0.65),
         lightShadowColor: .white
     )
+
+    func resolvedButtonColors(for role: NeumorphicButtonRole) -> (surface: Color, foreground: Color) {
+        switch role {
+        case .surface:
+            return (mainColor, secondaryColor)
+        case .accent:
+            return (accentColor, onAccentColor)
+        }
+    }
 }
 
 /// Tunable shadow parameters for balancing depth and rendering cost.
@@ -175,7 +229,35 @@ public extension View {
         padding: CGFloat = 16,
         pressedEffect: SoftButtonPressedEffect = .hard
     ) -> some View {
-        modifier(NeumorphicThemedButtonModifier(shape: shape, padding: padding, pressedEffect: pressedEffect))
+        neumorphicThemedButtonStyle(
+            shape,
+            role: .surface,
+            padding: padding,
+            pressedEffect: pressedEffect
+        )
+    }
+
+    /// Applies a semantic button style using the current environment theme.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - role: The semantic color role of the button.
+    ///   - padding: The inset between the label and the surface edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
+    func neumorphicThemedButtonStyle<S: Shape>(
+        _ shape: S,
+        role: NeumorphicButtonRole,
+        padding: CGFloat = 16,
+        pressedEffect: SoftButtonPressedEffect = .hard
+    ) -> some View {
+        modifier(
+            NeumorphicThemedButtonModifier(
+                shape: shape,
+                role: role,
+                padding: padding,
+                pressedEffect: pressedEffect
+            )
+        )
     }
 
     /// Applies a shape-based toggle style using the current environment theme.
@@ -210,15 +292,17 @@ public extension View {
 private struct NeumorphicThemedButtonModifier<S: Shape>: ViewModifier {
     @Environment(\.neumorphicTheme) private var theme
     let shape: S
+    let role: NeumorphicButtonRole
     let padding: CGFloat
     let pressedEffect: SoftButtonPressedEffect
 
     func body(content: Content) -> some View {
+        let colors = theme.resolvedButtonColors(for: role)
         content.softButtonStyle(
             shape,
             padding: padding,
-            mainColor: theme.mainColor,
-            textColor: theme.secondaryColor,
+            mainColor: colors.surface,
+            textColor: colors.foreground,
             darkShadowColor: theme.darkShadowColor,
             lightShadowColor: theme.lightShadowColor,
             pressedEffect: pressedEffect

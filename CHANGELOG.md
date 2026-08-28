@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.3.0 - 2026-08-28
+
+### Added
+
+- Added `accentColor` and `onAccentColor` to `NeumorphicTheme`, with a six-color initializer for custom semantic palettes.
+- Added `.surface` and `.accent` `NeumorphicButtonRole` values and a role-aware themed button modifier.
+
+### Compatibility
+
+- Preserved the four-color theme initializer and the original themed button modifier; their existing behavior continues to map surface to main/secondary and accent to secondary/main.
+
 ## 2.2.2 - 2026-08-28
 
 ### Accessibility
