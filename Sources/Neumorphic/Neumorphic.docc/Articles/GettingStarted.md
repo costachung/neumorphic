@@ -15,7 +15,7 @@ In Xcode, choose File → Add Package Dependencies and enter `https://github.com
 or add it to a `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/gewill/neumorphic.git", from: "2.3.0")
+.package(url: "https://github.com/gewill/neumorphic.git", from: "2.4.0")
 ```
 
 Then import it wherever you build views:

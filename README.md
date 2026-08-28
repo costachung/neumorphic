@@ -42,7 +42,7 @@ File → Add Package Dependencies, paste `https://github.com/gewill/neumorphic.g
 ### Package.swift
 
 ```swift
-.package(url: "https://github.com/gewill/neumorphic.git", from: "2.3.0")
+.package(url: "https://github.com/gewill/neumorphic.git", from: "2.4.0")
 ```
 
 Then import it:
