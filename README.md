@@ -6,7 +6,7 @@ A SwiftUI library for soft, tactile "neumorphism" interfaces — the two shadow 
 
 SwiftUI gives you an outer shadow in one line. It has no inner shadow, and neumorphism needs both. This package supplies the missing half, then uses it consistently across buttons, toggles, sliders, fields, and the rest so a whole screen can share one soft surface.
 
-![Neumorphic SwiftUI](https://user-images.githubusercontent.com/169746/77291563-7bfcda80-6d19-11ea-84ff-1ae527e425fa.png)
+![Neumorphic controls on a soft surface](Docs/images/hero.png)
 
 ## About this fork
 
@@ -57,7 +57,7 @@ Everything else in this library is built out of these.
 
 ### Outer shadow
 
-![Outer shadow](https://user-images.githubusercontent.com/169746/77294908-fcbed500-6d1f-11ea-9125-cab24891a03d.png)
+![Outer shadow](Docs/images/outer-shadow.png)
 
 ```swift
 RoundedRectangle(cornerRadius: 20)
@@ -67,7 +67,7 @@ RoundedRectangle(cornerRadius: 20)
 
 ### Inner shadow
 
-![Inner shadow](https://user-images.githubusercontent.com/169746/77295134-57f0c780-6d20-11ea-8e40-88b7a15319aa.png)
+![Inner shadow](Docs/images/inner-shadow.png)
 
 ```swift
 RoundedRectangle(cornerRadius: 20)
@@ -79,7 +79,7 @@ Note that `softInnerShadow` takes the shape as an argument — it needs to know 
 
 ### Both, side by side
 
-![Circles](https://user-images.githubusercontent.com/169746/77296271-60e29880-6d22-11ea-942b-23d4e503f03e.png)
+![Outer and inner shadow side by side](Docs/images/shadows-side-by-side.png)
 
 ```swift
 HStack {
@@ -117,7 +117,7 @@ RoundedRectangle(cornerRadius: 16)
 
 An inset field, for instance, is just a text field over an inner-shadowed background:
 
-![Search bar](https://user-images.githubusercontent.com/169746/77886613-c8a56000-729b-11ea-87d8-3742146645e6.png)
+![Search bar](Docs/images/search-bar.png)
 
 ```swift
 HStack {
@@ -137,7 +137,7 @@ HStack {
 
 And a bar chart is an inner-shadowed track with a plain fill on top:
 
-![Bar chart](https://user-images.githubusercontent.com/169746/77887392-1078b700-729d-11ea-911c-3fd94ba1b9e0.png)
+![Bar chart](Docs/images/bar-chart.png)
 
 ```swift
 ZStack(alignment: .bottom) {
@@ -177,7 +177,7 @@ macOS gets two extras: `.neumorphicFocusRing(_:isFocused:)` for keyboard focus a
 
 ## Buttons
 
-![Soft button](https://user-images.githubusercontent.com/169746/77301621-f6822600-6d2a-11ea-9248-88a4fa6c9abc.png)
+![Soft button](Docs/images/soft-button.png)
 
 ```swift
 Button(action: {}) {
@@ -203,7 +203,7 @@ func neumorphicThemedButtonStyle<S: Shape>(
 
 Any shape works, and `SoftDynamicButtonStyle` is there for buttons that need colors outside the current theme:
 
-![Custom button](https://user-images.githubusercontent.com/169746/77302381-34337e80-6d2c-11ea-96d6-6409a7e14c92.png)
+![Accent role button beside a custom-colored button](Docs/images/custom-button.png)
 
 ```swift
 HStack {
@@ -221,7 +221,7 @@ HStack {
             mainColor: .red,
             textColor: .white,
             darkShadowColor: Color(red: 0.6, green: 0.2, blue: 0.2),
-            lightShadowColor: Color("redButtonLightShadow"),
+            lightShadowColor: Color(red: 1.0, green: 0.5, blue: 0.5),
             pressedEffect: .hard
         )
     )
@@ -232,7 +232,7 @@ For a fixed visual size that still keeps a 44-point hit area, use `.fixedSizeSof
 
 ### Pressed effects
 
-![Pressed effects](https://user-images.githubusercontent.com/169746/89747202-400fb980-daf0-11ea-8e23-64fb5b0bfc3c.gif)
+![Pressed effects](Docs/images/pressed-effects.gif)
 
 ```swift
 HStack {
@@ -251,7 +251,7 @@ HStack {
 
 ### Switch
 
-![Switch toggle](https://user-images.githubusercontent.com/169746/101979392-ce12d100-3c97-11eb-9d45-4e82cef6337b.png)
+![Switch toggle](Docs/images/switch-toggle.png)
 
 ```swift
 Toggle("Toggle", isOn: $toggleIsOn)
@@ -262,7 +262,7 @@ Or `.neumorphicThemedSwitchStyle(tint:labelsHidden:height:)` to follow the envir
 
 ### Shape
 
-![Shape toggle](https://user-images.githubusercontent.com/169746/101979866-b76e7900-3c9b-11eb-8d47-ef6f12fa1061.jpeg)
+![Shape toggle](Docs/images/shape-toggle.png)
 
 A toggle that presses in and stays in — good for play/stop:
 
