@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.2.2 - 2026-08-28
+
+### Accessibility
+
+- Exposed selected state through the standard `.isSelected` accessibility trait on Picker, Checkbox, and Radio controls where available, while retaining the value-based fallback on iOS 13 and macOS 10.15.
+
+### Fixed
+
+- Kept the original Button- and Toggle-specific style entry points available without deprecation warnings. Their more-specific overloads remain necessary for source and binary compatibility in the 2.x release line and are scheduled for removal in 3.0.
+
+### Tooling
+
+- Compiled direct Button and Toggle compatibility calls with warnings treated as errors in CI.
+
 ## 2.2.1 - 2026-08-28
 
 ### Documentation

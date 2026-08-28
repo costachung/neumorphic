@@ -41,7 +41,7 @@ jobs:
         run: swift format lint --recursive --strict Package.swift Sources Tests neumorphic-examples/Shared
 
       - name: Run package tests
-        run: swift test --scratch-path .build/macos
+        run: swift test --scratch-path .build/macos -Xswiftc -warnings-as-errors
 
       - name: Build for minimum macOS version
         run: swift build --target Neumorphic --scratch-path .build/macos-minimum --sdk "$(xcrun --sdk macosx --show-sdk-path)" --triple x86_64-apple-macosx10.15

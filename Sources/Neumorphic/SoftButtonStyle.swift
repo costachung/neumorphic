@@ -195,7 +195,6 @@ public extension View {
 
 }
 
-@available(*, deprecated, message: "Use the View-based softButtonStyle modifier.")
 public extension Button {
     /// Compatibility wrapper for the original Button-only API.
     ///

@@ -16,11 +16,15 @@ extension View {
             .accessibility(value: value)
     }
 
+    @ViewBuilder
     func neumorphicSelectionAccessibility(label: String, selected: Bool) -> some View {
-        accessibility(label: Text(verbatim: label))
-            .accessibility(
-                value: Text(LocalizedStringKey(selected ? "Selected" : "Not selected"))
-            )
+        if #available(iOS 14.0, macOS 11.0, *) {
+            accessibility(label: Text(verbatim: label))
+                .accessibilityAddTraits(selected ? .isSelected : [])
+        } else {
+            accessibility(label: Text(verbatim: label))
+                .accessibility(value: Text(LocalizedStringKey(selected ? "Selected" : "Not selected")))
+        }
     }
 
     @ViewBuilder
