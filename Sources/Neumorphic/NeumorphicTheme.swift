@@ -91,7 +91,18 @@ public struct NeumorphicTheme: @unchecked Sendable {
         lightShadowColor: .white
     )
 
-    func resolvedButtonColors(for role: NeumorphicButtonRole) -> (surface: Color, foreground: Color) {
+    /// Returns the surface and foreground colors this theme uses for a button role.
+    ///
+    /// Use this when building a custom button modifier that should follow the same
+    /// role mapping as `neumorphicThemedButtonStyle(_:role:padding:pressedEffect:)`,
+    /// rather than switching over ``NeumorphicButtonRole`` yourself. Roles may be
+    /// added in future versions, and resolving through this method keeps a custom
+    /// modifier working when they are.
+    ///
+    /// - Parameter role: The semantic color role to resolve.
+    /// - Returns: The surface color the button is filled with, and the foreground
+    ///   color for its label and symbols.
+    public func resolvedButtonColors(for role: NeumorphicButtonRole) -> (surface: Color, foreground: Color) {
         switch role {
         case .surface:
             return (mainColor, secondaryColor)

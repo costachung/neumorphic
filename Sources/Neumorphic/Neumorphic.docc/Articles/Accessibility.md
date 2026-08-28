@@ -35,8 +35,11 @@ effect — anything in the package that would otherwise move.
 focus ring while it holds focus.
 
 **Default contrast.** `Color.Neumorphic.secondary` — the default text and symbol color — is chosen to
-clear WCAG AA against the default surface. If you replace it through a custom ``Neumorphic/NeumorphicTheme``, that
-guarantee is yours to re-establish.
+clear WCAG AA against the default surface. The shipped themes clear it for both button roles: `.surface`
+and `.accent` are inverse pairs of the same two colors, so each measures 5.63:1 on `.standard` and
+14.22:1 on `.highContrast`. The four-color ``Neumorphic/NeumorphicTheme`` initializer derives the accent
+pair from those same colors, so a theme built with it inherits the guarantee. Supply your own colors and
+it becomes yours to re-establish.
 
 ## What you still need to do
 
@@ -68,6 +71,23 @@ VStack {
     // ...
 }
 .neumorphicTheme(.highContrast)
+```
+
+**Check the accent pair separately.** The six-color initializer takes `accentColor` and `onAccentColor`
+as an independent pair, and the obvious brand-color choice usually fails: a saturated fill with white
+text lands well under AA — `.blue` with white measures 4.02:1, `.green` 2.22:1, `.orange` 2.20:1. Dark
+text on the same blue reaches 5.22:1. Measure the pair you actually ship rather than assuming a vivid
+fill is legible, and remember `.accent` is for emphasis, so it often carries your most important action:
+
+```swift
+NeumorphicTheme(
+    mainColor: surface,
+    secondaryColor: onSurface,
+    accentColor: brand,
+    onAccentColor: onBrand,   // verify this against `brand`, not against `surface`
+    darkShadowColor: darkShadow,
+    lightShadowColor: lightShadow
+)
 ```
 
 **Do not let depth carry meaning alone.** Raised versus inset is a useful convention, but it is a

@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.4.0 - 2026-08-28
+
+### Added
+
+- Made `NeumorphicTheme.resolvedButtonColors(for:)` public so apps building their own button modifiers can resolve a `NeumorphicButtonRole` through the same mapping the built-in themed modifier uses, instead of switching over the role themselves. `NeumorphicButtonRole` is not frozen, so a downstream exhaustive switch would stop compiling if a role is added later; resolving through this method does not.
+
+### Documentation
+
+- Documented the contrast characteristics of the two button roles in the Accessibility article: the shipped themes measure 5.63:1 on `.standard` and 14.22:1 on `.highContrast` for both roles, and the four-color initializer inherits that guarantee by deriving the accent pair from the surface pair.
+- Added guidance for the six-color initializer, whose independent accent pair is easy to get wrong: a saturated fill with white text typically falls below AA, measuring 4.02:1 for `.blue`, 2.22:1 for `.green`, and 2.20:1 for `.orange`.
+
 ## 2.3.0 - 2026-08-28
 
 ### Added
