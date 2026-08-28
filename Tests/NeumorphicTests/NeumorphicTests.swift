@@ -87,6 +87,8 @@ final class NeumorphicTests: XCTestCase {
         let button = VStack {
             Button("Save", action: {})
                 .neumorphicThemedButtonStyle(Capsule())
+            Button("Continue", action: {})
+                .neumorphicThemedButtonStyle(Capsule(), role: .accent)
         }
         .neumorphicTheme(.highContrast)
         let toggle = VStack {
@@ -109,6 +111,45 @@ final class NeumorphicTests: XCTestCase {
         values.neumorphicTheme = .highContrast
         XCTAssertEqual(values.neumorphicTheme.mainColor, NeumorphicTheme.highContrast.mainColor)
         XCTAssertNotEqual(values.neumorphicTheme.mainColor, NeumorphicTheme.standard.mainColor)
+    }
+
+    func testButtonRolesResolveStandardAndHighContrastThemeColors() {
+        for theme in [NeumorphicTheme.standard, .highContrast] {
+            let surface = theme.resolvedButtonColors(for: .surface)
+            XCTAssertEqual(surface.surface, theme.mainColor)
+            XCTAssertEqual(surface.foreground, theme.secondaryColor)
+
+            let accent = theme.resolvedButtonColors(for: .accent)
+            XCTAssertEqual(accent.surface, theme.accentColor)
+            XCTAssertEqual(accent.foreground, theme.onAccentColor)
+        }
+    }
+
+    func testFourColorThemeInitializerPreservesExistingButtonBehavior() {
+        let theme = NeumorphicTheme(
+            mainColor: .white,
+            secondaryColor: .black,
+            darkShadowColor: .gray,
+            lightShadowColor: .yellow
+        )
+
+        XCTAssertEqual(theme.accentColor, theme.secondaryColor)
+        XCTAssertEqual(theme.onAccentColor, theme.mainColor)
+    }
+
+    func testSixColorThemeInitializerKeepsCustomAccentPair() {
+        let theme = NeumorphicTheme(
+            mainColor: .white,
+            secondaryColor: .black,
+            accentColor: .blue,
+            onAccentColor: .yellow,
+            darkShadowColor: .gray,
+            lightShadowColor: .orange
+        )
+        let accent = theme.resolvedButtonColors(for: .accent)
+
+        XCTAssertEqual(accent.surface, .blue)
+        XCTAssertEqual(accent.foreground, .yellow)
     }
 
     func testShadowPresetFollowsThemeUnlessColorsAreExplicit() {

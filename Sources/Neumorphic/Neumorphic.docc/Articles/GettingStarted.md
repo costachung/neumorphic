@@ -15,7 +15,7 @@ In Xcode, choose File → Add Package Dependencies and enter `https://github.com
 or add it to a `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/gewill/neumorphic.git", from: "2.2.1")
+.package(url: "https://github.com/gewill/neumorphic.git", from: "2.3.0")
 ```
 
 Then import it wherever you build views:
@@ -96,7 +96,7 @@ control and every themed modifier below that point picks it up:
 VStack {
     NeumorphicTextField("Name", text: $name)
     Button("Save") { }
-        .neumorphicThemedButtonStyle(Capsule())
+        .neumorphicThemedButtonStyle(Capsule(), role: .accent)
 }
 .neumorphicTheme(.highContrast)
 ```
@@ -106,7 +106,9 @@ values travel downward only, so a themed modifier applied *outside* the `neumorp
 the ambient theme and your palette silently does nothing.
 
 `.standard` and `.highContrast` ship with the package, and ``Neumorphic/NeumorphicTheme`` is an ordinary struct, so
-your own palette is just another value.
+your own palette is just another value. The default `.surface` button role uses `mainColor`/`secondaryColor`; `.accent`
+uses `accentColor`/`onAccentColor`. The four-color initializer preserves the earlier mapping, while the six-color
+initializer lets an app provide both semantic pairs.
 
 ## Control the cost of depth
 

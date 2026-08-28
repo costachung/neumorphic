@@ -21,7 +21,7 @@ Toggle("Enabled", isOn: $isEnabled)
 
 VStack {
     Button("Save") { }
-        .neumorphicThemedButtonStyle(Capsule())
+        .neumorphicThemedButtonStyle(Capsule(), role: .accent)
 }
 .neumorphicTheme(.highContrast)
 
@@ -61,10 +61,12 @@ surface, and `softInnerShadow(_:darkShadow:lightShadow:spread:radius:)` insets o
 ### Theming
 
 - ``NeumorphicTheme``
+- ``NeumorphicButtonRole``
 - ``NeumorphicKit``
 
 Apply a theme with `neumorphicTheme(_:)` on an ancestor view, then use the themed modifiers —
-`neumorphicThemedButtonStyle(_:padding:pressedEffect:)`, `neumorphicThemedToggleStyle(_:padding:pressedEffect:)`, and
+`neumorphicThemedButtonStyle(_:padding:pressedEffect:)`, `neumorphicThemedButtonStyle(_:role:padding:pressedEffect:)`,
+`neumorphicThemedToggleStyle(_:padding:pressedEffect:)`, and
 `neumorphicThemedSwitchStyle(tint:labelsHidden:height:)` — on the controls below it.
 
 ### Input Controls
