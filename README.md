@@ -1,6 +1,6 @@
 # Neumorphic
 
-[![Swift Package Index](https://img.shields.io/endpoint?url=https://swiftpackageindex.com/api/packages/gewill/neumorphic/badge?type=swift-versions)](https://swiftpackageindex.com/gewill/neumorphic) [![Platforms](https://img.shields.io/endpoint?url=https://swiftpackageindex.com/api/packages/gewill/neumorphic/badge?type=platforms)](https://swiftpackageindex.com/gewill/neumorphic) [![License](https://img.shields.io/github/license/gewill/neumorphic)](https://github.com/gewill/neumorphic/blob/master/LICENSE)
+[![Swift versions](https://img.shields.io/endpoint?url=https://swiftpackageindex.com/api/packages/gewill/neumorphic/badge?type=swift-versions)](https://swiftpackageindex.com/gewill/neumorphic) [![Platforms](https://img.shields.io/endpoint?url=https://swiftpackageindex.com/api/packages/gewill/neumorphic/badge?type=platforms)](https://swiftpackageindex.com/gewill/neumorphic) [![CI](https://img.shields.io/github/actions/workflow/status/gewill/neumorphic/ci.yml?branch=master&label=CI)](https://github.com/gewill/neumorphic/actions/workflows/ci.yml) [![License](https://img.shields.io/github/license/gewill/neumorphic)](https://github.com/gewill/neumorphic/blob/master/LICENSE)
 
 A SwiftUI library for soft, tactile "neumorphism" interfaces — the two shadow modifiers the style depends on, plus a set of accessible controls built on top of them.
 
