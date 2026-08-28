@@ -35,19 +35,26 @@ final class NeumorphicTests: XCTestCase {
         XCTAssertEqual(resolvedColorCount, 12)
     }
 
+    @MainActor
     func testPublicStyleEntryPointsCompile() {
         let toggle = Toggle("Enabled", isOn: .constant(false))
             .toggleStyle(.neumorphicSwitch)
             .disabled(true)
-        let button = Group {
-            Button("Save", action: {})
-        }
-        .softButtonStyle(Capsule())
+        let button = Button("Save", action: {})
+            .softButtonStyle(Capsule())
+        let softToggle = Toggle("Favorite", isOn: .constant(false))
+            .softToggleStyle(Capsule())
+        let softSwitch = Toggle("Notifications", isOn: .constant(false))
+            .softSwitchToggleStyle()
 
         _ = toggle
         _ = button
+        _ = softToggle
+        _ = softSwitch
         XCTAssertFalse(String(describing: type(of: toggle)).isEmpty)
         XCTAssertFalse(String(describing: type(of: button)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: softToggle)).isEmpty)
+        XCTAssertFalse(String(describing: type(of: softSwitch)).isEmpty)
     }
 
     func testStyleParametersNormalizeNegativeGeometry() {

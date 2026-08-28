@@ -204,7 +204,6 @@ public extension View {
 
 }
 
-@available(*, deprecated, message: "Use the View-based softToggleStyle modifier.")
 public extension Toggle {
     /// Compatibility wrapper for the original Toggle-only API.
     ///
