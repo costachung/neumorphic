@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.4.1 - 2026-08-28
+
+### Documentation
+
+- Added an accent-role comparison and a custom six-color palette to the examples' settings screen. The `role:` parameter added in 2.3.0 and `resolvedButtonColors(for:)` exposed in 2.4.0 were documented but never shown running; the screen now renders both roles under the shipped themes and under a palette whose accent pair measures 7.09:1 against its surface pair's 13.17:1.
+- Pointed the Accessibility article's testing notes at that screen, so the advice to verify an accent pair separately has a working reference next to it.
+
+### Tooling
+
+- Recorded the repository's commit message convention, verification commands, and release steps in `AGENTS.md`, and aligned its testing guidance with `CONTRIBUTING.md`: the suite stays on XCTest while the package supports Swift 5.7.
+
 ## 2.4.0 - 2026-08-28
 
 ### Added
