@@ -1,94 +1,81 @@
-# Neumorphic
+# Neumorphic SwiftUI : Neumorphism Soft UI
 
-[![Swift versions](https://img.shields.io/endpoint?url=https://swiftpackageindex.com/api/packages/gewill/neumorphic/badge?type=swift-versions)](https://swiftpackageindex.com/gewill/neumorphic) [![Platforms](https://img.shields.io/endpoint?url=https://swiftpackageindex.com/api/packages/gewill/neumorphic/badge?type=platforms)](https://swiftpackageindex.com/gewill/neumorphic) [![CI](https://img.shields.io/github/actions/workflow/status/gewill/neumorphic/ci.yml?branch=master&label=CI)](https://github.com/gewill/neumorphic/actions/workflows/ci.yml) [![License](https://img.shields.io/github/license/gewill/neumorphic)](https://github.com/gewill/neumorphic/blob/master/LICENSE)
+Neumorphic is a SwiftUI utility to build Neumorphism Soft UI easily using custom view modifier and custom button style. It supports all shapes. 
 
-A SwiftUI library for soft, tactile "neumorphism" interfaces — the two shadow modifiers the style depends on, plus a set of accessible controls built on top of them.
+Hi, I’m Costa. It is simple to create outer shadow in SwiftUI by writing two lines of code. However, we can’t easily create inner shadow in SwiftUI. That’s the reason why I build this tool to make it simple and reusable.
 
-SwiftUI gives you an outer shadow in one line. It has no inner shadow, and neumorphism needs both. This package supplies the missing half, then uses it consistently across buttons, toggles, sliders, fields, and the rest so a whole screen can share one soft surface.
+![Image of Neumorphic SwiftUI](https://user-images.githubusercontent.com/169746/77291563-7bfcda80-6d19-11ea-84ff-1ae527e425fa.png)
 
-![Neumorphic controls on a soft surface](Docs/images/hero.png)
 
-## About this fork
+## Additional controls
 
-This is a fork of [costachung/neumorphic](https://github.com/costachung/neumorphic) by Costa Chung, who designed the original shadow modifiers and button styles. Upstream's last commit was October 2024, at `v2.0.7`; everything from `v2.1.0` onward lives here.
+The following views and styles were added in the v2.x updates (see `ExampleShowcaseView.swift` for copy-ready usage):
 
-What this fork has added since that point:
+- **Theme** — `NeumorphicTheme`, including **accent** / **onAccent** button roles and `resolvedButtonColors`
+- **Buttons** — `FixedSizeSoftDynamicButtonStyle` for fixed-size soft buttons
+- **Inputs** — `NeumorphicTextField`, `NeumorphicSlider`, `NeumorphicStepper`, `NeumorphicPicker`, `NeumorphicDatePicker`
+- **Chrome** — `NeumorphicCard`, `NeumorphicLink`, `NeumorphicMenu`, `NeumorphicDisclosureGroup`
+- **Progress** — `NeumorphicProgressView`, `NeumorphicCircularProgressView`
+- **Selection** — `NeumorphicSelectionControls`
+- **Interaction** — `NeumorphicFocusRing`, `NeumorphicHoverEffect`
+- **Accessibility** — `NeumorphicAccessibility` helpers (contrast / accessibility labels for soft UI)
 
-- **A real control set.** Slider, TextField, Stepper, DatePicker, Picker, Checkbox, Radio, Menu, ProgressView (linear and circular), DisclosureGroup, Link, and a card modifier — so you aren't hand-rolling every widget out of raw shadows.
-- **Accessibility as a baseline, not an afterthought.** VoiceOver labels, values and adjustable actions, 44-point hit targets, non-color selection cues, Dynamic Type layouts, Reduce Motion handling, and macOS keyboard focus.
-- **Environment themes.** `.neumorphicTheme(_:)` with a built-in high-contrast preset, plus shadow presets to trade visual depth against rendering cost.
-- **Modern toolchain.** Swift 6 strict-concurrency clean, a DocC catalog, Swift Package Index integration, and CI that checks formatting, both deployment-target floors, DocC, and API compatibility against the previous release tag.
+Open the example app, then the settings screen, to try accent palettes and the new controls.
 
-I maintain this for my own projects and plan to keep it current. Issues and pull requests are welcome — just treat it as a small single-maintainer package rather than a large community effort. Upstream remains the original work and its license carries through unchanged.
-
-## Requirements
-
-| | |
-|---|---|
-| Swift | 5.7+ (Xcode 14+) |
-| iOS | 13.0+ |
-| macOS | 10.15+ |
-
-`NeumorphicMenu` and `NeumorphicLink` need iOS 14+ / macOS 11+. Everything else works on the base deployment targets.
-
-Staying on Xcode 13 or earlier? Pin to the `2.1.x` line — `2.2.0` raised the Swift tools version to 5.7.
 
 ## Installation
+Requirements
+.iOS(.v13),.macOS(.v10_15)
 
-### Xcode
+#### Swift Package Manager 
+1. In Xcode, open your project and go to File → Swift Packages → Add Package Dependencies.
+2. Paste the repository URL (https://github.com/costachung/neumorphic/) and click Next.
+3. For Rules, select version.
+4. Click Finish.
 
-File → Add Package Dependencies, paste `https://github.com/gewill/neumorphic.git`, and pick a version rule.
-
-### Package.swift
-
+#### Swift Package
 ```swift
-.package(url: "https://github.com/gewill/neumorphic.git", from: "2.4.1")
+.package(url: "https://github.com/costachung/neumorphic/", .upToNextMajor(from: "2.4.1"))
 ```
 
-Then import it:
+## Usage
+Import Neumorphic package to your view.
 
 ```swift
 import Neumorphic
 ```
 
-## The two shadows
+Simply use **.softOuterShadow** and **.softInnerShadow** methods to create outer shadow and inner shadow respectively.
 
-Everything else in this library is built out of these.
+#### Create Rounded Rectangle with Outer Shadow
 
-### Outer shadow
-
-![Outer shadow](Docs/images/outer-shadow.png)
+![Neumorphic SwiftUI Outer Shadow](https://user-images.githubusercontent.com/169746/77294908-fcbed500-6d1f-11ea-9125-cab24891a03d.png)
 
 ```swift
-RoundedRectangle(cornerRadius: 20)
-    .fill(Color.Neumorphic.main)
-    .softOuterShadow()
+RoundedRectangle(cornerRadius: 20).fill(Color.Neumorphic.main).softOuterShadow()
 ```
 
-### Inner shadow
+#### Create Rounded Rectangle with Inner Shadow
 
-![Inner shadow](Docs/images/inner-shadow.png)
+![Neumorphic SwiftUI Inner Shadow](https://user-images.githubusercontent.com/169746/77295134-57f0c780-6d20-11ea-8e40-88b7a15319aa.png)
 
 ```swift
-RoundedRectangle(cornerRadius: 20)
-    .fill(Color.Neumorphic.main)
-    .softInnerShadow(RoundedRectangle(cornerRadius: 20))
+RoundedRectangle(cornerRadius: 20).fill(Color.Neumorphic.main).softInnerShadow(RoundedRectangle(cornerRadius: 20))
 ```
 
-Note that `softInnerShadow` takes the shape as an argument — it needs to know what to clip against, which is exactly the thing SwiftUI's built-in shadow can't do.
-
-### Both, side by side
-
-![Outer and inner shadow side by side](Docs/images/shadows-side-by-side.png)
+#### Create Circles
+![Neumorphic SwiftUI Circles](https://user-images.githubusercontent.com/169746/77296271-60e29880-6d22-11ea-942b-23d4e503f03e.png)
 
 ```swift
-HStack {
-    Circle().fill(Color.Neumorphic.main).softOuterShadow()
-    Circle().fill(Color.Neumorphic.main).softInnerShadow(Circle())
-}
+  HStack {
+      Circle().fill(Color.Neumorphic.main).softOuterShadow()
+      Circle().fill(Color.Neumorphic.main).softInnerShadow(Circle())
+  }
 ```
 
-### Tuning them
+### Customization
+
+You can change the color, spread of the shadow, and the shadow radius of the shadow.
 
 ```swift
 func softOuterShadow(
@@ -117,7 +104,9 @@ RoundedRectangle(cornerRadius: 16)
 
 An inset field, for instance, is just a text field over an inner-shadowed background:
 
-![Search bar](Docs/images/search-bar.png)
+![Neumorphic SwiftUI Search bar](https://user-images.githubusercontent.com/169746/77886613-c8a56000-729b-11ea-87d8-3742146645e6.png)
+
+Example of using background method to add it under TextField:
 
 ```swift
 HStack {
@@ -135,9 +124,11 @@ HStack {
 )
 ```
 
+
+
 And a bar chart is an inner-shadowed track with a plain fill on top:
 
-![Bar chart](Docs/images/bar-chart.png)
+![Neumorphic SwiftUI bar chart](https://user-images.githubusercontent.com/169746/77887392-1078b700-729d-11ea-911c-3fd94ba1b9e0.png)
 
 ```swift
 ZStack(alignment: .bottom) {
@@ -151,7 +142,7 @@ ZStack(alignment: .bottom) {
         .frame(width: 30, height: 100)
 }
 ```
-
+    
 ## Controls
 
 Rather than rebuilding these on top of the shadow modifiers each time, the package ships them:
@@ -175,10 +166,11 @@ VStack(spacing: 20) {
 
 macOS gets two extras: `.neumorphicFocusRing(_:isFocused:)` for keyboard focus and `.neumorphicHover(_:isHovered:)` for pointer feedback.
 
+
 ## Buttons
 
-![Soft button](Docs/images/soft-button.png)
-
+#### Create Soft Button
+![Neumorphic SwiftUI Button](https://user-images.githubusercontent.com/169746/77301621-f6822600-6d2a-11ea-9248-88a4fa6c9abc.png)
 ```swift
 Button(action: {}) {
     Text("Soft Button").fontWeight(.bold)
@@ -201,38 +193,35 @@ func neumorphicThemedButtonStyle<S: Shape>(
 ) -> some View
 ```
 
-Any shape works, and `SoftDynamicButtonStyle` is there for buttons that need colors outside the current theme:
 
-![Accent role button beside a custom-colored button](Docs/images/custom-button.png)
-
+#### Create Soft Button with custom style
+![Neumorphic SwiftUI Button](https://user-images.githubusercontent.com/169746/77302381-34337e80-6d2c-11ea-96d6-6409a7e14c92.png)
 ```swift
 HStack {
     Button(action: {}) {
         Image(systemName: "heart.fill")
-    }
-    .neumorphicThemedButtonStyle(Circle(), role: .accent)
+    }.neumorphicThemedButtonStyle(Circle(), role: .accent)
 
     Button(action: {}) {
         Image(systemName: "heart.fill")
-    }
-    .buttonStyle(
+    }.buttonStyle(
         SoftDynamicButtonStyle(
             Circle(),
             mainColor: .red,
             textColor: .white,
             darkShadowColor: Color(red: 0.6, green: 0.2, blue: 0.2),
-            lightShadowColor: Color(red: 1.0, green: 0.5, blue: 0.5),
+            lightShadowColor: Color("redButtonLightShadow"),
             pressedEffect: .hard
         )
     )
 }
 ```
-
 For a fixed visual size that still keeps a 44-point hit area, use `.fixedSizeSoftButtonStyle(_:size:)`.
 
-### Pressed effects
 
-![Pressed effects](Docs/images/pressed-effects.gif)
+## Soft Button - Pressed Effects
+
+![ezgif-4-88fec6ab5eaa](https://user-images.githubusercontent.com/169746/89747202-400fb980-daf0-11ea-8e23-64fb5b0bfc3c.gif)
 
 ```swift
 HStack {
@@ -244,25 +233,23 @@ HStack {
         .neumorphicThemedButtonStyle(Capsule(), pressedEffect: .hard)
 }
 ```
-
 `.hard` presses the surface in, `.flat` removes the shadow, `.none` leaves it alone.
 
-## Toggles
 
-### Switch
+## Toggle 
 
-![Switch toggle](Docs/images/switch-toggle.png)
+## Switch
+![Screen Shot 2020-12-12 at 4 16 16 PM](https://user-images.githubusercontent.com/169746/101979392-ce12d100-3c97-11eb-9d45-4e82cef6337b.png)
 
 ```swift
 Toggle("Toggle", isOn: $toggleIsOn)
-    .toggleStyle(.neumorphicSwitch)
+      .toggleStyle(.neumorphicSwitch)
 ```
-
 Or `.neumorphicThemedSwitchStyle(tint:labelsHidden:height:)` to follow the environment theme, and `NeumorphicSwitchToggleStyle(tint:labelsHidden:)` when you want to configure it directly.
 
-### Shape
 
-![Shape toggle](Docs/images/shape-toggle.png)
+### Shape
+![b500](https://user-images.githubusercontent.com/169746/101979866-b76e7900-3c9b-11eb-8d47-ef6f12fa1061.jpeg)
 
 A toggle that presses in and stays in — good for play/stop:
 
@@ -274,6 +261,7 @@ Toggle(isOn: $toggleIsOn) {
 .neumorphicThemedToggleStyle(Circle(), padding: 20)
 ```
 
+    
 ## Themes, light and dark
 
 `Color.Neumorphic` adapts to light and dark mode on its own. For anything beyond that, put a theme in the environment — built-in controls read it, and the themed button and toggle modifiers follow it. Buttons use `.surface` by default; use `.accent` for the theme's accent/onAccent pair:
@@ -297,20 +285,14 @@ Neumorphism is a low-contrast style, which makes accessibility work load-bearing
 
 Two things worth doing on your side: pass `accessibilityLabel` to sliders and progress views so VoiceOver announces something more useful than "Slider", and test with VoiceOver, Larger Text, Increase Contrast, Reduce Motion, and a hardware keyboard on macOS.
 
-The design reasoning behind these choices is written up in [Docs](Docs).
 
-## Example project
+## Example Project
+Check out the __neumorphic-examples__ XCode project to see how to use neumorphic UI. 
+Open `neumorphic-examples/neumorphic-examples.xcodeproj`. Demo screens live in `neumorphic-examples/Shared/` (`ExampleShowcaseView.swift`, `ExampleSettingsView.swift`).
 
-Open **neumorphic-examples** to browse every control on iOS and macOS, including theme and accessibility previews.
 
-## Contributing
+## Contacts
+https://twitter.com/costachung
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the checks CI runs — formatting, tests, both deployment-target builds, and a Swift 6 strict-concurrency typecheck. Running them before opening a pull request saves a round trip.
-
-## Credits
-
-Original library by [Costa Chung](https://github.com/costachung) ([@costachung](https://twitter.com/costachung)). Maintained here by [gewill](https://github.com/gewill) since `v2.1.0`.
-
-## License
-
-MIT, unchanged from upstream. See [LICENSE](LICENSE).
+# License
+Neumorphic Package is released under the MIT license. See the LICENSE file for more info.
