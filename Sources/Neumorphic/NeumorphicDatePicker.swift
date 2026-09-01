@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// A date picker presented on a soft inset surface.
+/// A date picker presented on a soft inset surface. 
 public struct NeumorphicDatePicker: View {
     @Environment(\.neumorphicTheme) private var theme
     private let title: String

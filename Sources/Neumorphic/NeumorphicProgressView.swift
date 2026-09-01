@@ -1,5 +1,5 @@
 import SwiftUI
-
+ 
 /// A linear progress indicator with an inset track.
 public struct NeumorphicProgressView: View {
     @Environment(\.neumorphicTheme) private var theme

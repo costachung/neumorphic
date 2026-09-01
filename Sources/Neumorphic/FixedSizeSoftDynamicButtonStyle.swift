@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUI 
 
 /// A dynamic soft button style with an explicit visual size.
 public struct FixedSizeSoftDynamicButtonStyle<S: Shape>: ButtonStyle {

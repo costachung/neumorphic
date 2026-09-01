@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// A circular progress indicator with an inset track.
+/// A circular progress indicator with an inset track. 
 public struct NeumorphicCircularProgressView: View {
     @Environment(\.neumorphicTheme) private var theme
     private let value: Double?

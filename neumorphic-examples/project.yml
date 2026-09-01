@@ -1,4 +1,4 @@
-name: neumorphic-examples
+name: neumorphic-examples 
 projectFormat: xcode16_0
 options:
   bundleIdPrefix: neumorphic

@@ -1,5 +1,5 @@
 import SwiftUI
-
+ 
 /// The semantic color role of a themed neumorphic button.
 public enum NeumorphicButtonRole: Sendable {
     /// Uses the theme's surface and foreground colors.

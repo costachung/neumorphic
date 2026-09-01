@@ -32,7 +32,7 @@ final class NeumorphicTests: XCTestCase {
             resolvedColorCount += 4
         }
 
-        XCTAssertEqual(resolvedColorCount, 12)
+        XCTAssertEqual(resolvedColorCount, 12) 
     }
 
     @MainActor

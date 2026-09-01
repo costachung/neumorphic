@@ -1,5 +1,5 @@
 import SwiftUI
-
+ 
 /// A neumorphic checkbox control.
 public struct NeumorphicCheckbox: View {
     @Environment(\.neumorphicTheme) private var theme

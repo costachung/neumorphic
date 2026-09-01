@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Adds a subtle pointer-hover outline on macOS while remaining a no-op on iOS.
+/// Adds a subtle pointer-hover outline on macOS while remaining a no-op on iOS. 
 public struct NeumorphicHoverEffect<S: Shape>: ViewModifier {
     @Binding private var isHovered: Bool
     private let shape: S

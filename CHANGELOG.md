@@ -109,3 +109,4 @@
 
 - Added macOS tests, iOS/macOS build validation, Swift 6 strict-concurrency checks, and API breakage diagnostics.
 - Removed the tvOS platform declaration and renamed the conflicting public switch style to `NeumorphicSwitchToggleStyle`.
+ 

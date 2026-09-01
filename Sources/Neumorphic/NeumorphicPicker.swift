@@ -1,5 +1,5 @@
 import SwiftUI
-
+ 
 /// A compact segmented picker for a small set of hashable options.
 public struct NeumorphicPicker<Selection: Hashable>: View {
     @Environment(\.neumorphicTheme) private var theme

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// An expandable group with a soft raised header.
+/// An expandable group with a soft raised header. 
 public struct NeumorphicDisclosureGroup<Content: View>: View {
     @Environment(\.neumorphicTheme) private var theme
     private let title: String

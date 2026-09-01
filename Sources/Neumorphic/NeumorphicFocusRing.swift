@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Adds an explicit, keyboard- and accessibility-friendly focus indicator.
+/// Adds an explicit, keyboard- and accessibility-friendly focus indicator. 
 public struct NeumorphicFocusRing<S: Shape>: ViewModifier {
     @Binding private var isFocused: Bool
     private let shape: S

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Applies a raised neumorphic card surface to any view.
+/// Applies a raised neumorphic card surface to any view. 
 public extension View {
     /// Applies a card using the current theme and supplied shadow preset.
     ///

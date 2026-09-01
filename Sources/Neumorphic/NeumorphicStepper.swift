@@ -1,5 +1,5 @@
 import SwiftUI
-
+ 
 /// A compact stepper with neumorphic decrement and increment buttons.
 public struct NeumorphicStepper: View {
     @Environment(\.neumorphicTheme) private var theme
