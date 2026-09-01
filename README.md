@@ -290,6 +290,12 @@ Two things worth doing on your side: pass `accessibilityLabel` to sliders and pr
 Check out the __neumorphic-examples__ XCode project to see how to use neumorphic UI. 
 Open `neumorphic-examples/neumorphic-examples.xcodeproj`. Demo screens live in `neumorphic-examples/Shared/` (`ExampleShowcaseView.swift`, `ExampleSettingsView.swift`).
 
+![Screenshot 1](docs/images/sc1.png)
+![Screenshot 2](docs/images/sc2.png)
+![Screenshot 3](docs/images/sc3.png)
+![Screenshot 4](docs/images/sc4.png)
+![Screenshot 5](docs/images/sc5.png)
+
 
 ## Contacts
 https://twitter.com/costachung
