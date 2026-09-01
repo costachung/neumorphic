@@ -1,0 +1,37 @@
+name: neumorphic-examples 
+projectFormat: xcode16_0
+options:
+  bundleIdPrefix: neumorphic
+  deploymentTarget:
+    iOS: "14.0"
+    macOS: "11.0"
+packages:
+  Neumorphic:
+    path: ..
+targets:
+  neumorphic-example:
+    type: application
+    platform: iOS
+    sources:
+      - path: Shared
+        type: syncedFolder
+    info:
+      path: Shared/Info.plist
+      properties:
+        LSRequiresIPhoneOS: true
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: neumorphic.example
+      TARGETED_DEVICE_FAMILY: "1,2"
+      SUPPORTED_PLATFORMS: "iphoneos iphonesimulator macosx"
+    dependencies:
+      - package: Neumorphic

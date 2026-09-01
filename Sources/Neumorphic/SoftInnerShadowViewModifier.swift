@@ -1,96 +1,104 @@
 //
-//  SoftInnerShadowModifier.swift
+//  SoftInnerShadowViewModifier.swift
 //  Created by Costa Chung on 18/3/2020.
 //  Copyright © 2020 Costa Chung. All rights reserved.
 //  Neumorphism Soft UI
 //
-
+ 
 import SwiftUI
 
-private struct SoftInnerShadowViewModifier<S: Shape> : ViewModifier {
+private struct SoftInnerShadowViewModifier<S: Shape>: ViewModifier {
     var shape: S
-    var darkShadowColor : Color = .black
-    var lightShadowColor : Color = .white
-    var spread: CGFloat = 0.5    //The value of spread is between 0 to 1. Higher value makes the shadow look more intense.
+    var darkShadowColor: Color = .black
+    var lightShadowColor: Color = .white
+    /// How far the shadow reaches into the shape, from zero through one.
+    ///
+    /// Higher values make the shadow more intense.
+    var spread: CGFloat = 0.5
     var radius: CGFloat = 10
-    
-    init(shape: S, darkShadowColor: Color, lightShadowColor: Color, spread: CGFloat, radius:CGFloat) {
+
+    init(shape: S, darkShadowColor: Color, lightShadowColor: Color, spread: CGFloat, radius: CGFloat) {
         self.shape = shape
         self.darkShadowColor = darkShadowColor
         self.lightShadowColor = lightShadowColor
         self.spread = spread
-        self.radius = radius
+        self.radius = max(radius, 0)
     }
 
     fileprivate func strokeLineWidth(_ geo: GeometryProxy) -> CGFloat {
         return geo.size.width * 0.10
     }
-    
+
     fileprivate func strokeLineScale(_ geo: GeometryProxy) -> CGFloat {
         let lineWidth = strokeLineWidth(geo)
         return geo.size.width / CGFloat(geo.size.width - lineWidth)
     }
-    
+
     fileprivate func shadowOffset(_ geo: GeometryProxy) -> CGFloat {
         return (geo.size.width <= geo.size.height ? geo.size.width : geo.size.height) * 0.5 * min(max(spread, 0), 1)
     }
-    
 
     fileprivate func addSoftInnerShadow(_ content: SoftInnerShadowViewModifier.Content) -> some View {
         return GeometryReader { geo in
-        #if os(macOS)
-            //The mask on macOS doesn't work properly with shadow. The shadow disappear after calling the mask modifier.
-            //Workaround: Use blur instead of shadow. 
-            self.shape.fill(self.lightShadowColor)
-                .inverseMask(
-                    self.shape
-                        .offset(x: -self.shadowOffset(geo), y: -self.shadowOffset(geo))
-                )
-                .blur(radius: self.radius)
-                .mask(
-                    self.shape
-                )
-                .overlay(
-                    self.shape
-                        .fill(self.darkShadowColor)
-                        .inverseMask(
-                            self.shape
-                                .offset(x: self.shadowOffset(geo), y: self.shadowOffset(geo))
-                        )
-                        .blur(radius: self.radius)
-                )
-                .mask(
-                    self.shape
-                )
-        #else
-            // iOS
-            self.shape.fill(self.lightShadowColor)
-                .inverseMask(
-                    self.shape
-                        .offset(x: -self.shadowOffset(geo), y: -self.shadowOffset(geo))
-                )
-                .offset(x: self.shadowOffset(geo) , y: self.shadowOffset(geo))
-                .blur(radius: self.radius)
-                .shadow(color: self.lightShadowColor, radius: self.radius, x: -self.shadowOffset(geo)/2, y: -self.shadowOffset(geo)/2 )
-                .mask(
-                    self.shape
-                )
-                .overlay(
-                    self.shape
-                        .fill(self.darkShadowColor)
-                        .inverseMask(
-                            self.shape
-                                .offset(x: self.shadowOffset(geo), y: self.shadowOffset(geo))
-                        )
-                        .offset(x: -self.shadowOffset(geo) , y: -self.shadowOffset(geo))
-                        .blur(radius: self.radius)
-                        .shadow(color: self.darkShadowColor, radius: self.radius, x: self.shadowOffset(geo)/2, y: self.shadowOffset(geo)/2 )
-                )
-                .mask(
-                    self.shape
-                )
+            #if os(macOS)
+                // The mask on macOS doesn't work properly with shadow: the shadow
+                // disappears after calling the mask modifier.
+                // Workaround: use blur instead of shadow.
+                self.shape.fill(self.lightShadowColor)
+                    .inverseMask(
+                        self.shape
+                            .offset(x: -self.shadowOffset(geo), y: -self.shadowOffset(geo))
+                    )
+                    .blur(radius: self.radius)
+                    .mask(
+                        self.shape
+                    )
+                    .overlay(
+                        self.shape
+                            .fill(self.darkShadowColor)
+                            .inverseMask(
+                                self.shape
+                                    .offset(x: self.shadowOffset(geo), y: self.shadowOffset(geo))
+                            )
+                            .blur(radius: self.radius)
+                    )
+                    .mask(
+                        self.shape
+                    )
+            #else
+                // iOS
+                self.shape.fill(self.lightShadowColor)
+                    .inverseMask(
+                        self.shape
+                            .offset(x: -self.shadowOffset(geo), y: -self.shadowOffset(geo))
+                    )
+                    .offset(x: self.shadowOffset(geo), y: self.shadowOffset(geo))
+                    .blur(radius: self.radius)
+                    .shadow(
+                        color: self.lightShadowColor, radius: self.radius, x: -self.shadowOffset(geo) / 2,
+                        y: -self.shadowOffset(geo) / 2
+                    )
+                    .mask(
+                        self.shape
+                    )
+                    .overlay(
+                        self.shape
+                            .fill(self.darkShadowColor)
+                            .inverseMask(
+                                self.shape
+                                    .offset(x: self.shadowOffset(geo), y: self.shadowOffset(geo))
+                            )
+                            .offset(x: -self.shadowOffset(geo), y: -self.shadowOffset(geo))
+                            .blur(radius: self.radius)
+                            .shadow(
+                                color: self.darkShadowColor, radius: self.radius, x: self.shadowOffset(geo) / 2,
+                                y: self.shadowOffset(geo) / 2)
+                    )
+                    .mask(
+                        self.shape
+                    )
             #endif
-            
+
         }
     }
 
@@ -101,14 +109,49 @@ private struct SoftInnerShadowViewModifier<S: Shape> : ViewModifier {
     }
 }
 
+private struct SoftInnerShadowPresetViewModifier<S: Shape>: ViewModifier {
+    @Environment(\.neumorphicTheme) private var theme
+    let shape: S
+    let preset: NeumorphicShadowPreset
 
-//For more readable, we extend the View and create a softInnerShadow function.
-extension View {
-
-    public func softInnerShadow<S : Shape>(_ content: S, darkShadow: Color = Color.Neumorphic.darkShadow, lightShadow: Color = Color.Neumorphic.lightShadow, spread: CGFloat = 0.5, radius: CGFloat = 10) -> some View {
-        modifier(
-            SoftInnerShadowViewModifier(shape: content, darkShadowColor: darkShadow, lightShadowColor: lightShadow, spread: spread, radius: radius)
+    func body(content: Content) -> some View {
+        let colors = preset.resolvedShadowColors(for: theme)
+        content.softInnerShadow(
+            shape,
+            darkShadow: colors.dark,
+            lightShadow: colors.light,
+            spread: preset.spread,
+            radius: preset.radius
         )
     }
-    
+}
+
+// Public entry points. The modifier above does the actual drawing.
+extension View {
+
+    /// Applies an inner shadow using the supplied shape and shadow parameters.
+    ///
+    /// - Parameters:
+    ///   - content: The shape the inner shadow is clipped to.
+    ///   - darkShadow: The shadow color applied toward the lower-right edge.
+    ///   - lightShadow: The highlight color applied toward the upper-left edge.
+    ///   - spread: How far an inner shadow reaches into the shape, from zero through
+    ///     one. Higher values make the shadow more intense.
+    ///   - radius: The shadow blur radius. Negative values are normalized to zero.
+    public func softInnerShadow<S: Shape>(
+        _ content: S, darkShadow: Color = Color.Neumorphic.darkShadow,
+        lightShadow: Color = Color.Neumorphic.lightShadow, spread: CGFloat = 0.5, radius: CGFloat = 10
+    ) -> some View {
+        modifier(
+            SoftInnerShadowViewModifier(
+                shape: content, darkShadowColor: darkShadow, lightShadowColor: lightShadow, spread: spread,
+                radius: radius)
+        )
+    }
+
+    /// Applies an inner shadow using a reusable performance preset.
+    public func softInnerShadow<S: Shape>(_ content: S, preset: NeumorphicShadowPreset) -> some View {
+        modifier(SoftInnerShadowPresetViewModifier(shape: content, preset: preset))
+    }
+
 }

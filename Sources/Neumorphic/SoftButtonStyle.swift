@@ -3,26 +3,44 @@
 //  Created by Costa Chung on 2/3/2020.
 //  Copyright © 2020 Costa Chung. All rights reserved.
 //  Neumorphism Soft UI
-
+ 
 import SwiftUI
 
+/// Visual treatment applied while a soft button is pressed.
 public enum SoftButtonPressedEffect {
+    /// Do not change the pressed surface.
     case none
+    /// Flatten the surface while pressed.
     case flat
+    /// Apply an inner shadow while pressed.
     case hard
 }
 
-public struct SoftDynamicButtonStyle<S: Shape> : ButtonStyle {
+/// A button style whose pressed appearance is driven by the button state.
+public struct SoftDynamicButtonStyle<S: Shape>: ButtonStyle {
 
     var shape: S
-    var mainColor : Color
-    var textColor : Color
-    var darkShadowColor : Color
-    var lightShadowColor : Color
-    var pressedEffect : SoftButtonPressedEffect
-    var padding : CGFloat
-    
-    public init(_ shape: S, mainColor : Color, textColor : Color, darkShadowColor: Color, lightShadowColor: Color, pressedEffect : SoftButtonPressedEffect, padding : CGFloat = 16) {
+    var mainColor: Color
+    var textColor: Color
+    var darkShadowColor: Color
+    var lightShadowColor: Color
+    var pressedEffect: SoftButtonPressedEffect
+    var padding: CGFloat
+
+    /// Creates a dynamic soft button style.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
+    ///   - padding: The inset between the label and the surface edge.
+    public init(
+        _ shape: S, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color,
+        pressedEffect: SoftButtonPressedEffect, padding: CGFloat = 16
+    ) {
         self.shape = shape
         self.mainColor = mainColor
         self.textColor = textColor
@@ -31,104 +49,172 @@ public struct SoftDynamicButtonStyle<S: Shape> : ButtonStyle {
         self.pressedEffect = pressedEffect
         self.padding = padding
     }
-    
+
+    /// Builds the button content for the current state.
     public func makeBody(configuration: Self.Configuration) -> some View {
-        SoftDynamicButton(configuration: configuration, shape: shape, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect: pressedEffect, padding: padding)
+        SoftDynamicButton(
+            configuration: configuration, shape: shape, mainColor: mainColor, textColor: textColor,
+            darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect: pressedEffect,
+            padding: padding)
     }
 
     struct SoftDynamicButton: View {
         let configuration: ButtonStyle.Configuration
-        
+
         var shape: S
-        var mainColor : Color
-        var textColor : Color
-        var darkShadowColor : Color
-        var lightShadowColor : Color
-        var pressedEffect : SoftButtonPressedEffect
-        var padding : CGFloat
-        
+        var mainColor: Color
+        var textColor: Color
+        var darkShadowColor: Color
+        var lightShadowColor: Color
+        var pressedEffect: SoftButtonPressedEffect
+        var padding: CGFloat
+
         @Environment(\.isEnabled) private var isEnabled: Bool
-        
+        @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
         var body: some View {
             configuration.label
-                .foregroundColor(isEnabled ? textColor : darkShadowColor)
+                .foregroundColor(isEnabled ? textColor : textColor.opacity(0.55))
                 .padding(padding)
-                .scaleEffect(configuration.isPressed ? 0.97 : 1)
+                .scaleEffect(configuration.isPressed && !reduceMotion ? 0.97 : 1)
                 .background(
-                    ZStack{
+                    ZStack {
                         if isEnabled {
                             if pressedEffect == .flat {
-                                shape.stroke(darkShadowColor, lineWidth : configuration.isPressed ? 1 : 0)
-                                .opacity(configuration.isPressed ? 1 : 0)
+                                shape.stroke(darkShadowColor, lineWidth: configuration.isPressed ? 1 : 0)
+                                    .opacity(configuration.isPressed ? 1 : 0)
                                 shape.fill(mainColor)
-                            }
-                            else if pressedEffect == .hard {
+                            } else if pressedEffect == .hard {
                                 shape.fill(mainColor)
-                                    .softInnerShadow(shape, darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.15, radius: 3)
+                                    .softInnerShadow(
+                                        shape, darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.15,
+                                        radius: 3
+                                    )
                                     .opacity(configuration.isPressed ? 1 : 0)
                             }
                             shape.fill(mainColor)
-                                .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 6, radius: 3)
-                                .opacity(pressedEffect == .none ? 1 : (configuration.isPressed ? 0 : 1) )
-                        }else{
-                            shape.stroke(darkShadowColor, lineWidth : 1)
-                            .opacity(1)
+                                .softOuterShadow(
+                                    darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 6, radius: 3
+                                )
+                                .opacity(pressedEffect == .none ? 1 : (configuration.isPressed ? 0 : 1))
+                        } else {
+                            shape.stroke(darkShadowColor, lineWidth: 1)
+                                .opacity(1)
                             shape.fill(mainColor)
                         }
-                        
-                        
-                        
+
                     }
                 )
+                .frame(minWidth: 44, minHeight: 44)
         }
     }
-    
+
 }
 
 @available(*, deprecated, message: "Use SoftDynamicButtonStyle instead")
-public struct SoftButtonStyle<S: Shape> : ButtonStyle {
+/// A soft button style with a fixed visual treatment.
+public struct SoftButtonStyle<S: Shape>: ButtonStyle {
 
     var shape: S
-    var mainColor : Color
-    var textColor : Color
-    var darkShadowColor : Color
-    var lightShadowColor : Color
-    
-    public init(_ shape: S, mainColor : Color, textColor : Color, darkShadowColor: Color, lightShadowColor: Color) {
+    var mainColor: Color
+    var textColor: Color
+    var darkShadowColor: Color
+    var lightShadowColor: Color
+
+    /// Creates a fixed soft button style.
+    ///
+    /// - Parameters:
+    ///   - shape: The shape of the surface.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    public init(_ shape: S, mainColor: Color, textColor: Color, darkShadowColor: Color, lightShadowColor: Color) {
         self.shape = shape
         self.mainColor = mainColor
         self.textColor = textColor
         self.darkShadowColor = darkShadowColor
         self.lightShadowColor = lightShadowColor
     }
-    
+
+    /// Builds the button content for the current state.
     public func makeBody(configuration: Self.Configuration) -> some View {
         ZStack {
-                shape.fill(mainColor)
-                    .softInnerShadow(shape, darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.15, radius: 3)
-                    .opacity(configuration.isPressed ? 1 : 0)
-            
-                shape.fill(mainColor)
-                    .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 6, radius: 3)
-                    .opacity(configuration.isPressed ? 0 : 1)
+            shape.fill(mainColor)
+                .softInnerShadow(
+                    shape, darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.15, radius: 3
+                )
+                .opacity(configuration.isPressed ? 1 : 0)
+
+            shape.fill(mainColor)
+                .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 6, radius: 3)
+                .opacity(configuration.isPressed ? 0 : 1)
 
             configuration.label
                 .foregroundColor(textColor)
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
-                .scaleEffect(configuration.isPressed ? 0.97 : 1)
+                .modifier(SoftButtonPressScaleModifier(isPressed: configuration.isPressed))
         }
     }
-    
+
 }
 
+private struct SoftButtonPressScaleModifier: ViewModifier {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-extension Button {
+    let isPressed: Bool
 
-    public func softButtonStyle<S : Shape>(_ content: S, padding : CGFloat = 16, mainColor : Color = Color.Neumorphic.main, textColor : Color = Color.Neumorphic.secondary, darkShadowColor: Color = Color.Neumorphic.darkShadow, lightShadowColor: Color = Color.Neumorphic.lightShadow, pressedEffect : SoftButtonPressedEffect = .hard) -> some View {
-        self.buttonStyle(SoftDynamicButtonStyle(content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, pressedEffect : pressedEffect, padding:padding))
+    func body(content: Content) -> some View {
+        content.scaleEffect(isPressed && !reduceMotion ? 0.97 : 1)
+    }
+}
+
+public extension View {
+
+    /// Applies a soft button style to the view.
+    ///
+    /// - Parameters:
+    ///   - content: The shape of the surface.
+    ///   - padding: The inset between the label and the surface edge.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
+    func softButtonStyle<S: Shape>(
+        _ content: S, padding: CGFloat = 16, mainColor: Color = Color.Neumorphic.main,
+        textColor: Color = Color.Neumorphic.secondary, darkShadowColor: Color = Color.Neumorphic.darkShadow,
+        lightShadowColor: Color = Color.Neumorphic.lightShadow, pressedEffect: SoftButtonPressedEffect = .hard
+    ) -> some View {
+        self.buttonStyle(
+            SoftDynamicButtonStyle(
+                content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor,
+                lightShadowColor: lightShadowColor, pressedEffect: pressedEffect, padding: padding))
     }
 
-    
 }
 
+public extension Button {
+    /// Compatibility wrapper for the original Button-only API.
+    ///
+    /// - Parameters:
+    ///   - content: The shape of the surface.
+    ///   - padding: The inset between the label and the surface edge.
+    ///   - mainColor: The surface color.
+    ///   - textColor: The label and symbol color.
+    ///   - darkShadowColor: The shadow color applied toward the lower-right edge.
+    ///   - lightShadowColor: The highlight color applied toward the upper-left edge.
+    ///   - pressedEffect: The visual treatment applied while the control is pressed.
+    @MainActor
+    func softButtonStyle<S: Shape>(
+        _ content: S, padding: CGFloat = 16, mainColor: Color = Color.Neumorphic.main,
+        textColor: Color = Color.Neumorphic.secondary, darkShadowColor: Color = Color.Neumorphic.darkShadow,
+        lightShadowColor: Color = Color.Neumorphic.lightShadow, pressedEffect: SoftButtonPressedEffect = .hard
+    ) -> some View {
+        buttonStyle(
+            SoftDynamicButtonStyle(
+                content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor,
+                lightShadowColor: lightShadowColor, pressedEffect: pressedEffect, padding: padding))
+    }
+}

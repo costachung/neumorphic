@@ -1,4 +1,4 @@
-# Xcode
+# Xcode 
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
@@ -89,3 +89,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 .DS_Store
+
+# Generated for the nested tooling package
+Scripts/readme-shots/.swiftpm/
